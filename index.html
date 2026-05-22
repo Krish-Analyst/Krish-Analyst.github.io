@@ -50,7 +50,11 @@
     font-weight: 700;
     color: var(--accent);
     letter-spacing: -0.5px;
+    cursor: pointer;
+    transition: opacity 0.2s;
   }
+ 
+  .nav-logo:hover { opacity: 0.7; }
  
   .nav-logo span { color: #0f0f0f; }
  
@@ -479,7 +483,7 @@
 <body>
  
 <nav>
-  <div class="nav-logo">Venture<span>Panda</span></div>
+  <div class="nav-logo" onclick="showPage('home')">Venture<span>Panda</span></div>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home')">Home</a></li>
     <li><a href="#" onclick="showPage('guides')">Guides</a></li>
