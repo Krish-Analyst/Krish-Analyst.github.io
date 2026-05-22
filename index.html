@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VenturePanda — Built by a young entrepreneur, for young entrepreneurs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #0f0f0f;
+    --muted: #6b6b6b;
+    --accent: #0a2540;
+    --border: #e5e5e0;
+    --tag-bg: #f0ede8;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+ 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+ 
+  a { color: inherit; text-decoration: none; }
+ 
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+ 
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+ 
+  .nav-logo span { color: #0f0f0f; }
+ 
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+ 
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+ 
+  .nav-links a:hover { color: var(--text); }
+ 
+  /* PAGES */
+  .page { display: none; padding-top: 60px; min-height: 100vh; }
+  .page.active { display: block; }
+ 
+  /* HOME */
+  .hero {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 40px 60px;
+  }
+ 
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+ 
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--accent);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+ 
+  .hero p {
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+ 
+  .divider {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px;
+    border-top: 1px solid var(--border);
+  }
+ 
+  /* ARTICLE LIST */
+  .articles {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+ 
+  .articles-header {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 40px 0 24px;
+  }
+ 
+  .article-item {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+ 
+  .article-item:hover { opacity: 0.7; }
+ 
+  .article-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+ 
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--tag-bg);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+ 
+  .article-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+ 
+  .article-desc {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+ 
+  .article-meta {
+    font-size: 13px;
+    color: #aaa;
+  }
+ 
+  /* ABOUT */
+  .about-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+ 
+  .about-container h1 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+  }
+ 
+  .about-container p {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 24px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+ 
+  .about-container p strong {
+    font-weight: 500;
+    color: var(--text);
+  }
+ 
+  .about-cta {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--muted);
+  }
+ 
+  /* GUIDES */
+  .guides-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+ 
+  .guides-container h1 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+ 
+  .guides-container .subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+ 
+  /* RESOURCES */
+  .resources-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+ 
+  .resources-container h1 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+ 
+  .resources-container .subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+ 
+  .resource-section {
+    margin-bottom: 48px;
+  }
+ 
+  .resource-section h2 {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+ 
+  .resource-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+ 
+  .resource-item:last-child { border-bottom: none; }
+ 
+  .resource-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+ 
+  .resource-desc {
+    font-size: 14px;
+    color: var(--muted);
+  }
+ 
+  .resource-tag {
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--tag-bg);
+    color: var(--muted);
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-left: 16px;
+    margin-top: 2px;
+  }
+ 
+  /* CONTACT */
+  .contact-container {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+ 
+  .contact-container h1 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+ 
+  .contact-container .subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+ 
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+ 
+  .contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    transition: opacity 0.2s;
+    cursor: pointer;
+  }
+ 
+  .contact-link:last-child { border-bottom: 1px solid var(--border); }
+  .contact-link:hover { opacity: 0.6; }
+ 
+  .contact-link-label {
+    font-size: 16px;
+    font-weight: 500;
+  }
+ 
+  .contact-link-value {
+    font-size: 15px;
+    color: var(--muted);
+  }
+ 
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+ 
+  footer .footer-brand {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+ 
+  footer .footer-copy {
+    font-size: 13px;
+    color: var(--muted);
+  }
+ 
+  /* ARTICLE FULL PAGE */
+  .article-full {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+ 
+  .article-full .back-btn {
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+ 
+  .article-full .back-btn:hover { color: var(--text); }
+ 
+  .article-full h1 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+ 
+  .article-full .article-intro {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+ 
+  .article-full .article-meta-full {
+    font-size: 13px;
+    color: #bbb;
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+ 
+  .article-full .body p {
+    font-size: 17px;
+    line-height: 1.85;
+    color: #222;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+ 
+  .article-full .body h2 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--accent);
+    margin: 40px 0 16px;
+  }
+ 
+  .article-full .body ul {
+    margin: 0 0 24px 20px;
+  }
+ 
+  .article-full .body li {
+    font-size: 17px;
+    line-height: 1.85;
+    color: #222;
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+ 
+  .article-full .body blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+    margin: 32px 0;
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--accent);
+    font-style: italic;
+    line-height: 1.5;
+  }
+ 
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+    .hero, .articles, .about-container, .guides-container, .resources-container, .contact-container, .article-full { padding-left: 20px; padding-right: 20px; }
+    footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+ 
+<nav>
+  <div class="nav-logo">Venture<span>Panda</span></div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('guides')">Guides</a></li>
+    <li><a href="#" onclick="showPage('resources')">Resources</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+  </ul>
+</nav>
+ 
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-eyebrow">Build · Launch · Grow</div>
+    <h1>Built by a young entrepreneur, for young entrepreneurs.</h1>
+    <p>Practical guides, tools, and advice for students who want to build something from scratch.</p>
+  </div>
+  <div class="divider"></div>
+  <div class="articles">
+    <div class="articles-header">Latest Guides</div>
+ 
+    <div class="article-item" onclick="showArticle('branding')">
+      <div class="article-tags"><span class="tag">Branding</span></div>
+      <div class="article-title">How to Build a Brand Identity From Scratch</div>
+      <div class="article-desc">Logo, colors, tone of voice — everything you need to make your business look like a real brand.</div>
+      <div class="article-meta">May 2026 · 6 min read</div>
+    </div>
+ 
+    <div class="article-item" onclick="showArticle('ecommerce')">
+      <div class="article-tags"><span class="tag">E-Commerce</span></div>
+      <div class="article-title">How to Set Up an Online Store for Free (or Close to It)</div>
+      <div class="article-desc">The tools, platforms, and steps to get your first products online without wasting money.</div>
+      <div class="article-meta">May 2026 · 5 min read</div>
+    </div>
+ 
+    <div class="article-item" onclick="showArticle('marketing')">
+      <div class="article-tags"><span class="tag">Marketing</span></div>
+      <div class="article-title">Getting Your First Customers Without a Budget</div>
+      <div class="article-desc">How to use TikTok, Instagram, and direct outreach to build an audience before you spend a single krone.</div>
+      <div class="article-meta">May 2026 · 7 min read</div>
+    </div>
+ 
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- GUIDES -->
+<div id="page-guides" class="page">
+  <div class="guides-container">
+    <h1>Guides</h1>
+    <p class="subtitle">Practical, firsthand advice on building a business from scratch.</p>
+ 
+    <div class="article-item" onclick="showArticle('branding')">
+      <div class="article-tags"><span class="tag">Branding</span></div>
+      <div class="article-title">How to Build a Brand Identity From Scratch</div>
+      <div class="article-desc">Logo, colors, tone of voice — everything you need to make your business look like a real brand.</div>
+      <div class="article-meta">May 2026 · 6 min read</div>
+    </div>
+ 
+    <div class="article-item" onclick="showArticle('ecommerce')">
+      <div class="article-tags"><span class="tag">E-Commerce</span></div>
+      <div class="article-title">How to Set Up an Online Store for Free (or Close to It)</div>
+      <div class="article-desc">The tools, platforms, and steps to get your first products online without wasting money.</div>
+      <div class="article-meta">May 2026 · 5 min read</div>
+    </div>
+ 
+    <div class="article-item" onclick="showArticle('marketing')">
+      <div class="article-tags"><span class="tag">Marketing</span></div>
+      <div class="article-title">Getting Your First Customers Without a Budget</div>
+      <div class="article-desc">How to use TikTok, Instagram, and direct outreach to build an audience before you spend a single krone.</div>
+      <div class="article-meta">May 2026 · 7 min read</div>
+    </div>
+ 
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- RESOURCES -->
+<div id="page-resources" class="page">
+  <div class="resources-container">
+    <h1>Resources</h1>
+    <p class="subtitle">Tools and platforms I actually used to build my business. No fluff.</p>
+ 
+    <div class="resource-section">
+      <h2>Branding & Design</h2>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Canva</div>
+          <div class="resource-desc">Design logos, social media posts, and marketing materials. Free plan is more than enough to start.</div>
+        </div>
+        <span class="resource-tag">Free</span>
+      </div>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Adobe Express</div>
+          <div class="resource-desc">Quick graphics and branded content. Good for consistent visual identity across platforms.</div>
+        </div>
+        <span class="resource-tag">Free</span>
+      </div>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Coolors</div>
+          <div class="resource-desc">Generate color palettes for your brand in seconds.</div>
+        </div>
+        <span class="resource-tag">Free</span>
+      </div>
+    </div>
+ 
+    <div class="resource-section">
+      <h2>E-Commerce</h2>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Shopify</div>
+          <div class="resource-desc">The most complete e-commerce platform. Easy to set up, handles payments, inventory, and shipping.</div>
+        </div>
+        <span class="resource-tag">Paid</span>
+      </div>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Printful</div>
+          <div class="resource-desc">Print-on-demand supplier. Connect to Shopify and sell custom products without holding inventory.</div>
+        </div>
+        <span class="resource-tag">Free to start</span>
+      </div>
+    </div>
+ 
+    <div class="resource-section">
+      <h2>Marketing</h2>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">TikTok</div>
+          <div class="resource-desc">The highest organic reach of any platform right now. Short videos are the fastest way to build an audience for free.</div>
+        </div>
+        <span class="resource-tag">Free</span>
+      </div>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Instagram</div>
+          <div class="resource-desc">Essential for product-based businesses. Build a feed that reflects your brand identity.</div>
+        </div>
+        <span class="resource-tag">Free</span>
+      </div>
+    </div>
+ 
+    <div class="resource-section">
+      <h2>Website & Domain</h2>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Namecheap</div>
+          <div class="resource-desc">Buy a custom domain for around $10-15 a year. Cheaper and simpler than most alternatives.</div>
+        </div>
+        <span class="resource-tag">~$12/yr</span>
+      </div>
+      <div class="resource-item">
+        <div>
+          <div class="resource-name">Framer</div>
+          <div class="resource-desc">Build a clean, professional website without coding. Free plan available, pay only for custom domain.</div>
+        </div>
+        <span class="resource-tag">Free</span>
+      </div>
+    </div>
+ 
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="about-container">
+    <h1>About VenturePanda.</h1>
+    <p>VenturePanda was built out of a simple realization: when I started my first business, I had no idea where to begin.</p>
+    <p>At 15, I founded <strong>Velora Gran Turismo</strong>, an automotive-inspired clothing brand I built and ran entirely on my own for 7 months. I figured out branding, e-commerce, digital marketing, and customer management by trial and error. There was no single place that gave me practical, straightforward advice as a young entrepreneur.</p>
+    <p>VenturePanda is that place.</p>
+    <p>This isn't generic business advice from someone who read it in a textbook. Everything here comes from real experience of actually building something from scratch, making mistakes, and learning from them.</p>
+    <p>Whether you have an idea and don't know where to start, or you're already building and need specific guidance, VenturePanda is here to help you move forward.</p>
+    <div class="about-cta">
+      Written by <strong>Krish Panda</strong> — IB Student, Founder, and School Chapter Director at the International Economics Post.
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="contact-container">
+    <h1>Get in touch.</h1>
+    <p class="subtitle">Questions, feedback, or just want to connect — reach out.</p>
+    <div class="contact-links">
+      <div class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-value">Krish Panda</span>
+      </div>
+      <div class="contact-link">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">Add your email here</span>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- ARTICLE: BRANDING -->
+<div id="page-article-branding" class="page">
+  <div class="article-full">
+    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
+    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Branding</span></div>
+    <h1>How to Build a Brand Identity From Scratch</h1>
+    <p class="article-intro">Logo, colors, tone of voice — everything you need to make your business look like a real brand.</p>
+    <div class="article-meta-full">May 2026 · 6 min read · By Krish Panda</div>
+    <div class="body">
+      <p>When I started Velora Gran Turismo, I had no branding experience. I just knew I wanted it to look real — not like some kid's hobby project. So I figured it out. Here's what actually matters.</p>
+      <h2>Start with a name and a feeling</h2>
+      <p>Your brand name should be easy to say, easy to remember, and give people a feeling. Velora Gran Turismo evoked speed, style, and automotive culture before anyone saw a single product. That's what a name should do.</p>
+      <p>Ask yourself: what do I want people to feel when they see my brand? Write down three words. Those three words should guide every design decision you make.</p>
+      <h2>Design a simple logo</h2>
+      <p>You don't need to hire a designer. Use Canva or Adobe Express. Start with a wordmark — just your brand name in a distinctive font. Most strong brands start simple.</p>
+      <p>Pick one or two fonts maximum. Pick a color palette of two to three colors. That's it. Consistency beats complexity every time.</p>
+      <blockquote>"A brand is not a logo. A brand is what people feel when they interact with you."</blockquote>
+      <h2>Build your visual identity</h2>
+      <p>Once you have a logo and colors, apply them everywhere consistently. Your Instagram profile, your website, your packaging, your email signature. The more consistent you are, the more real your brand looks.</p>
+      <h2>Define your tone of voice</h2>
+      <p>How does your brand talk? Formal or casual? Serious or playful? Write a few sample captions in your brand voice and stick to it. People should be able to read your posts and know it's you without seeing your logo.</p>
+      <h2>The most important thing</h2>
+      <p>Start. Don't spend three weeks perfecting your logo before you've sold anything. Launch with something good enough, learn from real customers, and improve as you go.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- ARTICLE: ECOMMERCE -->
+<div id="page-article-ecommerce" class="page">
+  <div class="article-full">
+    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
+    <div class="article-tags" style="margin-bottom:16px"><span class="tag">E-Commerce</span></div>
+    <h1>How to Set Up an Online Store for Free (or Close to It)</h1>
+    <p class="article-intro">The tools, platforms, and steps to get your first products online without wasting money.</p>
+    <div class="article-meta-full">May 2026 · 5 min read · By Krish Panda</div>
+    <div class="body">
+      <p>When I built the Velora Gran Turismo store, I was 15 and had almost no budget. Here's exactly how I did it, and what I'd do differently today.</p>
+      <h2>Choose your platform</h2>
+      <p>For a product-based business, Shopify is the most complete option. It handles your store, payments, inventory, and shipping in one place. The basic plan costs money, but it's worth it once you're ready to sell seriously.</p>
+      <p>If you want to start completely free, try Big Cartel for small product ranges or WooCommerce if you already have a WordPress site.</p>
+      <h2>Set up print-on-demand if you're selling physical products</h2>
+      <p>This is what changed everything for me. With Printful, you design the product, list it on your store, and when someone orders, Printful prints and ships it directly to them. You never hold inventory. You never spend money upfront on stock.</p>
+      <p>The margins are lower than buying wholesale, but the risk is zero. For a first business, that matters.</p>
+      <h2>Get a custom domain</h2>
+      <p>A custom domain costs around $12 a year on Namecheap. It makes your store look 10x more professional than a free subdomain. This is the one thing worth paying for immediately.</p>
+      <h2>Keep it simple</h2>
+      <p>Three to five products maximum when you launch. A clean homepage, a product page, and a contact page. That's all you need. You can add complexity later once you understand what your customers actually want.</p>
+      <blockquote>"Your first store doesn't need to be perfect. It needs to exist."</blockquote>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- ARTICLE: MARKETING -->
+<div id="page-article-marketing" class="page">
+  <div class="article-full">
+    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
+    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Marketing</span></div>
+    <h1>Getting Your First Customers Without a Budget</h1>
+    <p class="article-intro">How to use TikTok, Instagram, and direct outreach to build an audience before you spend a single krone.</p>
+    <div class="article-meta-full">May 2026 · 7 min read · By Krish Panda</div>
+    <div class="body">
+      <p>Nobody is going to find your store on their own. You have to bring them there. Here's how to do that with zero marketing budget.</p>
+      <h2>TikTok is the most powerful free tool available right now</h2>
+      <p>When I posted TikToks for Velora Gran Turismo, some of them hit over 1,000 views with no followers and no paid promotion. That's organic reach you simply cannot get on any other platform right now.</p>
+      <p>You don't need to be a video expert. Film your process — designing a product, packing an order, showing the brand behind the scenes. Authenticity works better than production quality.</p>
+      <h2>Build an Instagram presence</h2>
+      <p>Instagram is where people go to check if a brand is real. A clean, consistent feed with good product photos builds trust. Post consistently, use relevant hashtags, and engage with accounts in your niche.</p>
+      <h2>Direct outreach works better than you think</h2>
+      <p>Message people directly. Friends, friends of friends, people in communities related to your product. Tell them what you're building and ask if they'd be interested. Your first ten customers will almost certainly come from people you know or people one degree away.</p>
+      <blockquote>"Your first sale is about trust, not marketing. Someone has to believe in you before they buy from you."</blockquote>
+      <h2>Don't pay for ads yet</h2>
+      <p>Paid advertising before you understand your customer is money wasted. Get your first ten sales organically, learn who your customer is, then consider paid promotion. Not before.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+ 
+  function showArticle(slug) {
+    showPage('article-' + slug);
+  }
+</script>
+</body>
+</html>
