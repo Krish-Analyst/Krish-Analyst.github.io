@@ -30,6 +30,80 @@
  
   a { color: inherit; text-decoration: none; }
  
+  /* ANIMATIONS */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes scaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+ 
   /* NAV */
   nav {
     position: fixed;
@@ -43,6 +117,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    animation: slideInDown 0.6s ease-out;
   }
  
   .nav-logo {
@@ -52,10 +127,13 @@
     color: var(--accent);
     letter-spacing: -0.5px;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: all 0.3s ease;
   }
  
-  .nav-logo:hover { opacity: 0.7; }
+  .nav-logo:hover { 
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
  
   .nav-logo span { color: #0f0f0f; }
  
@@ -69,14 +147,38 @@
     font-size: 14px;
     font-weight: 400;
     color: var(--muted);
-    transition: color 0.2s;
+    transition: all 0.3s ease;
     letter-spacing: 0.02em;
+    position: relative;
   }
  
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover { 
+    color: var(--text);
+    transform: translateY(-2px);
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
  
   /* PAGES */
-  .page { display: none; padding-top: 60px; min-height: 100vh; }
+  .page { 
+    display: none; 
+    padding-top: 60px; 
+    min-height: 100vh;
+    animation: fadeIn 0.5s ease-in;
+  }
   .page.active { display: block; }
  
   /* HOME */
@@ -84,6 +186,7 @@
     max-width: 720px;
     margin: 0 auto;
     padding: 80px 40px 60px;
+    animation: slideInUp 0.7s ease-out 0.1s backwards;
   }
  
   .hero-eyebrow {
@@ -93,6 +196,7 @@
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 24px;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
   .hero h1 {
@@ -103,6 +207,7 @@
     color: var(--accent);
     margin-bottom: 20px;
     letter-spacing: -1px;
+    animation: slideInUp 0.7s ease-out 0.3s backwards;
   }
  
   .hero p {
@@ -111,6 +216,7 @@
     font-weight: 300;
     max-width: 520px;
     line-height: 1.7;
+    animation: slideInUp 0.7s ease-out 0.4s backwards;
   }
  
   .divider {
@@ -118,6 +224,7 @@
     margin: 0 auto;
     padding: 0 40px;
     border-top: 1px solid var(--border);
+    animation: slideInRight 0.7s ease-out 0.5s backwards;
   }
  
   /* ARTICLE LIST */
@@ -134,16 +241,25 @@
     text-transform: uppercase;
     color: var(--muted);
     padding: 40px 0 24px;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
   .article-item {
     padding: 28px 0;
     border-top: 1px solid var(--border);
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: all 0.3s ease;
+    animation: slideInUp 0.6s ease-out forwards;
   }
+
+  .article-item:nth-child(1) { animation-delay: 0.3s; }
+  .article-item:nth-child(2) { animation-delay: 0.4s; }
+  .article-item:nth-child(3) { animation-delay: 0.5s; }
  
-  .article-item:hover { opacity: 0.7; }
+  .article-item:hover { 
+    opacity: 0.7;
+    transform: translateX(8px);
+  }
  
   .article-tags {
     display: flex;
@@ -160,6 +276,12 @@
     background: var(--tag-bg);
     padding: 3px 10px;
     border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .article-item:hover .tag {
+    background: var(--accent);
+    color: white;
   }
  
   .article-title {
@@ -188,6 +310,7 @@
     max-width: 640px;
     margin: 0 auto;
     padding: 80px 40px;
+    animation: slideInUp 0.7s ease-out 0.1s backwards;
   }
  
   .about-container h1 {
@@ -198,6 +321,7 @@
     margin-bottom: 40px;
     letter-spacing: -1px;
     line-height: 1.15;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
   .about-container p {
@@ -206,7 +330,14 @@
     margin-bottom: 24px;
     line-height: 1.8;
     font-weight: 300;
+    animation: slideInUp 0.7s ease-out forwards;
   }
+
+  .about-container p:nth-of-type(1) { animation-delay: 0.3s; }
+  .about-container p:nth-of-type(2) { animation-delay: 0.4s; }
+  .about-container p:nth-of-type(3) { animation-delay: 0.5s; }
+  .about-container p:nth-of-type(4) { animation-delay: 0.6s; }
+  .about-container p:nth-of-type(5) { animation-delay: 0.7s; }
  
   .about-container p strong {
     font-weight: 500;
@@ -219,6 +350,7 @@
     border-top: 1px solid var(--border);
     font-size: 15px;
     color: var(--muted);
+    animation: slideInUp 0.7s ease-out 0.8s backwards;
   }
  
   /* GUIDES */
@@ -235,6 +367,7 @@
     color: var(--accent);
     margin-bottom: 12px;
     letter-spacing: -1px;
+    animation: slideInUp 0.7s ease-out 0.1s backwards;
   }
  
   .guides-container .subtitle {
@@ -242,6 +375,7 @@
     color: var(--muted);
     margin-bottom: 48px;
     font-weight: 300;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
   /* RESOURCES */
@@ -258,6 +392,7 @@
     color: var(--accent);
     margin-bottom: 12px;
     letter-spacing: -1px;
+    animation: slideInUp 0.7s ease-out 0.1s backwards;
   }
  
   .resources-container .subtitle {
@@ -265,11 +400,18 @@
     color: var(--muted);
     margin-bottom: 48px;
     font-weight: 300;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
   .resource-section {
     margin-bottom: 48px;
+    animation: slideInUp 0.7s ease-out forwards;
   }
+
+  .resource-section:nth-of-type(1) { animation-delay: 0.3s; }
+  .resource-section:nth-of-type(2) { animation-delay: 0.4s; }
+  .resource-section:nth-of-type(3) { animation-delay: 0.5s; }
+  .resource-section:nth-of-type(4) { animation-delay: 0.6s; }
  
   .resource-section h2 {
     font-size: 13px;
@@ -288,6 +430,11 @@
     align-items: flex-start;
     padding: 16px 0;
     border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .resource-item:hover {
+    transform: translateX(6px);
   }
  
   .resource-item:last-child { border-bottom: none; }
@@ -314,6 +461,12 @@
     white-space: nowrap;
     margin-left: 16px;
     margin-top: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .resource-item:hover .resource-tag {
+    background: var(--accent);
+    color: white;
   }
  
   /* CONTACT */
@@ -330,6 +483,7 @@
     color: var(--accent);
     margin-bottom: 12px;
     letter-spacing: -1px;
+    animation: slideInUp 0.7s ease-out 0.1s backwards;
   }
  
   .contact-container .subtitle {
@@ -337,6 +491,7 @@
     color: var(--muted);
     margin-bottom: 48px;
     font-weight: 300;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
   .contact-links {
@@ -351,12 +506,19 @@
     align-items: center;
     padding: 20px 0;
     border-top: 1px solid var(--border);
-    transition: opacity 0.2s;
+    transition: all 0.3s ease;
     cursor: pointer;
+    animation: slideInUp 0.6s ease-out forwards;
   }
+
+  .contact-link:nth-of-type(1) { animation-delay: 0.3s; }
+  .contact-link:nth-of-type(2) { animation-delay: 0.4s; }
  
   .contact-link:last-child { border-bottom: 1px solid var(--border); }
-  .contact-link:hover { opacity: 0.6; }
+  .contact-link:hover { 
+    opacity: 0.6;
+    transform: translateX(8px);
+  }
  
   .contact-link-label {
     font-size: 16px;
@@ -375,6 +537,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: slideInUp 0.7s ease-out 0.9s backwards;
   }
  
   footer .footer-brand {
@@ -404,10 +567,14 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: color 0.2s;
+    transition: all 0.3s ease;
+    animation: slideInLeft 0.6s ease-out;
   }
  
-  .article-full .back-btn:hover { color: var(--text); }
+  .article-full .back-btn:hover { 
+    color: var(--text);
+    transform: translateX(-4px);
+  }
  
   .article-full h1 {
     font-family: var(--serif);
@@ -417,6 +584,7 @@
     margin-bottom: 16px;
     line-height: 1.2;
     letter-spacing: -0.5px;
+    animation: slideInUp 0.7s ease-out 0.1s backwards;
   }
  
   .article-full .article-intro {
@@ -424,6 +592,7 @@
     color: var(--muted);
     margin-bottom: 12px;
     font-weight: 300;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
   .article-full .article-meta-full {
@@ -432,6 +601,7 @@
     margin-bottom: 48px;
     padding-bottom: 40px;
     border-bottom: 1px solid var(--border);
+    animation: slideInUp 0.7s ease-out 0.3s backwards;
   }
  
   .article-full .body p {
@@ -440,7 +610,15 @@
     color: #222;
     margin-bottom: 24px;
     font-weight: 300;
+    animation: slideInUp 0.7s ease-out forwards;
   }
+
+  .article-full .body p:nth-of-type(1) { animation-delay: 0.4s; }
+  .article-full .body p:nth-of-type(2) { animation-delay: 0.45s; }
+  .article-full .body p:nth-of-type(3) { animation-delay: 0.5s; }
+  .article-full .body p:nth-of-type(4) { animation-delay: 0.55s; }
+  .article-full .body p:nth-of-type(5) { animation-delay: 0.6s; }
+  .article-full .body p:nth-of-type(6) { animation-delay: 0.65s; }
  
   .article-full .body h2 {
     font-family: var(--serif);
@@ -448,6 +626,7 @@
     font-weight: 500;
     color: var(--accent);
     margin: 40px 0 16px;
+    animation: slideInUp 0.6s ease-out;
   }
  
   .article-full .body ul {
@@ -471,6 +650,7 @@
     color: var(--accent);
     font-style: italic;
     line-height: 1.5;
+    animation: slideInLeft 0.6s ease-out;
   }
  
   @media (max-width: 600px) {
@@ -664,9 +844,9 @@
   <div class="about-container">
     <h1>About VenturePanda.</h1>
     <p>VenturePanda was built out of a simple realization: when I started my first business, I had no idea where to begin.</p>
-    <p>At 15, I founded <strong>Velora Gran Turismo</strong>, an automotive-inspired clothing brand I built and ran entirely on my own for 7 months. I figured out branding, e-commerce, digital marketing, and customer management by trial and error. There was no single place that gave me practical, straightforward advice as a young entrepreneur.</p>
+    <p>At 15, I founded <strong>Velora Gran Turismo</strong>, an automotive-inspired clothing brand I built and ran entirely on my own for 7 months. I figured out branding, e-commerce, digital ma[...]
     <p>VenturePanda is that place.</p>
-    <p>This isn't generic business advice from someone who read it in a textbook. Everything here comes from real experience of actually building something from scratch, making mistakes, and learning from them.</p>
+    <p>This isn't generic business advice from someone who read it in a textbook. Everything here comes from real experience of actually building something from scratch, making mistakes, and lear[...]
     <p>Whether you have an idea and don't know where to start, or you're already building and need specific guidance, VenturePanda is here to help you move forward.</p>
     <div class="about-cta">
       Written by <strong>Krish Panda</strong> — IB Student, Founder, and School Chapter Director at the International Economics Post.
@@ -711,18 +891,18 @@
     <p class="article-intro">Logo, colors, tone of voice — everything you need to make your business look like a real brand.</p>
     <div class="article-meta-full">May 2026 · 6 min read · By Krish Panda</div>
     <div class="body">
-      <p>When I started Velora Gran Turismo, I had no branding experience. I just knew I wanted it to look real — not like some kid's hobby project. So I figured it out. Here's what actually matters.</p>
+      <p>When I started Velora Gran Turismo, I had no branding experience. I just knew I wanted it to look real — not like some kid's hobby project. So I figured it out. Here's what actually ma[...]
       <h2>Start with a name and a feeling</h2>
-      <p>Your brand name should be easy to say, easy to remember, and give people a feeling. Velora Gran Turismo evoked speed, style, and automotive culture before anyone saw a single product. That's what a name should do.</p>
+      <p>Your brand name should be easy to say, easy to remember, and give people a feeling. Velora Gran Turismo evoked speed, style, and automotive culture before anyone saw a single product. Th[...]
       <p>Ask yourself: what do I want people to feel when they see my brand? Write down three words. Those three words should guide every design decision you make.</p>
       <h2>Design a simple logo</h2>
       <p>You don't need to hire a designer. Use Canva or Adobe Express. Start with a wordmark — just your brand name in a distinctive font. Most strong brands start simple.</p>
       <p>Pick one or two fonts maximum. Pick a color palette of two to three colors. That's it. Consistency beats complexity every time.</p>
       <blockquote>"A brand is not a logo. A brand is what people feel when they interact with you."</blockquote>
       <h2>Build your visual identity</h2>
-      <p>Once you have a logo and colors, apply them everywhere consistently. Your Instagram profile, your website, your packaging, your email signature. The more consistent you are, the more real your brand looks.</p>
+      <p>Once you have a logo and colors, apply them everywhere consistently. Your Instagram profile, your website, your packaging, your email signature. The more consistent you are, the more rea[...]
       <h2>Define your tone of voice</h2>
-      <p>How does your brand talk? Formal or casual? Serious or playful? Write a few sample captions in your brand voice and stick to it. People should be able to read your posts and know it's you without seeing your logo.</p>
+      <p>How does your brand talk? Formal or casual? Serious or playful? Write a few sample captions in your brand voice and stick to it. People should be able to read your posts and know it's yo[...]
       <h2>The most important thing</h2>
       <p>Start. Don't spend three weeks perfecting your logo before you've sold anything. Launch with something good enough, learn from real customers, and improve as you go.</p>
     </div>
@@ -744,15 +924,15 @@
     <div class="body">
       <p>When I built the Velora Gran Turismo store, I was 15 and had almost no budget. Here's exactly how I did it, and what I'd do differently today.</p>
       <h2>Choose your platform</h2>
-      <p>For a product-based business, Shopify is the most complete option. It handles your store, payments, inventory, and shipping in one place. The basic plan costs money, but it's worth it once you're ready to sell seriously.</p>
+      <p>For a product-based business, Shopify is the most complete option. It handles your store, payments, inventory, and shipping in one place. The basic plan costs money, but it's worth it on[...]
       <p>If you want to start completely free, try Big Cartel for small product ranges or WooCommerce if you already have a WordPress site.</p>
       <h2>Set up print-on-demand if you're selling physical products</h2>
-      <p>This is what changed everything for me. With Printful, you design the product, list it on your store, and when someone orders, Printful prints and ships it directly to them. You never hold inventory. You never spend money upfront on stock.</p>
+      <p>This is what changed everything for me. With Printful, you design the product, list it on your store, and when someone orders, Printful prints and ships it directly to them. You never ho[...]
       <p>The margins are lower than buying wholesale, but the risk is zero. For a first business, that matters.</p>
       <h2>Get a custom domain</h2>
       <p>A custom domain costs around $12 a year on Namecheap. It makes your store look 10x more professional than a free subdomain. This is the one thing worth paying for immediately.</p>
       <h2>Keep it simple</h2>
-      <p>Three to five products maximum when you launch. A clean homepage, a product page, and a contact page. That's all you need. You can add complexity later once you understand what your customers actually want.</p>
+      <p>Three to five products maximum when you launch. A clean homepage, a product page, and a contact page. That's all you need. You can add complexity later once you understand what your cust[...]
       <blockquote>"Your first store doesn't need to be perfect. It needs to exist."</blockquote>
     </div>
   </div>
@@ -773,12 +953,12 @@
     <div class="body">
       <p>Nobody is going to find your store on their own. You have to bring them there. Here's how to do that with zero marketing budget.</p>
       <h2>TikTok is the most powerful free tool available right now</h2>
-      <p>When I posted TikToks for Velora Gran Turismo, some of them hit over 1,000 views with no followers and no paid promotion. That's organic reach you simply cannot get on any other platform right now.</p>
-      <p>You don't need to be a video expert. Film your process — designing a product, packing an order, showing the brand behind the scenes. Authenticity works better than production quality.</p>
+      <p>When I posted TikToks for Velora Gran Turismo, some of them hit over 1,000 views with no followers and no paid promotion. That's organic reach you simply cannot get on any other platform[...]
+      <p>You don't need to be a video expert. Film your process — designing a product, packing an order, showing the brand behind the scenes. Authenticity works better than production quality.<[...]
       <h2>Build an Instagram presence</h2>
-      <p>Instagram is where people go to check if a brand is real. A clean, consistent feed with good product photos builds trust. Post consistently, use relevant hashtags, and engage with accounts in your niche.</p>
+      <p>Instagram is where people go to check if a brand is real. A clean, consistent feed with good product photos builds trust. Post consistently, use relevant hashtags, and engage with accoun[...]
       <h2>Direct outreach works better than you think</h2>
-      <p>Message people directly. Friends, friends of friends, people in communities related to your product. Tell them what you're building and ask if they'd be interested. Your first ten customers will almost certainly come from people you know or people one degree away.</p>
+      <p>Message people directly. Friends, friends of friends, people in communities related to your product. Tell them what you're building and ask if they'd be interested. Your first ten custom[...]
       <blockquote>"Your first sale is about trust, not marketing. Someone has to believe in you before they buy from you."</blockquote>
       <h2>Don't pay for ads yet</h2>
       <p>Paid advertising before you understand your customer is money wasted. Get your first ten sales organically, learn who your customer is, then consider paid promotion. Not before.</p>
