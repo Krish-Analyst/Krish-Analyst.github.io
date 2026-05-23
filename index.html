@@ -32,76 +32,33 @@
  
   /* ANIMATIONS */
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes slideInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.7;
-    }
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes scaleUp {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
  
   /* NAV */
@@ -131,11 +88,7 @@
     min-width: max-content;
   }
  
-  .nav-logo:hover { 
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
- 
+  .nav-logo:hover { opacity: 0.7; transform: scale(1.05); }
   .nav-logo span { color: #0f0f0f; }
  
   .nav-links {
@@ -153,10 +106,7 @@
     position: relative;
   }
  
-  .nav-links a:hover { 
-    color: var(--text);
-    transform: translateY(-2px);
-  }
+  .nav-links a:hover { color: var(--text); transform: translateY(-2px); }
 
   .nav-links a::after {
     content: '';
@@ -169,9 +119,7 @@
     transition: width 0.3s ease;
   }
 
-  .nav-links a:hover::after {
-    width: 100%;
-  }
+  .nav-links a:hover::after { width: 100%; }
  
   /* PAGES */
   .page { 
@@ -262,10 +210,7 @@
   .article-item:nth-child(7) { animation-delay: 0.9s; }
   .article-item:nth-child(8) { animation-delay: 1s; }
  
-  .article-item:hover { 
-    opacity: 0.7;
-    transform: translateX(8px);
-  }
+  .article-item:hover { opacity: 0.7; transform: translateX(8px); }
  
   .article-tags {
     display: flex;
@@ -285,10 +230,7 @@
     transition: all 0.3s ease;
   }
 
-  .article-item:hover .tag {
-    background: var(--accent);
-    color: white;
-  }
+  .article-item:hover .tag { background: var(--accent); color: white; }
  
   .article-title {
     font-family: var(--serif);
@@ -306,10 +248,7 @@
     line-height: 1.6;
   }
  
-  .article-meta {
-    font-size: 13px;
-    color: #aaa;
-  }
+  .article-meta { font-size: 13px; color: #aaa; }
  
   /* ABOUT */
   .about-container {
@@ -345,10 +284,7 @@
   .about-container p:nth-of-type(4) { animation-delay: 0.6s; }
   .about-container p:nth-of-type(5) { animation-delay: 0.7s; }
  
-  .about-container p strong {
-    font-weight: 500;
-    color: var(--text);
-  }
+  .about-container p strong { font-weight: 500; color: var(--text); }
  
   .about-cta {
     margin-top: 48px;
@@ -439,23 +375,11 @@
     transition: all 0.3s ease;
   }
 
-  .resource-item:hover {
-    transform: translateX(6px);
-  }
- 
+  .resource-item:hover { transform: translateX(6px); }
   .resource-item:last-child { border-bottom: none; }
  
-  .resource-name {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
- 
-  .resource-desc {
-    font-size: 14px;
-    color: var(--muted);
-  }
+  .resource-name { font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .resource-desc { font-size: 14px; color: var(--muted); }
  
   .resource-tag {
     font-size: 11px;
@@ -470,10 +394,7 @@
     transition: all 0.3s ease;
   }
 
-  .resource-item:hover .resource-tag {
-    background: var(--accent);
-    color: white;
-  }
+  .resource-item:hover .resource-tag { background: var(--accent); color: white; }
  
   /* CONTACT */
   .contact-container {
@@ -500,11 +421,7 @@
     animation: slideInUp 0.7s ease-out 0.2s backwards;
   }
  
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
  
   .contact-link {
     display: flex;
@@ -521,20 +438,10 @@
   .contact-link:nth-of-type(2) { animation-delay: 0.4s; }
  
   .contact-link:last-child { border-bottom: 1px solid var(--border); }
-  .contact-link:hover { 
-    opacity: 0.6;
-    transform: translateX(8px);
-  }
+  .contact-link:hover { opacity: 0.6; transform: translateX(8px); }
  
-  .contact-link-label {
-    font-size: 16px;
-    font-weight: 500;
-  }
- 
-  .contact-link-value {
-    font-size: 15px;
-    color: var(--muted);
-  }
+  .contact-link-label { font-size: 16px; font-weight: 500; }
+  .contact-link-value { font-size: 15px; color: var(--muted); }
  
   /* FOOTER */
   footer {
@@ -546,17 +453,8 @@
     animation: slideInUp 0.7s ease-out 0.9s backwards;
   }
  
-  footer .footer-brand {
-    font-family: var(--serif);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--accent);
-  }
- 
-  footer .footer-copy {
-    font-size: 13px;
-    color: var(--muted);
-  }
+  footer .footer-brand { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--accent); }
+  footer .footer-copy { font-size: 13px; color: var(--muted); }
  
   /* ARTICLE FULL PAGE */
   .article-full {
@@ -577,10 +475,7 @@
     animation: slideInLeft 0.6s ease-out;
   }
  
-  .article-full .back-btn:hover { 
-    color: var(--text);
-    transform: translateX(-4px);
-  }
+  .article-full .back-btn:hover { color: var(--text); transform: translateX(-4px); }
  
   .article-full h1 {
     font-family: var(--serif);
@@ -635,9 +530,7 @@
     animation: slideInUp 0.6s ease-out;
   }
  
-  .article-full .body ul {
-    margin: 0 0 24px 20px;
-  }
+  .article-full .body ul { margin: 0 0 24px 20px; }
  
   .article-full .body li {
     font-size: 17px;
@@ -660,26 +553,10 @@
   }
  
   @media (max-width: 768px) {
-    nav { 
-      padding: 0 20px; 
-      height: auto;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .nav-logo {
-      font-size: 18px;
-      flex: 0 0 auto;
-    }
-    .nav-links { 
-      gap: 16px;
-      flex: 1 1 100%;
-      order: 3;
-      padding-top: 8px;
-      padding-bottom: 8px;
-    }
-    .nav-links a {
-      font-size: 13px;
-    }
+    nav { padding: 0 20px; height: auto; flex-wrap: wrap; gap: 12px; }
+    .nav-logo { font-size: 18px; flex: 0 0 auto; }
+    .nav-links { gap: 16px; flex: 1 1 100%; order: 3; padding-top: 8px; padding-bottom: 8px; }
+    .nav-links a { font-size: 13px; }
   }
 
   @media (max-width: 600px) {
@@ -715,35 +592,34 @@
   <div class="divider"></div>
   <div class="articles">
     <div class="articles-header">Latest Guides</div>
- 
+
+    <div class="article-item" onclick="showArticle('mistakes')">
+      <div class="article-tags"><span class="tag">Lessons</span></div>
+      <div class="article-title">Mistakes I Made: What Went Wrong With My First Business</div>
+      <div class="article-desc">This is the guide I wish existed when I started. Here's what I actually got wrong.</div>
+      <div class="article-meta">May 2026 · 8 min read</div>
+    </div>
+
+    <div class="article-item" onclick="showArticle('gettingstarted')">
+      <div class="article-tags"><span class="tag">Getting Started</span></div>
+      <div class="article-title">Getting Started: What to Do When You Have an Idea But Don't Know Where to Begin</div>
+      <div class="article-desc">Everyone has ideas. Most people never do anything with them. Here's how to go from idea to actual business.</div>
+      <div class="article-meta">May 2026 · 7 min read</div>
+    </div>
+
     <div class="article-item" onclick="showArticle('branding')">
       <div class="article-tags"><span class="tag">Branding</span></div>
       <div class="article-title">How to Build a Brand Identity From Scratch</div>
       <div class="article-desc">Logo, colors, tone of voice: everything you need to make your business look like a real brand.</div>
       <div class="article-meta">May 2026 · 6 min read</div>
     </div>
- 
-    <div class="article-item" onclick="showArticle('pricing')">
-      <div class="article-tags"><span class="tag">Pricing</span></div>
-      <div class="article-title">Pricing, How to Price Your Product Without Underselling Yourself</div>
-      <div class="article-desc">Most first-time entrepreneurs price too low. Here's how to think about pricing properly.</div>
+
+    <div class="article-item" onclick="showArticle('ecommerce')">
+      <div class="article-tags"><span class="tag">E-Commerce</span></div>
+      <div class="article-title">How to Set Up an Online Store for Free</div>
+      <div class="article-desc">The tools, platforms, and steps to get your first products online without wasting money.</div>
       <div class="article-meta">May 2026 · 5 min read</div>
     </div>
- 
-    <div class="article-item" onclick="showArticle('gettingstarted')">
-      <div class="article-tags"><span class="tag">Getting Started</span></div>
-      <div class="article-title">Getting Started, What to Do When You Have an Idea But Don't Know Where to Begin</div>
-      <div class="article-desc">Everyone has ideas. Most people never do anything with them. Here's how to go from idea to actual business.</div>
-      <div class="article-meta">May 2026 · 7 min read</div>
-    </div>
-
-    <div class="article-item" onclick="showArticle('socialmedia')">
-      <div class="article-tags"><span class="tag">Social Media</span></div>
-      <div class="article-title">Social Media Strategy, How to Build a Content Strategy From Zero</div>
-      <div class="article-desc">Posting randomly and hoping something sticks is not a strategy. Here's how to actually build one.</div>
-      <div class="article-meta">May 2026 · 6 min read</div>
-    </div>
- 
   </div>
   <footer>
     <div class="footer-brand">VenturePanda</div>
@@ -756,26 +632,40 @@
   <div class="guides-container">
     <h1>Guides</h1>
     <p class="subtitle">Practical, firsthand advice on building a business from scratch.</p>
- 
+
+    <div class="article-item" onclick="showArticle('mistakes')">
+      <div class="article-tags"><span class="tag">Lessons</span></div>
+      <div class="article-title">Mistakes I Made: What Went Wrong With My First Business</div>
+      <div class="article-desc">This is the guide I wish existed when I started. Here's what I actually got wrong.</div>
+      <div class="article-meta">May 2026 · 8 min read</div>
+    </div>
+
+    <div class="article-item" onclick="showArticle('gettingstarted')">
+      <div class="article-tags"><span class="tag">Getting Started</span></div>
+      <div class="article-title">Getting Started: What to Do When You Have an Idea But Don't Know Where to Begin</div>
+      <div class="article-desc">Everyone has ideas. Most people never do anything with them. Here's how to go from idea to actual business.</div>
+      <div class="article-meta">May 2026 · 7 min read</div>
+    </div>
+
     <div class="article-item" onclick="showArticle('branding')">
       <div class="article-tags"><span class="tag">Branding</span></div>
       <div class="article-title">How to Build a Brand Identity From Scratch</div>
       <div class="article-desc">Logo, colors, tone of voice: everything you need to make your business look like a real brand.</div>
       <div class="article-meta">May 2026 · 6 min read</div>
     </div>
- 
+
     <div class="article-item" onclick="showArticle('ecommerce')">
       <div class="article-tags"><span class="tag">E-Commerce</span></div>
       <div class="article-title">How to Set Up an Online Store for Free</div>
       <div class="article-desc">The tools, platforms, and steps to get your first products online without wasting money.</div>
       <div class="article-meta">May 2026 · 5 min read</div>
     </div>
- 
-    <div class="article-item" onclick="showArticle('marketing')">
-      <div class="article-tags"><span class="tag">Marketing</span></div>
-      <div class="article-title">Getting Your First Customers Without a Budget</div>
-      <div class="article-desc">How to use TikTok, Instagram, and direct outreach to build an audience before you spend a single dollar.</div>
-      <div class="article-meta">May 2026 · 7 min read</div>
+
+    <div class="article-item" onclick="showArticle('pricing')">
+      <div class="article-tags"><span class="tag">Pricing</span></div>
+      <div class="article-title">Pricing: How to Price Your Product Without Underselling Yourself</div>
+      <div class="article-desc">Most first-time entrepreneurs price too low. Here's how to think about pricing properly.</div>
+      <div class="article-meta">May 2026 · 5 min read</div>
     </div>
 
     <div class="article-item" onclick="showArticle('operations')">
@@ -785,34 +675,19 @@
       <div class="article-meta">May 2026 · 5 min read</div>
     </div>
 
-    <div class="article-item" onclick="showArticle('pricing')">
-      <div class="article-tags"><span class="tag">Pricing</span></div>
-      <div class="article-title">Pricing, How to Price Your Product Without Underselling Yourself</div>
-      <div class="article-desc">Most first-time entrepreneurs price too low. Here's how to think about pricing properly.</div>
-      <div class="article-meta">May 2026 · 5 min read</div>
-    </div>
-
-    <div class="article-item" onclick="showArticle('gettingstarted')">
-      <div class="article-tags"><span class="tag">Getting Started</span></div>
-      <div class="article-title">Getting Started, What to Do When You Have an Idea But Don't Know Where to Begin</div>
-      <div class="article-desc">Everyone has ideas. Most people never do anything with them. Here's how to go from idea to actual business.</div>
+    <div class="article-item" onclick="showArticle('marketing')">
+      <div class="article-tags"><span class="tag">Marketing</span></div>
+      <div class="article-title">Getting Your First Customers Without a Budget</div>
+      <div class="article-desc">How to use TikTok, Instagram, and direct outreach to build an audience before you spend a single dollar.</div>
       <div class="article-meta">May 2026 · 7 min read</div>
     </div>
 
     <div class="article-item" onclick="showArticle('socialmedia')">
       <div class="article-tags"><span class="tag">Social Media</span></div>
-      <div class="article-title">Social Media Strategy, How to Build a Content Strategy From Zero</div>
+      <div class="article-title">Social Media Strategy: How to Build a Content Strategy From Zero</div>
       <div class="article-desc">Posting randomly and hoping something sticks is not a strategy. Here's how to actually build one.</div>
       <div class="article-meta">May 2026 · 6 min read</div>
     </div>
-
-    <div class="article-item" onclick="showArticle('mistakes')">
-      <div class="article-tags"><span class="tag">Lessons</span></div>
-      <div class="article-title">Mistakes I Made, What Went Wrong With My First Business</div>
-      <div class="article-desc">This is the guide I wish existed when I started. Here's what I actually got wrong.</div>
-      <div class="article-meta">May 2026 · 8 min read</div>
-    </div>
- 
   </div>
   <footer>
     <div class="footer-brand">VenturePanda</div>
@@ -904,7 +779,6 @@
         <span class="resource-tag">Free</span>
       </div>
     </div>
- 
   </div>
   <footer>
     <div class="footer-brand">VenturePanda</div>
@@ -917,7 +791,7 @@
   <div class="about-container">
     <h1>About VenturePanda.</h1>
     <p>VenturePanda was built out of a simple realization: when I started my first business, I had no idea where to begin.</p>
-    <p>At 15, I founded <strong>Velora Gran Turismo</strong>, an automotive-inspired clothing brand I built and ran entirely on my own for 7 months. I figured out branding, e-commerce, digital marketing, operations—all while balancing school.</p>
+    <p>At 15, I founded <strong>Velora Gran Turismo</strong>, an automotive-inspired clothing brand I built and ran entirely on my own for 7 months. I figured out branding, e-commerce, digital marketing, operations—all while balancing school. There was no single place that gave me practical, straightforward advice as a young entrepreneur.</p>
     <p>VenturePanda is that place.</p>
     <p>This isn't generic business advice from someone who read it in a textbook. Everything here comes from real experience of actually building something from scratch, making mistakes, and learning fast.</p>
     <p>Whether you have an idea and don't know where to start, or you're already building and need specific guidance, VenturePanda is here to help you move forward.</p>
@@ -955,6 +829,68 @@
   </footer>
 </div>
  
+<!-- ARTICLE: MISTAKES -->
+<div id="page-article-mistakes" class="page">
+  <div class="article-full">
+    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
+    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Lessons</span></div>
+    <h1>Mistakes I Made: What Went Wrong With My First Business and What I'd Do Differently</h1>
+    <p class="article-intro">This is the guide I wish existed when I started. Here's what I actually got wrong.</p>
+    <div class="article-meta-full">May 2026 · 8 min read · By Krish Panda</div>
+    <div class="body">
+      <h2>I Spent Too Long on the Brand Before Selling Anything</h2>
+      <p>I spent three months building the website and refining the brand before a single product went on sale. Looking back, I could have validated the whole idea in week one by selling one custom product to someone I knew. Instead I delayed revenue by months.</p>
+      <p><strong>Lesson: sell before you build.</strong></p>
+      <h2>I Tried to Sell to Everyone</h2>
+      <p>Velora Gran Turismo was automotive inspired clothing. But I marketed it like a general fashion brand instead of going deep into automotive communities where car enthusiasts actually spend their time. I spread myself too thin.</p>
+      <p><strong>Lesson: find your niche and go deep before going wide.</strong></p>
+      <h2>I Didn't Track My Numbers Properly</h2>
+      <p>I knew roughly how much I was making but I wasn't tracking costs carefully enough. Platform fees, shipping, and production costs eat into your margins faster than you expect. By the time I understood my actual numbers, I had already underpriced some products.</p>
+      <p><strong>Lesson: set up a simple spreadsheet before your first sale. Know your numbers from day one.</strong></p>
+      <h2>I Underestimated How Hard Marketing Is</h2>
+      <p>I assumed that if I built a good product, people would find it. They didn't. Marketing is a full time job on top of everything else. I started too late and didn't invest enough time in it.</p>
+      <p><strong>Lesson: start building an audience before you launch. Sell to people who are already paying attention.</strong></p>
+      <h2>Closing It Was the Right Decision</h2>
+      <p>I closed Velora Gran Turismo in April 2025 to focus on my IB studies. Some people saw that as failure. I don't. I built something real, learned more than any class could have taught me, and made the decision strategically. Knowing when to stop is just as important as knowing how to start.</p>
+      <blockquote>"Failure isn't about losing. It's about learning and moving forward."</blockquote>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+
+<!-- ARTICLE: GETTING STARTED -->
+<div id="page-article-gettingstarted" class="page">
+  <div class="article-full">
+    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
+    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Getting Started</span></div>
+    <h1>Getting Started: What to Do When You Have an Idea But Don't Know Where to Begin</h1>
+    <p class="article-intro">Everyone has ideas. Most people never do anything with them. Here's how to go from idea to actual business without overcomplicating it.</p>
+    <div class="article-meta-full">May 2026 · 7 min read · By Krish Panda</div>
+    <div class="body">
+      <h2>Validate Before You Build</h2>
+      <p>Before spending any money or time building, ask yourself one honest question: would anyone actually pay for this? Not would they say it's cool. Would they pay for it.</p>
+      <p>Tell ten people about your idea and ask if they'd buy it. Not if they like it. If they'd buy it. The answer will tell you more than months of planning.</p>
+      <h2>Start Smaller Than You Think</h2>
+      <p>Whatever you're planning, do a smaller version first. Want to sell clothing? Sell one product before building a full collection. Want to offer a service? Get one paying client before building a website.</p>
+      <p>The first version isn't supposed to be perfect. It's supposed to teach you what your customers actually want.</p>
+      <h2>Pick One Thing and Do It</h2>
+      <p>The biggest mistake new entrepreneurs make is trying to do everything at once. One product. One platform. One marketing channel. Get that right before adding anything else.</p>
+      <h2>Set a Deadline</h2>
+      <p>Ideas without deadlines stay ideas. Give yourself a specific date by which you will have something live, even if it's rough. A deadline does more than motivation ever will.</p>
+      <h2>The Only Thing That Matters at the Start</h2>
+      <p>Revenue. Not followers, not a perfect logo, not a beautifully designed website. Your first goal is to get one person to hand you money for something. Everything else comes after that.</p>
+      <blockquote>"Done is better than perfect. Shipped is better than planned."</blockquote>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+
 <!-- ARTICLE: BRANDING -->
 <div id="page-article-branding" class="page">
   <div class="article-full">
@@ -1014,61 +950,6 @@
     <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
   </footer>
 </div>
- 
-<!-- ARTICLE: MARKETING -->
-<div id="page-article-marketing" class="page">
-  <div class="article-full">
-    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
-    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Marketing</span></div>
-    <h1>Getting Your First Customers Without a Budget</h1>
-    <p class="article-intro">How to use TikTok, Instagram, and direct outreach to build an audience before you spend a single dollar.</p>
-    <div class="article-meta-full">May 2026 · 7 min read · By Krish Panda</div>
-    <div class="body">
-      <p>Nobody is going to find your store on their own. You have to bring them there. Here's how to do that with zero marketing budget.</p>
-      <h2>TikTok is the most powerful free tool available right now</h2>
-      <p>When I posted TikToks for Velora Gran Turismo, some of them hit over 1,000 views with no followers and no paid promotion. That's organic reach you simply cannot get on any other platform right now.</p>
-      <p>You don't need to be a video expert. Film your process: designing a product, packing an order, showing the brand behind the scenes. Authenticity works better than production quality.</p>
-      <h2>Build an Instagram presence</h2>
-      <p>Instagram is where people go to check if a brand is real. A clean, consistent feed with good product photos builds trust. Post consistently, use relevant hashtags, and engage with accounts in your niche daily.</p>
-      <h2>Use direct outreach</h2>
-      <p>Email people who might care about your product. Not spam. Real emails to real people who fit your audience. Personalized outreach converts at 10x the rate of random social media posts.</p>
-      <h2>Join communities where your audience hangs out</h2>
-      <p>Reddit, Discord, Facebook Groups—find where your potential customers actually spend time. Contribute value, answer questions, build relationships. Only pitch when it's genuinely relevant.</p>
-      <blockquote>"The best marketing is when someone else tells people about your business."</blockquote>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-brand">VenturePanda</div>
-    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
-  </footer>
-</div>
-
-<!-- ARTICLE: OPERATIONS -->
-<div id="page-article-operations" class="page">
-  <div class="article-full">
-    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
-    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Operations</span></div>
-    <h1>How to Run a Small Business Day to Day</h1>
-    <p class="article-intro">Nobody talks about operations. Here's the unglamorous stuff that actually keeps a business running.</p>
-    <div class="article-meta-full">May 2026 · 5 min read · By Krish Panda</div>
-    <div class="body">
-      <p>Operations isn't glamorous. It's invoicing, shipping, customer service, accounting. But it's what separates real businesses from hobbies.</p>
-      <h2>Track everything from day one</h2>
-      <p>Revenue, expenses, inventory, customer info—set up a spreadsheet before your first sale. I didn't do this early enough, and it cost me thousands in lost profit margins.</p>
-      <p>You don't need expensive software. A simple Google Sheet works perfectly fine when you're starting.</p>
-      <h2>Set up a system for orders and shipping</h2>
-      <p>When an order comes in, you need to know exactly what to do. Who packs it? How long does it take? What's the shipping process? Write it down. Then automate as much as possible.</p>
-      <h2>Customer service is part of marketing</h2>
-      <p>Every customer interaction is a chance to turn someone into a repeat customer or a brand advocate. Respond quickly, solve problems, go above and beyond when it's reasonable.</p>
-      <h2>Understand your unit economics</h2>
-      <p>Cost per unit + platform fees + shipping + returns = your true cost. Price above that with enough margin to cover marketing, mistakes, and growth investments.</p>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-brand">VenturePanda</div>
-    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
-  </footer>
-</div>
 
 <!-- ARTICLE: PRICING -->
 <div id="page-article-pricing" class="page">
@@ -1099,28 +980,53 @@
   </footer>
 </div>
 
-<!-- ARTICLE: GETTING STARTED -->
-<div id="page-article-gettingstarted" class="page">
+<!-- ARTICLE: OPERATIONS -->
+<div id="page-article-operations" class="page">
   <div class="article-full">
     <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
-    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Getting Started</span></div>
-    <h1>Getting Started: What to Do When You Have an Idea But Don't Know Where to Begin</h1>
-    <p class="article-intro">Everyone has ideas. Most people never do anything with them. Here's how to go from idea to actual business without overcomplicating it.</p>
+    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Operations</span></div>
+    <h1>How to Run a Small Business Day to Day</h1>
+    <p class="article-intro">Nobody talks about operations. Here's the unglamorous stuff that actually keeps a business running.</p>
+    <div class="article-meta-full">May 2026 · 5 min read · By Krish Panda</div>
+    <div class="body">
+      <p>Operations isn't glamorous. It's invoicing, shipping, customer service, accounting. But it's what separates real businesses from hobbies.</p>
+      <h2>Track everything from day one</h2>
+      <p>Revenue, expenses, inventory, customer info — set up a spreadsheet before your first sale. I didn't do this early enough, and it cost me in lost profit margins.</p>
+      <p>You don't need expensive software. A simple Google Sheet works perfectly fine when you're starting.</p>
+      <h2>Set up a system for orders and shipping</h2>
+      <p>When an order comes in, you need to know exactly what to do. Who packs it? How long does it take? What's the shipping process? Write it down. Then automate as much as possible.</p>
+      <h2>Customer service is part of marketing</h2>
+      <p>Every customer interaction is a chance to turn someone into a repeat customer or a brand advocate. Respond quickly, solve problems, go above and beyond when it's reasonable.</p>
+      <h2>Understand your unit economics</h2>
+      <p>Cost per unit + platform fees + shipping + returns = your true cost. Price above that with enough margin to cover marketing, mistakes, and growth.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-brand">VenturePanda</div>
+    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
+  </footer>
+</div>
+ 
+<!-- ARTICLE: MARKETING -->
+<div id="page-article-marketing" class="page">
+  <div class="article-full">
+    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
+    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Marketing</span></div>
+    <h1>Getting Your First Customers Without a Budget</h1>
+    <p class="article-intro">How to use TikTok, Instagram, and direct outreach to build an audience before you spend a single dollar.</p>
     <div class="article-meta-full">May 2026 · 7 min read · By Krish Panda</div>
     <div class="body">
-      <h2>Validate Before You Build</h2>
-      <p>Before spending any money or time building, ask yourself one honest question: would anyone actually pay for this? Not would they say it's cool. Would they pay for it.</p>
-      <p>Tell ten people about your idea and ask if they'd buy it. Not if they like it. If they'd buy it. The answer will tell you more than months of planning.</p>
-      <h2>Start Smaller Than You Think</h2>
-      <p>Whatever you're planning, do a smaller version first. Want to sell clothing? Sell one product before building a full collection. Want to offer a service? Get one paying client before building a website.</p>
-      <p>The first version isn't supposed to be perfect. It's supposed to teach you what your customers actually want.</p>
-      <h2>Pick One Thing and Do It</h2>
-      <p>The biggest mistake new entrepreneurs make is trying to do everything at once. One product. One platform. One marketing channel. Get that right before adding anything else.</p>
-      <h2>Set a Deadline</h2>
-      <p>Ideas without deadlines stay ideas. Give yourself a specific date by which you will have something live, even if it's rough. A deadline does more than motivation ever will.</p>
-      <h2>The Only Thing That Matters at the Start</h2>
-      <p>Revenue. Not followers, not a perfect logo, not a beautifully designed website. Your first goal is to get one person to hand you money for something. Everything else comes after that.</p>
-      <blockquote>"Done is better than perfect. Shipped is better than planned."</blockquote>
+      <p>Nobody is going to find your store on their own. You have to bring them there. Here's how to do that with zero marketing budget.</p>
+      <h2>TikTok is the most powerful free tool available right now</h2>
+      <p>When I posted TikToks for Velora Gran Turismo, some of them hit over 1,000 views with no followers and no paid promotion. That's organic reach you simply cannot get on any other platform right now.</p>
+      <p>You don't need to be a video expert. Film your process: designing a product, packing an order, showing the brand behind the scenes. Authenticity works better than production quality.</p>
+      <h2>Build an Instagram presence</h2>
+      <p>Instagram is where people go to check if a brand is real. A clean, consistent feed with good product photos builds trust. Post consistently, use relevant hashtags, and engage with accounts in your niche daily.</p>
+      <h2>Use direct outreach</h2>
+      <p>Message people who might care about your product. Not spam. Real messages to real people who fit your audience. Personalized outreach converts far better than random social media posts.</p>
+      <h2>Join communities where your audience hangs out</h2>
+      <p>Reddit, Discord, Facebook Groups — find where your potential customers actually spend time. Contribute value, answer questions, build relationships. Only pitch when it's genuinely relevant.</p>
+      <blockquote>"The best marketing is when someone else tells people about your business."</blockquote>
     </div>
   </div>
   <footer>
@@ -1161,56 +1067,19 @@
   </footer>
 </div>
 
-<!-- ARTICLE: MISTAKES I MADE -->
-<div id="page-article-mistakes" class="page">
-  <div class="article-full">
-    <div class="back-btn" onclick="showPage('guides')">← Back to Guides</div>
-    <div class="article-tags" style="margin-bottom:16px"><span class="tag">Lessons</span></div>
-    <h1>Mistakes I Made: What Went Wrong With My First Business and What I'd Do Differently</h1>
-    <p class="article-intro">This is the guide I wish existed when I started. Here's what I actually got wrong.</p>
-    <div class="article-meta-full">May 2026 · 8 min read · By Krish Panda</div>
-    <div class="body">
-      <h2>I Spent Too Long on the Brand Before Selling Anything</h2>
-      <p>I spent three months building the website and refining the brand before a single product went on sale. Looking back, I could have validated the whole idea in week one by selling one custom product to someone I knew. Instead I delayed revenue by months.</p>
-      <p><strong>Lesson: sell before you build.</strong></p>
-      <h2>I Tried to Sell to Everyone</h2>
-      <p>Velora Gran Turismo was automotive inspired clothing. But I marketed it like a general fashion brand instead of going deep into automotive communities where car enthusiasts actually spend their time. I spread myself too thin.</p>
-      <p><strong>Lesson: find your niche and go deep before going wide.</strong></p>
-      <h2>I Didn't Track My Numbers Properly</h2>
-      <p>I knew roughly how much I was making but I wasn't tracking costs carefully enough. Platform fees, shipping, and production costs eat into your margins faster than you expect. By the time I understood my actual numbers, I had already underpriced some products.</p>
-      <p><strong>Lesson: set up a simple spreadsheet before your first sale. Know your numbers from day one.</strong></p>
-      <h2>I Underestimated How Hard Marketing Is</h2>
-      <p>I assumed that if I built a good product, people would find it. They didn't. Marketing is a full time job on top of everything else. I started too late and didn't invest enough time in it.</p>
-      <p><strong>Lesson: start building an audience before you launch. Sell to people who are already paying attention.</strong></p>
-      <h2>Closing It Was the Right Decision</h2>
-      <p>I closed Velora Gran Turismo in April 2025 to focus on my IB studies. Some people saw that as failure. I don't. I built something real, learned more than any class could have taught me, and made the decision strategically. Knowing when to stop is just as important as knowing how to start.</p>
-      <blockquote>"Failure isn't about losing. It's about learning and moving forward."</blockquote>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-brand">VenturePanda</div>
-    <div class="footer-copy">© 2026 VenturePanda. Built by a young entrepreneur.</div>
-  </footer>
-</div>
-
 <script>
 function showPage(pageId) {
-  // Hide all pages
   const pages = document.querySelectorAll('.page');
   pages.forEach(page => page.classList.remove('active'));
-  
-  // Show selected page
-  const selectedPage = document.getElementById(`page-${pageId}`);
+  const selectedPage = document.getElementById('page-' + pageId);
   if (selectedPage) {
     selectedPage.classList.add('active');
   }
-  
-  // Scroll to top
   window.scrollTo(0, 0);
 }
 
 function showArticle(articleId) {
-  showPage(`article-${articleId}`);
+  showPage('article-' + articleId);
 }
 </script>
 </body>
