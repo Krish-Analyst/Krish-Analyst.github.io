@@ -180,8 +180,8 @@ footer .footer-copy { font-size: 13px; color: var(--muted); }
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 13px; }
 
-  /* Always hide nav links on homepage on mobile */
-  body.homepage .nav-links { display: none; }
+  /* Always hide nav links on mobile */
+  .nav-links { display: none; }
 }
 
 @media (max-width: 600px) {
