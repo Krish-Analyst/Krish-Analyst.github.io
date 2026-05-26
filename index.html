@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VenturePanda: Start Here</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { padding-top: 60px; min-height: 100vh; animation: fadeIn 0.5s ease-in; }
+
+  .starthere-hero {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 40px 48px;
+    text-align: center;
+  }
+
+  .starthere-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    animation: slideInUp 0.6s ease-out 0.1s backwards;
+  }
+
+  .starthere-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 50px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--accent);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    animation: slideInUp 0.6s ease-out 0.2s backwards;
+  }
+
+  .starthere-hero p {
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+    animation: slideInUp 0.6s ease-out 0.3s backwards;
+  }
+
+  .starthere-cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 14px 36px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: scaleUp 0.6s ease-out 0.4s backwards;
+  }
+
+  .starthere-cta-btn:hover {
+    background: #163a5f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(10,37,64,0.18);
+  }
+
+  .starthere-divider {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .starthere-options {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: none;
+  }
+
+  .starthere-options.visible {
+    display: block;
+    animation: slideInUp 0.55s ease-out;
+  }
+
+  .starthere-options-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 40px 0 28px;
+  }
+
+  .starthere-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .starthere-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .starthere-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  .starthere-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(10,37,64,0.1);
+  }
+
+  .starthere-card:hover::before { transform: scaleY(1); }
+
+  .starthere-card-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--tag-bg);
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    width: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  .starthere-card:hover .starthere-card-tag { background: var(--accent); color: #fff; }
+
+  .starthere-card-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .starthere-card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .starthere-card-arrow {
+    font-size: 18px;
+    color: var(--accent);
+    margin-top: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .starthere-card:hover .starthere-card-arrow { transform: translateX(4px); }
+
+  .starthere-path-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-top: 8px;
+  }
+
+  .starthere-path-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .starthere-path-pill {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--accent);
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: inline-block;
+  }
+
+  .starthere-path-pill:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    .starthere-hero, .starthere-options { padding-left: 20px; padding-right: 20px; }
+    .starthere-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><Venture<span>Panda</span></a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-start-here">Start Here</a></li>
+    <li><a href="/guides.html">Guides</a></li>
+    <li><a href="/resources.html">Resources</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="starthere-hero">
+  <div class="starthere-eyebrow">Welcome to VenturePanda</div>
+  <h1>Not sure where to begin?<br>Start here.</h1>
+  <p>Whether you have an idea or you're already building, this page points you to exactly what you need.</p>
+  <button class="starthere-cta-btn" onclick="revealOptions()">Show me where to go &rarr;</button>
+</div>
+
+<div class="starthere-divider"></div>
+
+<div class="starthere-options" id="starthere-options">
+  <div class="starthere-options-label">What are you looking for?</div>
+
+  <div class="starthere-grid">
+
+    <a class="starthere-card" href="/guides.html">
+      <span class="starthere-card-tag">Guides</span>
+      <div class="starthere-card-title">Read the guides</div>
+      <div class="starthere-card-desc">Step-by-step advice on branding, pricing, marketing, and running a business. All from real experience.</div>
+      <div class="starthere-card-arrow">&rarr;</div>
+    </a>
+
+    <a class="starthere-card" href="/resources.html">
+      <span class="starthere-card-tag">Resources</span>
+      <div class="starthere-card-title">Browse the tools</div>
+      <div class="starthere-card-desc">The exact platforms and tools used to build a real business from scratch. No fluff, no sponsorships.</div>
+      <div class="starthere-card-arrow">&rarr;</div>
+    </a>
+
+    <a class="starthere-card" href="/articles/mistakes.html">
+      <span class="starthere-card-tag">Lessons</span>
+      <div class="starthere-card-title">Learn from my mistakes</div>
+      <div class="starthere-card-desc">The guide I wish existed when I started. What went wrong, what I'd do differently, and what I actually learned.</div>
+      <div class="starthere-card-arrow">&rarr;</div>
+    </a>
+
+    <a class="starthere-card" href="/articles/gettingstarted.html">
+      <span class="starthere-card-tag">Getting Started</span>
+      <div class="starthere-card-title">Turn your idea into action</div>
+      <div class="starthere-card-desc">You have an idea but don't know what to do next. Start here. This is the first guide everyone should read.</div>
+      <div class="starthere-card-arrow">&rarr;</div>
+    </a>
+
+  </div>
+
+  <div class="starthere-path-label">Jump straight to a topic</div>
+  <div class="starthere-path-row">
+    <a class="starthere-path-pill" href="/articles/branding.html">Branding</a>
+    <a class="starthere-path-pill" href="/articles/ecommerce.html">E-Commerce</a>
+    <a class="starthere-path-pill" href="/articles/marketing.html">Marketing</a>
+    <a class="starthere-path-pill" href="/articles/pricing.html">Pricing</a>
+    <a class="starthere-path-pill" href="/articles/socialmedia.html">Social Media</a>
+    <a class="starthere-path-pill" href="/articles/operations.html">Operations</a>
+    <a class="starthere-path-pill" href="/about.html">About Krish</a>
+    <a class="starthere-path-pill" href="/contact.html">Get in Touch</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">VenturePanda</div>
+  <div class="footer-copy">&copy; 2026 VenturePanda. Built by a young entrepreneur.</div>
+</footer>
+
+<script>
+function revealOptions() {
+  const opts = document.getElementById('starthere-options');
+  opts.classList.add('visible');
+  opts.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelector('.starthere-cta-btn').style.display = 'none';
+}
+</script>
+</body>
+</html>
