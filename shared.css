@@ -173,17 +173,20 @@ footer {
 footer .footer-brand { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--accent); }
 footer .footer-copy { font-size: 13px; color: var(--muted); }
 
+/* Mobile: hide nav links by default on homepage, show on other pages */
 @media (max-width: 768px) {
-  nav { padding: 0 20px; height: auto; flex-wrap: wrap; gap: 12px; }
-  .nav-logo { font-size: 18px; flex: 0 0 auto; }
-  .nav-links { gap: 16px; flex: 1 1 100%; order: 3; padding-top: 8px; padding-bottom: 8px; }
+  nav { padding: 0 20px; height: 60px; }
+  .nav-logo { font-size: 18px; }
+  .nav-links { gap: 16px; }
   .nav-links a { font-size: 13px; }
+
+  /* Hide nav links on homepage until options are revealed */
+  body.homepage .nav-links { display: none; }
+  body.homepage.nav-revealed .nav-links { display: flex; animation: slideInDown 0.4s ease-out; }
 }
 
 @media (max-width: 600px) {
   nav { padding: 0 16px; }
   .nav-logo { font-size: 16px; }
-  .nav-links { gap: 12px; }
-  .nav-links a { font-size: 12px; }
   footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
 }

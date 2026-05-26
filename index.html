@@ -222,7 +222,7 @@
   }
 </style>
 </head>
-<body>
+<body class="homepage">
 
 <nav>
   <a class="nav-logo" href="/">Venture<span>Panda</span></a>
@@ -299,6 +299,7 @@
 
 <script>
 function revealOptions() {
+  document.body.classList.add("nav-revealed");
   const opts = document.getElementById('starthere-options');
   opts.classList.add('visible');
   opts.scrollIntoView({ behavior: 'smooth', block: 'start' });
