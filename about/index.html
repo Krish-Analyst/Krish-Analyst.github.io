@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - VenturePanda</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  body { padding-top: 60px; min-height: 100vh; animation: fadeIn 0.5s ease-in; }
+
+  .about-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    animation: slideInUp 0.7s ease-out 0.1s backwards;
+  }
+
+  .about-container h1 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    animation: slideInUp 0.7s ease-out 0.2s backwards;
+  }
+
+  .about-container p {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 24px;
+    line-height: 1.8;
+    font-weight: 300;
+    animation: slideInUp 0.7s ease-out forwards;
+  }
+
+  .about-container p:nth-of-type(1) { animation-delay: 0.3s; }
+  .about-container p:nth-of-type(2) { animation-delay: 0.4s; }
+  .about-container p:nth-of-type(3) { animation-delay: 0.5s; }
+  .about-container p:nth-of-type(4) { animation-delay: 0.6s; }
+  .about-container p:nth-of-type(5) { animation-delay: 0.7s; }
+
+  .about-container p strong { font-weight: 500; color: var(--text); }
+
+  .about-cta {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--muted);
+    animation: slideInUp 0.7s ease-out 0.8s backwards;
+  }
+
+  @media (max-width: 600px) {
+    .about-container { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><Venture<span>Panda</span></a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-start-here">Start Here</a></li>
+    <li><a href="/guides">Guides</a></li>
+    <li><a href="/resources">Resources</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="about-container">
+  <h1>About VenturePanda.</h1>
+  <p>VenturePanda was built out of a simple realization: when I started my first business, I had no idea where to begin.</p>
+  <p>At 15, I founded <strong>Velora Gran Turismo</strong>, an automotive-inspired clothing brand I built and ran entirely on my own for 7 months. I figured out branding, e-commerce, digital marketing, and operations, all while balancing school. There was no single place that gave me practical, straightforward advice as a young entrepreneur.</p>
+  <p>VenturePanda is that place.</p>
+  <p>This isn't generic business advice from someone who read it in a textbook. Everything here comes from real experience of actually building something from scratch, making mistakes, and learning fast.</p>
+  <p>Whether you have an idea and don't know where to start, or you're already building and need specific guidance, VenturePanda is here to help you move forward.</p>
+  <div class="about-cta">
+    Written by <strong>Krish Panda</strong>: IB Student, Founder, and School Chapter Director at the International Economics Post.
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">VenturePanda</div>
+  <div class="footer-copy">&copy; 2026 VenturePanda. Built by a young entrepreneur.</div>
+</footer>
+
+</body>
+</html>
