@@ -227,10 +227,17 @@
         <label for="currency">Currency</label>
         <div class="input-wrap">
           <select id="currency">
-            <option value="USD">US dollar ($)</option>
-            <option value="EUR">Euro (&euro;)</option>
-            <option value="GBP">British pound (&pound;)</option>
-            <option value="DKK">Danish krone (kr)</option>
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="DKK">Danish Krone (DKK)</option>
+            <option value="SEK">Swedish Krona (SEK)</option>
+            <option value="NOK">Norwegian Krone (NOK)</option>
+            <option value="CHF">Swiss Franc (CHF)</option>
+            <option value="CAD">Canadian Dollar (CAD)</option>
+            <option value="AUD">Australian Dollar (AUD)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+            <option value="JPY">Japanese Yen (JPY)</option>
           </select>
         </div>
       </div>
@@ -333,8 +340,50 @@
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var ids = ['currency', 'production', 'packaging', 'shipping', 'feePct', 'feeFixed', 'margin', 'myPrice'];
-  var SYMBOL = { USD: '$', EUR: '€', GBP: '£', DKK: 'kr' };
-  var LOCALE = { USD: 'en-US', EUR: 'en-IE', GBP: 'en-GB', DKK: 'da-DK' };
+  var COMMON = ['USD', 'EUR', 'GBP', 'DKK', 'SEK', 'NOK', 'CHF', 'CAD', 'AUD', 'NZD', 'INR', 'JPY', 'CNY', 'SGD', 'AED', 'ZAR', 'BRL', 'MXN'];
+  var fmtCache = {};
+
+  // Fill the list with every currency the visitor's browser knows, common ones first.
+  (function buildCurrencyList() {
+    var sel = $('currency');
+    if (!Intl.supportedValuesOf || !Intl.DisplayNames) return; // older browsers keep the short list
+    var all;
+    try { all = Intl.supportedValuesOf('currency'); } catch (e) { return; }
+    var names = new Intl.DisplayNames(['en'], { type: 'currency' });
+    function label(code) {
+      var n = names.of(code) || code;
+      n = n.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+      return n === code ? code : n + ' (' + code + ')';
+    }
+    var known = all.filter(function (c) { var n = names.of(c); return n && n !== c; });
+    var common = COMMON.filter(function (c) { return known.indexOf(c) !== -1; });
+    var rest = known.filter(function (c) { return common.indexOf(c) === -1; })
+      .sort(function (a, b) { return label(a).localeCompare(label(b)); });
+    function group(title, codes) {
+      var g = document.createElement('optgroup');
+      g.label = title;
+      codes.forEach(function (c) { var o = document.createElement('option'); o.value = c; o.textContent = label(c); g.appendChild(o); });
+      return g;
+    }
+    sel.innerHTML = '';
+    sel.appendChild(group('Common', common));
+    sel.appendChild(group('All currencies', rest));
+    sel.value = 'USD';
+  })();
+
+  function formatter(c) {
+    if (!fmtCache[c]) {
+      var opts = { style: 'currency', currency: c };
+      try { fmtCache[c] = new Intl.NumberFormat(undefined, Object.assign({ currencyDisplay: 'narrowSymbol' }, opts)); }
+      catch (e) { fmtCache[c] = new Intl.NumberFormat(undefined, opts); }
+    }
+    return fmtCache[c];
+  }
+  function decimals(c) { return formatter(c).resolvedOptions().maximumFractionDigits; }
+  function symbol(c) {
+    var part = formatter(c).formatToParts(1).filter(function (p) { return p.type === 'currency'; })[0];
+    return part ? part.value : c;
+  }
 
   function num(id) {
     var v = parseFloat($(id).value);
@@ -343,8 +392,7 @@
 
   function money(v) {
     if (Math.abs(v) < 0.005) v = 0;
-    var c = $('currency').value;
-    return new Intl.NumberFormat(LOCALE[c], { style: 'currency', currency: c, minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+    return formatter($('currency').value).format(v);
   }
 
   function pct(v) { return (Math.round(v * 10) / 10) + '%'; }
@@ -358,8 +406,15 @@
   }
 
   function update() {
-    var sym = SYMBOL[$('currency').value];
-    document.querySelectorAll('.unit.cur').forEach(function (el) { el.textContent = sym; });
+    var cur = $('currency').value;
+    var sym = symbol(cur);
+    var dp = decimals(cur);
+    var step = dp > 0 ? String(Math.pow(10, -dp)) : '1';
+    document.querySelectorAll('.unit.cur').forEach(function (el) {
+      el.textContent = sym;
+      var input = el.parentNode.querySelector('input');
+      if (input) input.step = step;
+    });
 
     var cost = num('production') + num('packaging') + num('shipping') + num('feeFixed');
     var f = Math.min(num('feePct'), 99) / 100;
@@ -380,8 +435,15 @@
       var price = cost / (1 - f - m);
       var fees = price * f;
       var profit = price - cost - fees;
-      var charm = Math.ceil(price + 0.01) - 0.01;
-      var round = Math.ceil(price);
+      var charm, round;
+      if (dp > 0) {
+        var unit = Math.pow(10, -dp);           // e.g. 0.01
+        charm = Math.ceil(price + unit) - unit; // 36.81 -> 36.99
+        round = Math.ceil(price);               // 36.81 -> 37
+      } else {
+        charm = Math.ceil((price + 1) / 10) * 10 - 1; // 3,681 -> 3,689
+        round = Math.ceil(price / 10) * 10;           // 3,681 -> 3,690
+      }
 
       $('rPrice').textContent = money(price);
       $('msPrice').textContent = money(price);
