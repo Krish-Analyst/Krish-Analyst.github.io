@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VenturePanda | Actionable Startup Resources for Young Founders</title>
 <meta name="description" content="Start building your business with actionable, real-world advice on branding, pricing, operations, and e-commerce. Tailored specifically for teen entrepreneurs.">
+<link rel="canonical" href="https://venturepanda.org/">
 <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
+<script src="shared.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -19,7 +21,7 @@
     "name": "VenturePanda",
     "url": "https://venturepanda.org"
   },
-  "alumniOf": {
+  "affiliation": {
     "@type": "EducationalOrganization",
     "name": "Birker\u00f8d Gymnasium"
   },
@@ -30,8 +32,6 @@
 }
 </script>
 <style>
-  body { padding-top: 60px; min-height: 100vh; animation: fadeIn 0.5s ease-in; }
-
   .starthere-hero {
     max-width: 720px;
     margin: 0 auto;
@@ -51,7 +51,7 @@
 
   .starthere-hero h1 {
     font-family: var(--serif);
-    font-size: clamp(32px, 5vw, 50px);
+    font-size: clamp(30px, 6vw, 50px);
     font-weight: 700;
     line-height: 1.15;
     color: var(--accent);
@@ -84,12 +84,6 @@
     cursor: pointer;
     transition: all 0.3s ease;
     animation: scaleUp 0.6s ease-out 0.4s backwards;
-  }
-
-  .starthere-cta-btn:hover {
-    background: #163a5f;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(10,37,64,0.18);
   }
 
   .starthere-divider {
@@ -154,14 +148,6 @@
     transition: transform 0.3s ease;
   }
 
-  .starthere-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 28px rgba(10,37,64,0.1);
-  }
-
-  .starthere-card:hover::before { transform: scaleY(1); }
-
   .starthere-card-tag {
     font-size: 11px;
     font-weight: 500;
@@ -175,8 +161,6 @@
     width: fit-content;
     transition: all 0.3s ease;
   }
-
-  .starthere-card:hover .starthere-card-tag { background: var(--accent); color: #fff; }
 
   .starthere-card-title {
     font-family: var(--serif);
@@ -199,8 +183,6 @@
     margin-top: 8px;
     transition: transform 0.3s ease;
   }
-
-  .starthere-card:hover .starthere-card-arrow { transform: translateX(4px); }
 
   .starthere-path-label {
     font-size: 12px;
@@ -231,15 +213,21 @@
     display: inline-block;
   }
 
-  .starthere-path-pill:hover {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    .starthere-cta-btn:hover { background: #163a5f; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(10,37,64,0.18); }
+    .starthere-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(10,37,64,0.1); }
+    .starthere-card:hover::before { transform: scaleY(1); }
+    .starthere-card:hover .starthere-card-tag { background: var(--accent); color: #fff; }
+    .starthere-card:hover .starthere-card-arrow { transform: translateX(4px); }
+    .starthere-path-pill:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+  }
+
+  @media (max-width: 768px) {
+    .starthere-hero, .starthere-options { padding-left: 20px; padding-right: 20px; }
+    .starthere-divider { margin: 0 20px; padding: 0; }
   }
 
   @media (max-width: 600px) {
-    .starthere-hero, .starthere-options { padding-left: 20px; padding-right: 20px; }
     .starthere-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -248,12 +236,13 @@
 
 <nav>
   <a class="nav-logo" href="/">Venture<span>Panda</span></a>
-  <ul class="nav-links">
-    <li><a href="/" class="nav-start-here">Start Here</a></li>
-    <li><a href="/guides">Guides</a></li>
-    <li><a href="/resources">Resources</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/contact">Contact</a></li>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/" class="nav-start-here" aria-current="page">Start Here</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/resources/">Resources</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
   </ul>
 </nav>
 
@@ -271,31 +260,31 @@
 
   <div class="starthere-grid">
 
-    <a class="starthere-card" href="/guides">
+    <a class="starthere-card" href="/guides/">
       <span class="starthere-card-tag">Guides</span>
       <div class="starthere-card-title">Read the guides</div>
       <div class="starthere-card-desc">Step-by-step advice on branding, pricing, marketing, and running a business. All from real experience.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
 
-    <a class="starthere-card" href="/resources">
+    <a class="starthere-card" href="/resources/">
       <span class="starthere-card-tag">Resources</span>
       <div class="starthere-card-title">Browse the tools</div>
-      <div class="starthere-card-desc">The exact platforms and tools used to build a real business from scratch. No fluff, no sponsorships.</div>
+      <div class="starthere-card-desc">The platforms and tools I used to build a real business from scratch, plus free alternatives. No sponsorships.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
 
-    <a class="starthere-card" href="/articles/mistakes">
-      <span class="starthere-card-tag">Lessons</span>
-      <div class="starthere-card-title">Learn from my mistakes</div>
-      <div class="starthere-card-desc">The guide I wish existed when I started. What went wrong, what I'd do differently, and what I actually learned.</div>
-      <div class="starthere-card-arrow">&rarr;</div>
-    </a>
-
-    <a class="starthere-card" href="/articles/gettingstarted">
+    <a class="starthere-card" href="/articles/gettingstarted/">
       <span class="starthere-card-tag">Getting Started</span>
       <div class="starthere-card-title">Turn your idea into action</div>
       <div class="starthere-card-desc">You have an idea but don't know what to do next. Start here. This is the first guide everyone should read.</div>
+      <div class="starthere-card-arrow">&rarr;</div>
+    </a>
+
+    <a class="starthere-card" href="/articles/mistakes/">
+      <span class="starthere-card-tag">Lessons</span>
+      <div class="starthere-card-title">Learn from my mistakes</div>
+      <div class="starthere-card-desc">The guide I wish existed when I started. What went wrong, what I'd do differently, and what I actually learned.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
 
@@ -303,14 +292,14 @@
 
   <div class="starthere-path-label">Jump straight to a topic</div>
   <div class="starthere-path-row">
-    <a class="starthere-path-pill" href="/articles/branding">Branding</a>
-    <a class="starthere-path-pill" href="/articles/ecommerce">E-Commerce</a>
-    <a class="starthere-path-pill" href="/articles/marketing">Marketing</a>
-    <a class="starthere-path-pill" href="/articles/pricing">Pricing</a>
-    <a class="starthere-path-pill" href="/articles/socialmedia">Social Media</a>
-    <a class="starthere-path-pill" href="/articles/operations">Operations</a>
-    <a class="starthere-path-pill" href="/about">About Krish</a>
-    <a class="starthere-path-pill" href="/contact">Get in Touch</a>
+    <a class="starthere-path-pill" href="/articles/branding/">Branding</a>
+    <a class="starthere-path-pill" href="/articles/ecommerce/">E-Commerce</a>
+    <a class="starthere-path-pill" href="/articles/marketing/">Marketing</a>
+    <a class="starthere-path-pill" href="/articles/pricing/">Pricing</a>
+    <a class="starthere-path-pill" href="/articles/socialmedia/">Social Media</a>
+    <a class="starthere-path-pill" href="/articles/operations/">Operations</a>
+    <a class="starthere-path-pill" href="/about/">About Krish</a>
+    <a class="starthere-path-pill" href="/contact/">Get in Touch</a>
   </div>
 </div>
 
