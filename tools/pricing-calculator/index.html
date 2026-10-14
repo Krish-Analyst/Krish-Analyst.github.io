@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Calculator | VenturePanda</title>
+<meta name="description" content="Free pricing calculator for young entrepreneurs. Enter your costs and fees to find your true cost per item, break-even price, and a price with a healthy margin.">
+<link rel="canonical" href="https://venturepanda.org/tools/pricing-calculator/">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared.css">
+<script src="../../shared.js" defer></script>
+<style>
+  .calc-container { max-width: 880px; margin: 0 auto; padding: 80px 40px; }
+  .calc-container .page-subtitle { max-width: 600px; }
+
+  .calc-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    animation: slideInUp 0.7s ease-out 0.3s backwards;
+  }
+
+  .calc-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+
+  .calc-card h2 {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .field { margin-bottom: 18px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: block; font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .field .hint { display: block; font-size: 13px; color: var(--muted); font-weight: 300; margin-bottom: 8px; line-height: 1.5; }
+
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .input-wrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(10,37,64,0.08); }
+  .input-wrap .unit { padding: 0 0 0 14px; color: var(--muted); font-size: 15px; min-width: 14px; }
+  .input-wrap .unit.after { padding: 0 14px 0 0; }
+  .input-wrap input, .input-wrap select {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--text);
+    padding: 12px 14px;
+    outline: none;
+  }
+  .input-wrap select { cursor: pointer; }
+
+  .field-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+
+  .field-row { margin-bottom: 18px; }
+  .field-row .field { display: flex; flex-direction: column; margin-bottom: 0; }
+  .field-row .input-wrap { margin-top: auto; }
+
+  .field-divider { border-top: 1px solid var(--border); margin: 24px 0 20px; }
+
+  /* Results */
+  .results { position: sticky; top: 84px; }
+
+  .result-main {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-label { font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+  .result-price {
+    font-family: var(--serif);
+    font-size: clamp(40px, 7vw, 52px);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  .result-alts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .pill {
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  .result-rows { list-style: none; }
+  .result-rows li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0;
+    font-size: 15px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .result-rows li:last-child { border-bottom: none; }
+  .result-rows .k { color: var(--muted); }
+  .result-rows .v { font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; }
+  .result-rows li.total .k, .result-rows li.total .v { color: var(--text); font-weight: 500; }
+
+  .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin: 20px 0 10px; background: var(--tag-bg); }
+  .bar span { display: block; height: 100%; transition: width 0.3s ease; }
+  .bar .b-cost { background: #9aa5b1; }
+  .bar .b-fees { background: #c9b79c; }
+  .bar .b-profit { background: var(--accent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+  .check-result {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.55;
+    background: var(--tag-bg);
+    color: var(--text);
+  }
+  .check-result[hidden] { display: none; }
+  .check-result strong { font-weight: 500; }
+  .check-result.bad { background: #fbeceb; color: #8a1f17; }
+  .check-result.warn { background: #fdf4e3; color: #7a4b00; }
+  .check-result.good { background: #e9f3ec; color: #1d5b32; }
+
+  .calc-error { margin-top: 12px; font-size: 14px; color: #8a1f17; }
+  .calc-error[hidden] { display: none; }
+
+  /* Explainer */
+  .calc-notes { max-width: 640px; margin: 64px auto 0; animation: slideInUp 0.7s ease-out 0.4s backwards; }
+  .calc-notes h2 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--accent); margin: 40px 0 16px; line-height: 1.3; }
+  .calc-notes h2:first-child { margin-top: 0; }
+  .calc-notes p { font-size: 17px; line-height: 1.85; color: #222; margin-bottom: 20px; font-weight: 300; }
+  .calc-notes a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .formula {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Phone: price summary pinned to the bottom until the full results are on screen */
+  .mobile-summary { display: none; }
+
+  @media (max-width: 768px) {
+    .mobile-summary {
+      display: flex;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 90;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(250,250,248,0.96);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      transition: transform 0.25s ease;
+    }
+    .mobile-summary.is-hidden { transform: translateY(110%); }
+    .mobile-summary .ms-label { font-size: 12px; color: var(--muted); line-height: 1.3; }
+    .mobile-summary .ms-price { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+    .mobile-summary a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--accent);
+      padding: 0 18px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 40px;
+      white-space: nowrap;
+    }
+    .calc-container { padding-left: 20px; padding-right: 20px; padding-bottom: 120px; }
+    .calc-layout { grid-template-columns: minmax(0, 1fr); }
+    .results { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Venture<span>Panda</span></a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/" class="nav-start-here">Start Here</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/resources/" class="is-active">Resources</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="calc-container">
+  <a class="back-btn" href="/resources/">&larr; Back to Resources</a>
+  <h1 class="page-title">Pricing Calculator</h1>
+  <p class="page-subtitle">Find out what each sale really costs you, and what to charge to make a healthy profit. Free, and nothing you type leaves your browser.</p>
+
+  <div class="calc-layout">
+    <form class="calc-card" id="calc" novalidate onsubmit="return false">
+      <h2>Your costs per item</h2>
+
+      <div class="field">
+        <label for="currency">Currency</label>
+        <div class="input-wrap">
+          <select id="currency">
+            <option value="USD">US dollar ($)</option>
+            <option value="EUR">Euro (&euro;)</option>
+            <option value="GBP">British pound (&pound;)</option>
+            <option value="DKK">Danish krone (kr)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="production">Production cost</label>
+        <span class="hint">What it costs to make or buy one item. With print-on-demand, this is the supplier's price.</span>
+        <div class="input-wrap"><span class="unit cur">$</span><input id="production" type="number" inputmode="decimal" min="0" step="0.01" value="12"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="packaging">Packaging</label>
+          <span class="hint">Bags, boxes, labels.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="packaging" type="number" inputmode="decimal" min="0" step="0.01" value="1"></div>
+        </div>
+        <div class="field">
+          <label for="shipping">Shipping you pay</label>
+          <span class="hint">Leave at 0 if the customer pays.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="shipping" type="number" inputmode="decimal" min="0" step="0.01" value="4"></div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="feePct">Platform fees</label>
+          <span class="hint">Percentage of each sale.</span>
+          <div class="input-wrap"><input id="feePct" type="number" inputmode="decimal" min="0" max="99" step="0.1" value="3"><span class="unit after">%</span></div>
+        </div>
+        <div class="field">
+          <label for="feeFixed">Fixed fee</label>
+          <span class="hint">Charged per order.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="feeFixed" type="number" inputmode="decimal" min="0" step="0.01" value="0.30"></div>
+        </div>
+      </div>
+
+      <div class="field-divider"></div>
+
+      <div class="field">
+        <label for="margin">Target margin</label>
+        <span class="hint">The share of each sale you keep as profit. 50% is a good starting point.</span>
+        <div class="input-wrap"><input id="margin" type="number" inputmode="decimal" min="0" max="95" step="1" value="50"><span class="unit after">%</span></div>
+      </div>
+
+      <div class="field">
+        <label for="myPrice">Already have a price? <span style="font-weight:300;color:var(--muted)">(optional)</span></label>
+        <span class="hint">Enter it to see how much you actually make per sale.</span>
+        <div class="input-wrap"><span class="unit cur">$</span><input id="myPrice" type="number" inputmode="decimal" min="0" step="0.01" placeholder="e.g. 29"></div>
+      </div>
+    </form>
+
+    <section class="calc-card results" id="results" aria-live="polite">
+      <h2>Your results</h2>
+      <div class="result-main">
+        <div class="result-label">Suggested price</div>
+        <div class="result-price" id="rPrice">&ndash;</div>
+        <div class="result-alts">
+          <span class="pill" id="rCharm">&ndash;</span>
+          <span class="pill" id="rRound">&ndash;</span>
+        </div>
+      </div>
+
+      <ul class="result-rows">
+        <li><span class="k">True cost per item</span><span class="v" id="rCost">&ndash;</span></li>
+        <li><span class="k">Fees at this price</span><span class="v" id="rFees">&ndash;</span></li>
+        <li class="total"><span class="k">Profit per sale</span><span class="v" id="rProfit">&ndash;</span></li>
+        <li><span class="k">Lowest price before you lose money</span><span class="v" id="rFloor">&ndash;</span></li>
+      </ul>
+
+      <div class="bar" aria-hidden="true"><span class="b-cost" id="bCost"></span><span class="b-fees" id="bFees"></span><span class="b-profit" id="bProfit"></span></div>
+      <div class="legend" aria-hidden="true"><span><i style="background:#9aa5b1"></i>Costs</span><span><i style="background:#c9b79c"></i>Fees</span><span><i style="background:var(--accent)"></i>Profit</span></div>
+
+      <p class="calc-error" id="err" hidden></p>
+      <div class="check-result" id="check" hidden></div>
+    </section>
+  </div>
+
+  <div class="mobile-summary" id="mobileSummary" aria-hidden="true">
+    <div><div class="ms-label">Suggested price</div><div class="ms-price" id="msPrice">&ndash;</div></div>
+    <a href="#results" tabindex="-1">See breakdown</a>
+  </div>
+
+  <div class="calc-notes">
+    <h2>How It Works</h2>
+    <p>Your <strong>true cost</strong> is everything you pay for one sale: production, packaging, shipping and the platform's fixed fee. The percentage fee grows with your price, so the calculator includes it when working out what to charge.</p>
+    <div class="formula">Price = (production + packaging + shipping + fixed fee) &divide; (1 &minus; fee % &minus; target margin %)</div>
+    <p>The <strong>lowest price</strong> is your break-even point. Sell below it and you lose money on every order, even if sales look good.</p>
+    <h2>Pick the Right Number</h2>
+    <p>A price just below a round number, like 23.99 instead of 24, tends to feel like a better deal. A round number feels more premium. Choose the one that fits your brand, then test it with real customers and adjust.</p>
+    <p>Check your platform's real fees before you set your price, since they vary by store builder and payment provider. For the full thinking behind this, read <a href="/articles/pricing/">How to Price Your Product Without Underselling Yourself</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">VenturePanda</div>
+  <div class="footer-copy">&copy; 2026 VenturePanda. Built by a young entrepreneur.</div>
+</footer>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var ids = ['currency', 'production', 'packaging', 'shipping', 'feePct', 'feeFixed', 'margin', 'myPrice'];
+  var SYMBOL = { USD: '$', EUR: '€', GBP: '£', DKK: 'kr' };
+  var LOCALE = { USD: 'en-US', EUR: 'en-IE', GBP: 'en-GB', DKK: 'da-DK' };
+
+  function num(id) {
+    var v = parseFloat($(id).value);
+    return isFinite(v) && v > 0 ? v : 0;
+  }
+
+  function money(v) {
+    if (Math.abs(v) < 0.005) v = 0;
+    var c = $('currency').value;
+    return new Intl.NumberFormat(LOCALE[c], { style: 'currency', currency: c, minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+  }
+
+  function pct(v) { return (Math.round(v * 10) / 10) + '%'; }
+
+  function setBar(cost, fees, profit, price) {
+    var total = price > 0 ? price : 1;
+    var p = Math.max(profit, 0);
+    $('bCost').style.width = Math.min(cost / total * 100, 100) + '%';
+    $('bFees').style.width = Math.min(fees / total * 100, 100) + '%';
+    $('bProfit').style.width = Math.min(p / total * 100, 100) + '%';
+  }
+
+  function update() {
+    var sym = SYMBOL[$('currency').value];
+    document.querySelectorAll('.unit.cur').forEach(function (el) { el.textContent = sym; });
+
+    var cost = num('production') + num('packaging') + num('shipping') + num('feeFixed');
+    var f = Math.min(num('feePct'), 99) / 100;
+    var m = Math.min(num('margin'), 95) / 100;
+    var err = $('err');
+
+    var floor = f < 1 ? cost / (1 - f) : Infinity;
+
+    if (f + m >= 1) {
+      err.textContent = 'Fees plus target margin must add up to less than 100%. Lower one of them.';
+      err.hidden = false;
+      ['rPrice', 'msPrice', 'rCharm', 'rRound', 'rFees', 'rProfit'].forEach(function (k) { $(k).textContent = '–'; });
+      $('rCost').textContent = money(cost);
+      $('rFloor').textContent = money(floor);
+      setBar(0, 0, 0, 1);
+    } else {
+      err.hidden = true;
+      var price = cost / (1 - f - m);
+      var fees = price * f;
+      var profit = price - cost - fees;
+      var charm = Math.ceil(price + 0.01) - 0.01;
+      var round = Math.ceil(price);
+
+      $('rPrice').textContent = money(price);
+      $('msPrice').textContent = money(price);
+      $('rCharm').textContent = 'Just below: ' + money(charm);
+      $('rRound').textContent = 'Rounded: ' + money(round);
+      $('rCost').textContent = money(cost);
+      $('rFees').textContent = money(fees);
+      $('rProfit').textContent = money(profit) + ' (' + pct(m * 100) + ')';
+      $('rFloor').textContent = money(floor);
+      setBar(cost, fees, profit, price);
+    }
+
+    // Check an existing price
+    var box = $('check');
+    var mine = num('myPrice');
+    if (!mine) { box.hidden = true; return; }
+    var myFees = mine * f;
+    var myProfit = mine - cost - myFees;
+    var myMargin = myProfit / mine * 100;
+    box.hidden = false;
+    if (myProfit < 0) {
+      box.className = 'check-result bad';
+      box.innerHTML = '<strong>At ' + money(mine) + ' you lose ' + money(-myProfit) + ' on every sale.</strong> Your price needs to be at least ' + money(floor) + ' just to break even.';
+    } else if (myMargin < 30) {
+      box.className = 'check-result warn';
+      box.innerHTML = '<strong>At ' + money(mine) + ' you make ' + money(myProfit) + ' per sale (' + pct(myMargin) + ' margin).</strong> That leaves little room for marketing, mistakes or discounts. Consider raising your price.';
+    } else if (myMargin < 50) {
+      box.className = 'check-result';
+      box.innerHTML = '<strong>At ' + money(mine) + ' you make ' + money(myProfit) + ' per sale (' + pct(myMargin) + ' margin).</strong> Not bad, but below the 50% starting point. Test a slightly higher price.';
+    } else {
+      box.className = 'check-result good';
+      box.innerHTML = '<strong>At ' + money(mine) + ' you make ' + money(myProfit) + ' per sale (' + pct(myMargin) + ' margin).</strong> That’s a healthy margin.';
+    }
+  }
+
+  // Hide the phone summary bar while the full results are visible
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      $('mobileSummary').classList.toggle('is-hidden', entries[0].isIntersecting);
+    }, { threshold: 0.15 }).observe($('results'));
+  }
+
+  ids.forEach(function (id) {
+    $(id).addEventListener('input', update);
+    $(id).addEventListener('change', update);
+  });
+  update();
+})();
+</script>
+
+</body>
+</html>
