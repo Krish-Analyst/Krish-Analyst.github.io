@@ -298,6 +298,13 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(
   background: #c9b79c; border: none; border-radius: 40px; padding: 0 24px; min-height: 46px; cursor: pointer;
   transition: background 0.2s ease;
 }
+.signup-form button:disabled { opacity: .75; cursor: default; }
+.signup-success { background: rgba(255,255,255,.08); border: 1px solid rgba(201,183,156,.45); border-radius: 10px; padding: 16px 18px; animation: fadeIn .4s ease-in; }
+.signup-success p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.85); margin: 0 0 6px; font-weight: 300; }
+.signup-success strong { color: #fff; font-weight: 500; overflow-wrap: anywhere; }
+.signup-success-title { font-family: var(--serif); font-size: 20px !important; color: #fff !important; font-weight: 500 !important; }
+.signup-success-small { font-size: 13px !important; color: rgba(255,255,255,.6) !important; margin: 4px 0 0 !important; }
+.signup-success a { color: #c9b79c; text-decoration: underline; text-underline-offset: 3px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (hover: hover) { .signup-form button:hover { background: #fff; } }
 @media (max-width: 600px) {
