@@ -487,7 +487,16 @@
     }, { threshold: 0.15 }).observe($('results'));
   }
 
+  // Visitor stats: record once per visit when someone actually uses the calculator
+  var counted = false;
+  function countUse() {
+    if (counted || !window.goatcounter || !window.goatcounter.count) return;
+    counted = true;
+    window.goatcounter.count({ path: 'pricing-calculator-used', title: 'Pricing calculator used', event: true });
+  }
+
   ids.forEach(function (id) {
+    $(id).addEventListener('input', countUse);
     $(id).addEventListener('input', update);
     $(id).addEventListener('change', update);
   });
@@ -495,5 +504,6 @@
 })();
 </script>
 
+<script data-goatcounter="https://venturepanda.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
