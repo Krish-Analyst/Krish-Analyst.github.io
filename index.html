@@ -195,6 +195,19 @@
     transition: transform 0.3s ease;
   }
 
+  .starthere-card-featured {
+    grid-column: 1 / -1;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    padding: 32px 28px;
+  }
+  .starthere-card-featured::before { background: #c9b79c; }
+  .starthere-card-featured .starthere-card-tag { background: rgba(201,183,156,.22); color: #e6dccb; }
+  .starthere-card-featured .starthere-card-title { color: #fff; font-size: 24px; }
+  .starthere-card-featured .starthere-card-desc { color: rgba(255,255,255,.78); max-width: 560px; }
+  .starthere-card-featured .starthere-card-arrow { color: #c9b79c; font-size: 15px; font-weight: 500; }
+
   .starthere-path-label {
     font-size: 12px;
     font-weight: 500;
@@ -225,6 +238,8 @@
   }
 
   @media (hover: hover) {
+    .starthere-card.starthere-card-featured:hover { border-color: #c9b79c; box-shadow: 0 10px 30px rgba(10,37,64,0.25); }
+    .starthere-card.starthere-card-featured:hover .starthere-card-tag { background: #c9b79c; color: var(--accent); }
     .starthere-cta-btn:hover { background: #163a5f; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(10,37,64,0.18); }
     .starthere-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(10,37,64,0.1); }
     .starthere-card:hover::before { transform: scaleY(1); }
@@ -272,6 +287,13 @@
 
   <div class="starthere-grid">
 
+    <a class="starthere-card starthere-card-featured" href="/tools/">
+      <span class="starthere-card-tag">Free tools</span>
+      <div class="starthere-card-title">Run your numbers before you spend money</div>
+      <div class="starthere-card-desc">The Pricing Calculator shows what to charge. The Startup Cost Estimator shows how much you need to launch. Free, any currency, no sign-up.</div>
+      <div class="starthere-card-arrow">Open the tools &rarr;</div>
+    </a>
+
     <a class="starthere-card" href="/guides/">
       <span class="starthere-card-tag">Guides</span>
       <div class="starthere-card-title">Read the guides</div>
@@ -281,7 +303,7 @@
 
     <a class="starthere-card" href="/resources/">
       <span class="starthere-card-tag">Resources</span>
-      <div class="starthere-card-title">Browse the tools</div>
+      <div class="starthere-card-title">See what I used</div>
       <div class="starthere-card-desc">The platforms and tools I used to build a real business from scratch, plus free alternatives. No sponsorships.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
@@ -310,8 +332,6 @@
     <a class="starthere-path-pill" href="/articles/pricing/">Pricing</a>
     <a class="starthere-path-pill" href="/articles/socialmedia/">Social Media</a>
     <a class="starthere-path-pill" href="/articles/operations/">Operations</a>
-    <a class="starthere-path-pill" href="/tools/pricing-calculator/">Pricing Calculator</a>
-    <a class="starthere-path-pill" href="/tools/startup-cost-estimator/">Startup Cost Estimator</a>
     <a class="starthere-path-pill" href="/about/">About Krish</a>
     <a class="starthere-path-pill" href="/contact/">Get in Touch</a>
   </div>
