@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup Cost Estimator | VenturePanda</title>
+<meta name="description" content="Free startup cost estimator for young entrepreneurs. Add up your setup costs, first stock and monthly costs to see how much money you need to launch.">
+<link rel="canonical" href="https://venturepanda.org/tools/startup-cost-estimator/">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared.css">
+<script src="../../shared.js" defer></script>
+<style>
+  .calc-container { max-width: 880px; margin: 0 auto; padding: 80px 40px; }
+  .calc-container .page-subtitle { max-width: 600px; }
+
+  .calc-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    animation: slideInUp 0.7s ease-out 0.3s backwards;
+  }
+
+  .calc-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+
+  .calc-card h2 {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .field { margin-bottom: 18px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: block; font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .field .hint { display: block; font-size: 13px; color: var(--muted); font-weight: 300; margin-bottom: 8px; line-height: 1.5; }
+
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .input-wrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(10,37,64,0.08); }
+  .input-wrap .unit { padding: 0 0 0 14px; color: var(--muted); font-size: 15px; min-width: 14px; }
+  .input-wrap .unit.after { padding: 0 14px 0 0; }
+  .input-wrap input, .input-wrap select {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--text);
+    padding: 12px 14px;
+    outline: none;
+  }
+  .input-wrap select { cursor: pointer; }
+
+  .field-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+
+  .field-row { margin-bottom: 18px; }
+  .field-row .field { display: flex; flex-direction: column; margin-bottom: 0; }
+  .field-row .input-wrap { margin-top: auto; }
+
+  .field-divider { border-top: 1px solid var(--border); margin: 24px 0 20px; }
+
+  /* Results */
+  .results { position: sticky; top: 84px; }
+
+  .result-main {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-label { font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+  .result-price {
+    font-family: var(--serif);
+    font-size: clamp(40px, 7vw, 52px);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+  .result-alts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .pill {
+    font-size: 13px;
+    color: var(--accent);
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 40px;
+  }
+
+  .result-rows { list-style: none; }
+  .result-rows li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0;
+    font-size: 15px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .result-rows li:last-child { border-bottom: none; }
+  .result-rows .k { color: var(--muted); }
+  .result-rows .v { font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; }
+  .result-rows li.total .k, .result-rows li.total .v { color: var(--text); font-weight: 500; }
+
+  .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin: 20px 0 10px; background: var(--tag-bg); }
+  .bar span { display: block; height: 100%; transition: width 0.3s ease; }
+  .bar .b-cost { background: #9aa5b1; }
+  .bar .b-fees { background: #c9b79c; }
+  .bar .b-profit { background: var(--accent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+  .check-result {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.55;
+    background: var(--tag-bg);
+    color: var(--text);
+  }
+  .check-result[hidden] { display: none; }
+  .check-result strong { font-weight: 500; }
+  .check-result.bad { background: #fbeceb; color: #8a1f17; }
+  .check-result.warn { background: #fdf4e3; color: #7a4b00; }
+  .check-result.good { background: #e9f3ec; color: #1d5b32; }
+
+  .calc-error { margin-top: 12px; font-size: 14px; color: #8a1f17; }
+  .calc-error[hidden] { display: none; }
+
+  /* Explainer */
+  .calc-notes { max-width: 640px; margin: 64px auto 0; animation: slideInUp 0.7s ease-out 0.4s backwards; }
+  .calc-notes h2 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--accent); margin: 40px 0 16px; line-height: 1.3; }
+  .calc-notes h2:first-child { margin-top: 0; }
+  .calc-notes p { font-size: 17px; line-height: 1.85; color: #222; margin-bottom: 20px; font-weight: 300; }
+  .calc-notes a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .formula {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Phone: price summary pinned to the bottom until the full results are on screen */
+  .mobile-summary { display: none; }
+
+  @media (max-width: 768px) {
+    .mobile-summary {
+      display: flex;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 90;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(250,250,248,0.96);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      transition: transform 0.25s ease;
+    }
+    .mobile-summary.is-hidden { transform: translateY(110%); }
+    .mobile-summary .ms-label { font-size: 12px; color: var(--muted); line-height: 1.3; }
+    .mobile-summary .ms-price { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+    .mobile-summary a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--accent);
+      padding: 0 18px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 40px;
+      white-space: nowrap;
+    }
+    .calc-container { padding-left: 20px; padding-right: 20px; padding-bottom: 120px; }
+    .calc-layout { grid-template-columns: minmax(0, 1fr); }
+    .results { position: static; }
+  }
+</style>
+<style>
+  .calc-card h3 {
+    font-size: 15px; font-weight: 500; color: var(--accent); font-family: var(--serif);
+    margin: 0 0 12px;
+  }
+  .section-gap { margin-top: 26px; }
+  .check-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; cursor: pointer; }
+  .check-row input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; cursor: pointer; }
+  .check-row span { font-size: 14px; line-height: 1.5; }
+  .check-row small { display: block; color: var(--muted); font-weight: 300; font-size: 13px; }
+  .is-off { opacity: 0.4; pointer-events: none; }
+  .field-row.three { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); }
+  .bar .b-stock { background: #c9b79c; }
+  .bar .b-setup { background: #9aa5b1; }
+  .bar .b-month { background: var(--accent); }
+  .bar .b-buffer { background: #e6dccb; }
+  .sales-box { margin-top: 16px; padding: 14px 16px; border-radius: 8px; background: var(--tag-bg); font-size: 14px; line-height: 1.55; }
+  .sales-box strong { font-weight: 500; }
+  .sales-box a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .tip { margin-top: 12px; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+  .tip[hidden] { display: none; }
+  @media (max-width: 768px) { .field-row.three { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Venture<span>Panda</span></a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/" class="nav-start-here">Start Here</a></li>
+    <li><a href="/guides/">Guides</a></li>
+    <li><a href="/resources/" class="is-active">Resources</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="calc-container">
+  <a class="back-btn" href="/resources/">&larr; Back to Resources</a>
+  <h1 class="page-title">Startup Cost Estimator</h1>
+  <p class="page-subtitle">Work out how much money you need to launch, including your first few months and a buffer for surprises. The amounts are examples, so swap in your own.</p>
+
+  <div class="calc-layout">
+    <form class="calc-card" id="est" novalidate onsubmit="return false">
+      <div class="field">
+        <label for="currency">Currency</label>
+        <div class="input-wrap">
+          <select id="currency">
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="DKK">Danish Krone (DKK)</option>
+            <option value="SEK">Swedish Krona (SEK)</option>
+            <option value="NOK">Norwegian Krone (NOK)</option>
+            <option value="CHF">Swiss Franc (CHF)</option>
+            <option value="CAD">Canadian Dollar (CAD)</option>
+            <option value="AUD">Australian Dollar (AUD)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+            <option value="JPY">Japanese Yen (JPY)</option>
+          </select>
+        </div>
+      </div>
+
+      <h3 class="section-gap">1. One-time setup</h3>
+      <div class="field-row">
+        <div class="field">
+          <label for="domain">Domain name</label>
+          <span class="hint">First year.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="domain" type="number" inputmode="decimal" min="0" step="0.01" value="12"></div>
+        </div>
+        <div class="field">
+          <label for="branding">Logo &amp; branding</label>
+          <span class="hint">Free if you use Canva.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="branding" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="samples">Product samples</label>
+          <span class="hint">Test before you sell.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="samples" type="number" inputmode="decimal" min="0" step="0.01" value="60"></div>
+        </div>
+        <div class="field">
+          <label for="photos">Product photos</label>
+          <span class="hint">Free with your phone.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="photos" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="registration">Registration &amp; fees</label>
+          <span class="hint">Depends on your country.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="registration" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+        </div>
+        <div class="field">
+          <label for="otherOnce">Other one-time costs</label>
+          <span class="hint">Equipment, a stand, etc.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="otherOnce" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+        </div>
+      </div>
+
+      <h3 class="section-gap">2. First stock</h3>
+      <label class="check-row"><input type="checkbox" id="pod"><span>I use print-on-demand<small>The supplier makes and ships each order, so you buy no stock up front.</small></span></label>
+      <div id="stockFields">
+        <div class="field-row three">
+          <div class="field">
+            <label for="units">Units</label>
+            <div class="input-wrap"><input id="units" type="number" inputmode="numeric" min="0" step="1" value="20"></div>
+          </div>
+        <div class="field">
+          <label for="unitCost">Cost per unit</label>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="unitCost" type="number" inputmode="decimal" min="0" step="0.01" value="12"></div>
+        </div>
+        <div class="field">
+          <label for="packCost">Packaging per unit</label>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="packCost" type="number" inputmode="decimal" min="0" step="0.01" value="1"></div>
+        </div>
+        </div>
+      </div>
+
+      <h3 class="section-gap">3. Monthly costs</h3>
+      <div class="field-row">
+        <div class="field">
+          <label for="platform">Store platform</label>
+          <span class="hint">Your plan, per month.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="platform" type="number" inputmode="decimal" min="0" step="0.01" value="30"></div>
+        </div>
+        <div class="field">
+          <label for="apps">Apps &amp; tools</label>
+          <span class="hint">Per month.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="apps" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="marketing">Marketing</label>
+          <span class="hint">Ads, giveaways, per month.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="marketing" type="number" inputmode="decimal" min="0" step="0.01" value="50"></div>
+        </div>
+        <div class="field">
+          <label for="otherMonthly">Other monthly costs</label>
+          <span class="hint">Per month.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="otherMonthly" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="months">Months to cover</label>
+          <span class="hint">Before sales pay the bills.</span>
+          <div class="input-wrap"><input id="months" type="number" inputmode="numeric" min="0" max="24" step="1" value="3"><span class="unit after">months</span></div>
+        </div>
+        <div class="field">
+          <label for="buffer">Buffer for surprises</label>
+          <span class="hint">Something always costs more.</span>
+          <div class="input-wrap"><input id="buffer" type="number" inputmode="decimal" min="0" max="100" step="1" value="15"><span class="unit after">%</span></div>
+        </div>
+      </div>
+
+      <div class="field-divider"></div>
+        <div class="field">
+          <label for="profit">Profit per sale <span style="font-weight:300;color:var(--muted)">(optional)</span></label>
+          <span class="hint">Find this with the <a href="/tools/pricing-calculator/" style="color:var(--accent);text-decoration:underline">Pricing Calculator</a> to see how many sales it takes to earn your money back.</span>
+          <div class="input-wrap"><span class="unit cur">$</span><input id="profit" type="number" inputmode="decimal" min="0" step="0.01" placeholder="e.g. 18.40"></div>
+        </div>
+    </form>
+
+    <section class="calc-card results" id="results" aria-live="polite">
+      <h2>Your estimate</h2>
+      <div class="result-main">
+        <div class="result-label">Money you need to launch</div>
+        <div class="result-price" id="rTotal">&ndash;</div>
+      </div>
+
+      <ul class="result-rows">
+        <li><span class="k">One-time setup</span><span class="v" id="rSetup">&ndash;</span></li>
+        <li><span class="k">First stock &amp; packaging</span><span class="v" id="rStock">&ndash;</span></li>
+        <li><span class="k" id="rMonthLabel">Monthly costs</span><span class="v" id="rMonths">&ndash;</span></li>
+        <li><span class="k" id="rBufferLabel">Buffer</span><span class="v" id="rBuffer">&ndash;</span></li>
+      </ul>
+
+      <div class="bar" aria-hidden="true"><span class="b-setup" id="bSetup"></span><span class="b-stock" id="bStock"></span><span class="b-month" id="bMonth"></span><span class="b-buffer" id="bBuffer"></span></div>
+      <div class="legend" aria-hidden="true"><span><i style="background:#9aa5b1"></i>Setup</span><span><i style="background:#c9b79c"></i>Stock</span><span><i style="background:var(--accent)"></i>Monthly</span><span><i style="background:#e6dccb"></i>Buffer</span></div>
+
+      <div class="sales-box" id="sales"></div>
+      <p class="tip" id="tip" hidden></p>
+    </section>
+  </div>
+
+  <div class="mobile-summary" id="mobileSummary" aria-hidden="true">
+    <div><div class="ms-label">Money you need to launch</div><div class="ms-price" id="msTotal">&ndash;</div></div>
+    <a href="#results" tabindex="-1">See breakdown</a>
+  </div>
+
+  <div class="calc-notes">
+    <h2>How It Works</h2>
+    <p>The estimate adds up three things: what you pay once to get set up, the stock you buy before your first sale, and the monthly costs you'll have before sales cover them. A buffer goes on top, because almost every launch costs more than planned.</p>
+    <div class="formula">Total = (setup + stock + monthly costs &times; months) &times; (1 + buffer %)</div>
+    <h2>Keep It Low</h2>
+    <p>The cheapest launch is a small one. Print-on-demand removes the biggest upfront cost, a free store plan can cover your first months, and your phone takes good enough photos. Start with what you need to make your first sale, and spend more once customers prove the idea works.</p>
+    <p>Already know your costs per item? Use the <a href="/tools/pricing-calculator/">Pricing Calculator</a> to set a price that covers them, then come back to see how many sales it takes to earn your launch money back. For the bigger picture, read <a href="/articles/gettingstarted/">Getting Started</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">VenturePanda</div>
+  <div class="footer-copy">&copy; 2026 VenturePanda. Built by a young entrepreneur.</div>
+</footer>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var ids = ['currency', 'domain', 'branding', 'samples', 'photos', 'registration', 'otherOnce', 'pod', 'units', 'unitCost', 'packCost', 'platform', 'apps', 'marketing', 'otherMonthly', 'months', 'buffer', 'profit'];
+  var COMMON = ['USD', 'EUR', 'GBP', 'DKK', 'SEK', 'NOK', 'CHF', 'CAD', 'AUD', 'NZD', 'INR', 'JPY', 'CNY', 'SGD', 'AED', 'ZAR', 'BRL', 'MXN'];
+  var fmtCache = {};
+
+  // Fill the list with every currency the visitor's browser knows, common ones first.
+  (function buildCurrencyList() {
+    var sel = $('currency');
+    if (!Intl.supportedValuesOf || !Intl.DisplayNames) return; // older browsers keep the short list
+    var all;
+    try { all = Intl.supportedValuesOf('currency'); } catch (e) { return; }
+    var names = new Intl.DisplayNames(['en'], { type: 'currency' });
+    function label(code) {
+      var n = names.of(code) || code;
+      n = n.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+      return n === code ? code : n + ' (' + code + ')';
+    }
+    var known = all.filter(function (c) { var n = names.of(c); return n && n !== c; });
+    var common = COMMON.filter(function (c) { return known.indexOf(c) !== -1; });
+    var rest = known.filter(function (c) { return common.indexOf(c) === -1; })
+      .sort(function (a, b) { return label(a).localeCompare(label(b)); });
+    function group(title, codes) {
+      var g = document.createElement('optgroup');
+      g.label = title;
+      codes.forEach(function (c) { var o = document.createElement('option'); o.value = c; o.textContent = label(c); g.appendChild(o); });
+      return g;
+    }
+    sel.innerHTML = '';
+    sel.appendChild(group('Common', common));
+    sel.appendChild(group('All currencies', rest));
+    sel.value = 'USD';
+  })();
+
+  function formatter(c) {
+    if (!fmtCache[c]) {
+      var opts = { style: 'currency', currency: c };
+      try { fmtCache[c] = new Intl.NumberFormat(undefined, Object.assign({ currencyDisplay: 'narrowSymbol' }, opts)); }
+      catch (e) { fmtCache[c] = new Intl.NumberFormat(undefined, opts); }
+    }
+    return fmtCache[c];
+  }
+  function decimals(c) { return formatter(c).resolvedOptions().maximumFractionDigits; }
+  function symbol(c) {
+    var part = formatter(c).formatToParts(1).filter(function (p) { return p.type === 'currency'; })[0];
+    return part ? part.value : c;
+  }
+
+
+  function num(id) {
+    var v = parseFloat($(id).value);
+    return isFinite(v) && v > 0 ? v : 0;
+  }
+  function money(v) {
+    if (Math.abs(v) < 0.005) v = 0;
+    return formatter($('currency').value).format(v);
+  }
+  function width(el, part, total) { $(el).style.width = (total > 0 ? Math.min(part / total * 100, 100) : 0) + '%'; }
+
+  function update() {
+    var cur = $('currency').value;
+    var sym = symbol(cur);
+    var dp = decimals(cur);
+    var step = dp > 0 ? String(Math.pow(10, -dp)) : '1';
+    document.querySelectorAll('.unit.cur').forEach(function (el) {
+      el.textContent = sym;
+      var input = el.parentNode.querySelector('input');
+      if (input) input.step = step;
+    });
+
+    var pod = $('pod').checked;
+    $('stockFields').classList.toggle('is-off', pod);
+
+    var setup = num('domain') + num('branding') + num('samples') + num('photos') + num('registration') + num('otherOnce');
+    var units = Math.floor(num('units'));
+    var stock = pod ? 0 : units * (num('unitCost') + num('packCost'));
+    var monthly = num('platform') + num('apps') + num('marketing') + num('otherMonthly');
+    var months = Math.min(Math.floor(num('months')), 24);
+    var runway = monthly * months;
+    var subtotal = setup + stock + runway;
+    var bufPct = Math.min(num('buffer'), 100);
+    var buffer = subtotal * bufPct / 100;
+    var total = subtotal + buffer;
+
+    $('rTotal').textContent = money(total);
+    $('msTotal').textContent = money(total);
+    $('rSetup').textContent = money(setup);
+    $('rStock').textContent = pod ? money(0) + ' (print-on-demand)' : money(stock);
+    $('rMonthLabel').textContent = 'Monthly costs × ' + months + (months === 1 ? ' month' : ' months');
+    $('rMonths').textContent = money(runway);
+    $('rBufferLabel').textContent = 'Buffer (' + bufPct + '%)';
+    $('rBuffer').textContent = money(buffer);
+
+    width('bSetup', setup, total); width('bStock', stock, total); width('bMonth', runway, total); width('bBuffer', buffer, total);
+
+    var profit = num('profit');
+    var box = $('sales');
+    if (profit > 0 && total > 0) {
+      var sales = Math.ceil(total / profit);
+      box.innerHTML = 'At ' + money(profit) + ' profit per sale, you need <strong>' + sales.toLocaleString() + ' sale' + (sales === 1 ? '' : 's') + '</strong> to earn your launch money back.';
+    } else {
+      box.innerHTML = 'Add your <strong>profit per sale</strong> to see how many sales it takes to earn this back. Not sure what it is? Use the <a href="/tools/pricing-calculator/">Pricing Calculator</a>.';
+    }
+
+    // One practical tip, based on where most of the money goes
+    var tip = $('tip'), parts = [['stock', stock], ['monthly', runway], ['setup', setup]];
+    parts.sort(function (a, b) { return b[1] - a[1]; });
+    var biggest = parts[0];
+    tip.hidden = !(subtotal > 0);
+    if (biggest[0] === 'stock' && stock > subtotal * 0.4) {
+      tip.textContent = 'Most of your money goes on stock. Ordering fewer units, or switching to print-on-demand, is the fastest way to cut your launch cost.';
+    } else if (biggest[0] === 'monthly' && runway > subtotal * 0.4) {
+      tip.textContent = 'Monthly costs are your biggest expense. A free store plan and organic marketing (TikTok, Instagram) can cut this a lot in the first months.';
+    } else {
+      tip.textContent = 'Your costs are spread out. Look for the line you could drop or delay until after your first sales.';
+    }
+  }
+
+  // Visitor stats: record once per visit when someone actually uses the estimator
+  var counted = false;
+  function countUse() {
+    if (counted || !window.goatcounter || !window.goatcounter.count) return;
+    counted = true;
+    window.goatcounter.count({ path: 'startup-cost-estimator-used', title: 'Startup cost estimator used', event: true });
+  }
+
+  // Hide the phone summary bar while the full results are visible
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      $('mobileSummary').classList.toggle('is-hidden', entries[0].isIntersecting);
+    }, { threshold: 0.15 }).observe($('results'));
+  }
+
+  ids.forEach(function (id) {
+    $(id).addEventListener('input', countUse);
+    $(id).addEventListener('input', update);
+    $(id).addEventListener('change', update);
+  });
+  update();
+})();
+</script>
+<script data-goatcounter="https://venturepanda.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
