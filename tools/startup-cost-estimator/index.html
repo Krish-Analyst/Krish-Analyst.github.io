@@ -599,13 +599,7 @@
     }
   }
 
-  // Visitor stats: record once per visit when someone actually uses the estimator
-  var counted = false;
-  function countUse() {
-    if (counted || !window.goatcounter || !window.goatcounter.count) return;
-    counted = true;
-    window.goatcounter.count({ path: 'startup-cost-estimator-used', title: 'Startup cost estimator used', event: true });
-  }
+  function countUse() {}
 
   // Hide the phone summary bar while the full results are visible
   if ('IntersectionObserver' in window) {
@@ -622,6 +616,5 @@
   update();
 })();
 </script>
-<script data-goatcounter="https://venturepanda.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
