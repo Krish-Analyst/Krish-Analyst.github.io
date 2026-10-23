@@ -604,3 +604,29 @@ html.js.reveal-all .rv { opacity: 1; transform: none; }
   --border: #E3E6EF; color-scheme: light;
 }
 footer { border-top-color: transparent; }
+
+/* ---------- Tools dropdown ---------- */
+.has-menu { position: relative; display: flex; align-items: center; gap: 2px; }
+.has-menu::after { content: ''; position: absolute; left: -10px; right: -10px; top: 100%; height: 16px; }
+.menu-caret { width: 22px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border: none; background: none; color: var(--muted); cursor: pointer; border-radius: 6px; padding: 0; }
+.menu-caret svg { width: 13px; height: 13px; transition: transform .2s ease; }
+.submenu { position: absolute; top: calc(100% + 14px); left: -14px; min-width: 238px; list-style: none; padding: 8px; margin: 0;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 18px 44px var(--shadow);
+  opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .18s ease, transform .18s ease, visibility .18s; z-index: 120; }
+.has-menu:hover .submenu, .has-menu:focus-within .submenu, .has-menu.open .submenu { opacity: 1; visibility: visible; transform: none; }
+.has-menu:hover .menu-caret svg, .has-menu.open .menu-caret svg { transform: rotate(180deg); }
+.nav-links .submenu a { display: block; padding: 10px 12px; border-radius: 9px; font-size: 14px; color: var(--text); letter-spacing: 0; }
+.nav-links .submenu a::after { display: none; }
+.nav-links .submenu a:hover, .nav-links .submenu a:focus-visible { background: var(--tag-bg); color: var(--accent); transform: none; }
+.submenu .submenu-all { border-top: 1px solid var(--border); margin-top: 6px; padding-top: 6px; }
+.nav-links .submenu .submenu-all a { color: var(--accent); font-weight: 500; }
+@media (max-width: 768px) {
+  .has-menu { display: block; }
+  .has-menu::after, .menu-caret { display: none; }
+  .submenu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: 0; background: none;
+    padding: 0 0 10px 14px; margin: -4px 0 0; min-width: 0; }
+  .nav-links .submenu li { border: 0; }
+  .nav-links .submenu a { min-height: 38px; display: flex; align-items: center; padding: 0; font-size: 15px; color: var(--muted); }
+  .nav-links .submenu a:hover { background: none; }
+  .submenu .submenu-all { border: 0; margin: 0; padding: 0; }
+}
