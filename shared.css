@@ -586,13 +586,12 @@ html.js.reveal-all .rv { opacity: 1; transform: none; }
 }
 
 /* ---------- Rexyd type + logo ---------- */
-.nav-logo { gap: 8px; color: var(--heading); font-weight: 800; letter-spacing: -0.03em; font-size: 21px; }
-.nav-logo .logo-mark { width: 28px; height: 28px; color: var(--accent); flex: none; }
-.nav-logo span { color: var(--heading); }
-.footer-brand { color: var(--heading); font-weight: 800; letter-spacing: -0.03em; }
-.footer-brand .fb-icon { width: 40px; height: 40px; border-radius: 11px; background: #3355FF; display: inline-flex; align-items: center; justify-content: center; }
-.footer-brand .fb-icon .logo-mark { width: 26px; height: 26px; color: #fff; }
-.footer-brand .fb-text { color: var(--heading); }
+.nav-logo { display: inline-flex; align-items: center; line-height: 0; }
+.wordmark { display: block; height: 30px; width: auto; overflow: visible; }
+.wordmark .wm-main { fill: var(--heading); }
+.wordmark .wm-x { fill: var(--accent); }
+.footer-brand { display: inline-flex; align-items: center; line-height: 0; }
+.footer-brand .wordmark { height: 34px; }
 .page-title, .article-full h1 { color: var(--heading); font-weight: 800; letter-spacing: -0.035em; }
 .body h2 { color: var(--heading); font-weight: 700; letter-spacing: -0.02em; }
 .article-title, .next-card .nt, .sr-title { font-weight: 700; letter-spacing: -0.015em; }
@@ -606,4 +605,4 @@ html.js.reveal-all .rv { opacity: 1; transform: none; }
 .next-card.tool .g-icon { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); color: #fff; }
 .next-card.tool .g-icon svg .acc { color: #fff; }
 .read-progress { background: linear-gradient(90deg, #8FA4FF, #3355FF); }
-@media (max-width: 600px) { .nav-logo { font-size: 19px; } .nav-logo .logo-mark { width: 25px; height: 25px; } }
+@media (max-width: 600px) { .wordmark { height: 26px; } }
