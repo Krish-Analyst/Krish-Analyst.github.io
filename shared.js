@@ -86,11 +86,12 @@ window.__vpReady = true;
 
   var heads = article.querySelectorAll('h2');
   if (heads.length < 4) return;
+  var label = main.getAttribute('data-toc-label') || 'In this guide';
   var toc = document.createElement('div');
   toc.className = 'toc rv in';
   toc.setAttribute('role', 'navigation');
-  toc.setAttribute('aria-label', 'In this guide');
-  var html = '<div class="toc-label">In this guide</div><ol>';
+  toc.setAttribute('aria-label', label);
+  var html = '<div class="toc-label">' + label + '</div><ol>';
   heads.forEach(function (h, i) {
     if (!h.id) h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || ('section-' + i);
     html += '<li><a href="#' + h.id + '">' + h.textContent + '</a></li>';
