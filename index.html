@@ -2,7 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('vp-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js');setTimeout(function(){if(!window.__vpReady)d.classList.add('reveal-all')},2500)})()</script>
+<meta name="theme-color" content="#0a2540">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VenturePanda">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>VenturePanda | Actionable Startup Resources for Young Founders</title>
 <meta name="description" content="Start building your business with actionable, real-world advice on branding, pricing, operations, and e-commerce. Tailored specifically for teen entrepreneurs.">
 <link rel="canonical" href="https://venturepanda.org/">
@@ -19,8 +26,8 @@
 <link rel="icon" type="image/png" href="favicon.png?v=3">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css">
-<script src="shared.js" defer></script>
+<link rel="stylesheet" href="shared.css?v=4">
+<script src="shared.js?v=4" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -43,226 +50,156 @@
 }
 </script>
 <style>
-  .starthere-hero {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 80px 40px 48px;
-    text-align: center;
+  /* ---------- Hero (always dark navy, in both themes) ---------- */
+  .hero {
+    position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(900px 520px at 78% 38%, rgba(32,78,128,.85) 0%, rgba(10,37,64,0) 70%),
+      radial-gradient(600px 400px at 10% 90%, rgba(201,183,156,.10) 0%, rgba(10,37,64,0) 70%),
+      linear-gradient(180deg, #0a2540 0%, #071a2d 100%);
   }
-
-  .starthere-eyebrow {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-    animation: slideInUp 0.6s ease-out 0.1s backwards;
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image: linear-gradient(rgba(201,183,156,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,183,156,.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%); mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%);
   }
-
-  .starthere-hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(30px, 6vw, 50px);
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--accent);
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-    animation: slideInUp 0.6s ease-out 0.2s backwards;
+  .hero-inner {
+    position: relative; max-width: 1140px; margin: 0 auto; padding: 96px 40px 104px;
+    display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: 40px; align-items: center; min-height: min(760px, calc(100vh - 60px));
   }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #c9b79c; margin-bottom: 22px; animation: slideInUp .6s ease-out .1s backwards; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: #c9b79c; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(38px, 6.2vw, 66px); font-weight: 700; line-height: 1.06; letter-spacing: -1.5px; margin-bottom: 22px; animation: slideInUp .7s ease-out .2s backwards; }
+  .hero h1 em { font-style: italic; color: #c9b79c; font-weight: 600; }
+  .hero-lead { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,.75); font-weight: 300; max-width: 470px; margin-bottom: 34px; animation: slideInUp .7s ease-out .3s backwards; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; animation: slideInUp .7s ease-out .4s backwards; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 40px; transition: all .3s ease; cursor: pointer; border: 1px solid transparent; }
+  .btn-gold { background: #c9b79c; color: #0a2540; }
+  .btn-ghost { border-color: rgba(201,183,156,.45); color: #fff; }
+  .hero-proof { margin-top: 34px; display: flex; gap: 22px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,.6); animation: slideInUp .7s ease-out .5s backwards; }
+  .hero-proof b { color: #fff; font-weight: 500; font-family: var(--serif); font-size: 18px; margin-right: 4px; }
 
-  .starthere-hero p {
-    font-size: 18px;
-    color: var(--muted);
-    font-weight: 300;
-    max-width: 480px;
-    margin: 0 auto 36px;
-    line-height: 1.7;
-    animation: slideInUp 0.6s ease-out 0.3s backwards;
-  }
+  /* 3D preview stack */
+  .stage { position: relative; height: 520px; perspective: 1500px; animation: fadeIn 1s ease-out .3s backwards; }
+  .deck { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(calc(16deg + var(--rx, 0deg))) rotateY(calc(-20deg + var(--ry, 0deg))) rotateZ(3deg); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .hc { position: absolute; border-radius: 18px; transform-style: preserve-3d; animation: float 7s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+  .hc-calc { left: 2%; top: 21%; width: 320px; background: #fafaf8; color: #0f0f0f; padding: 20px; transform: translateZ(40px);
+    box-shadow: 0 40px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(201,183,156,.35); }
+  .hc-k { font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #8a7a5e; }
+  .hc-t { font-family: var(--serif); font-size: 22px; color: #0a2540; margin: 2px 0 12px; }
+  .hc-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed #e5e5e0; color: #555; }
+  .hc-row b { color: #0f0f0f; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .hc-res { margin-top: 14px; background: #0a2540; color: #fff; border-radius: 12px; padding: 14px 16px; }
+  .hc-res .l { font-size: 11px; color: rgba(255,255,255,.65); }
+  .hc-res .v { font-family: var(--serif); font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; }
+  .hc-res .s { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 2px; } .hc-res .s b { color: #c9b79c; font-weight: 500; }
+  .hc-bar { display: flex; height: 7px; border-radius: 4px; overflow: hidden; margin-top: 10px; background: rgba(255,255,255,.1); }
+  .hc-bar i { display: block; height: 100%; }
+  .hc-guide { right: -2%; top: 0; width: 240px; background: #13304f; padding: 18px; transform: translateZ(-60px); animation-delay: -2s;
+    box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(201,183,156,.25); }
+  .hc-guide .hc-k { color: #c9b79c; }
+  .hc-guide .hc-t { color: #fff; font-size: 19px; margin-bottom: 12px; }
+  .hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .hc-stats div { border-radius: 10px; padding: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(201,183,156,.3); }
+  .hc-stats div:last-child { background: #c9b79c; color: #0a2540; border-color: #c9b79c; }
+  .hc-stats .n { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1; }
+  .hc-stats .c { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin-bottom: 4px; }
+  .hc-disc { right: 0; bottom: 3%; width: 230px; background: #fafaf8; color: #0a2540; padding: 16px 18px; transform: translateZ(110px); animation-delay: -4s;
+    box-shadow: 0 36px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,183,156,.35); }
+  .hc-disc .big { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.15; margin-top: 4px; }
+  .hc-disc .tag2 { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 700; letter-spacing: .12em; background: #e6dccb; border-radius: 5px; padding: 3px 8px; }
+  .hc-logo { left: -3%; bottom: 0; width: 112px; height: 112px; border-radius: 26px; overflow: hidden; transform: translateZ(150px); animation-delay: -1s;
+    box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(201,183,156,.5), 0 0 60px rgba(201,183,156,.25); }
+  .hc-logo img { width: 100%; height: 100%; display: block; }
+  .hc-glow { position: absolute; left: 30%; top: 30%; width: 300px; height: 300px; border-radius: 50%; transform: translateZ(-160px);
+    background: radial-gradient(circle, rgba(201,183,156,.30), transparent 65%); filter: blur(10px); }
 
-  .starthere-cta-btn {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    font-family: var(--sans);
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    padding: 14px 36px;
-    border-radius: 40px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: scaleUp 0.6s ease-out 0.4s backwards;
-  }
+  /* ---------- Sections ---------- */
+  .home-section { max-width: 760px; margin: 0 auto; padding: 88px 40px 0; }
+  .section-label { font-size: 12px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .section-title { font-family: var(--serif); font-size: clamp(28px, 4.5vw, 38px); font-weight: 700; color: var(--accent); letter-spacing: -.8px; line-height: 1.15; margin-bottom: 28px; }
 
-  .starthere-divider {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 40px;
-    border-top: 1px solid var(--border);
-  }
+  /* Brand film */
+  .film { max-width: 1000px; margin: 0 auto; padding: 88px 40px 0; }
+  .film-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 22px; }
+  .film-head .section-title { margin-bottom: 0; }
+  .film-frame { position: relative; border-radius: 20px; overflow: hidden; background: #071a2d; aspect-ratio: 16 / 9;
+    box-shadow: 0 40px 90px var(--shadow), 0 0 0 1px var(--border); }
+  .film-frame video { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .sound-btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--accent);
+    background: var(--tag-bg); border: 1px solid var(--border); border-radius: 40px; padding: 10px 18px; cursor: pointer; transition: all .25s ease; }
+  .sound-btn svg { width: 17px; height: 17px; }
+  .sound-btn .on { display: none; } .sound-btn.is-on .on { display: block; } .sound-btn.is-on .off { display: none; }
+  .sound-btn.is-on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 
-  .starthere-options {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 40px 80px;
-    display: none;
-  }
-
-  .starthere-options.visible {
-    display: block;
-    animation: slideInUp 0.55s ease-out;
-  }
-
-  .starthere-options-label {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 40px 0 28px;
-  }
-
-  .starthere-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
+  /* Start-here cards */
+  .starthere-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; margin-bottom: 36px; }
   .starthere-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 24px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px;
+    display: flex; flex-direction: column; gap: 8px; position: relative; overflow: hidden; transition: all .3s ease; color: inherit;
   }
+  .starthere-card .g-icon { margin-bottom: 6px; }
+  .starthere-card-tag { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .starthere-card-title { font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--text); line-height: 1.3; }
+  .starthere-card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+  .starthere-card-arrow { font-size: 14px; font-weight: 500; color: var(--accent); margin-top: auto; padding-top: 8px; transition: transform .3s ease; }
+  .starthere-card-featured { grid-column: 1 / -1; background: var(--navy-card); border-color: var(--navy-card); padding: 30px 28px; color: #fff; }
+  .starthere-card-featured::after { content: ''; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(201,183,156,.25), transparent 70%); }
+  .starthere-card-featured .g-icon { background: rgba(255,255,255,.07); border-color: rgba(201,183,156,.35); color: #c9b79c; }
+  .starthere-card-featured .starthere-card-tag { color: #c9b79c; }
+  .starthere-card-featured .starthere-card-title { color: #fff; font-size: 25px; }
+  .starthere-card-featured .starthere-card-desc { color: rgba(255,255,255,.78); max-width: 580px; }
+  .starthere-card-featured .starthere-card-arrow { color: #c9b79c; }
+  .tool-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; position: relative; z-index: 1; }
+  .tool-chips span { font-size: 12px; color: #e6dccb; border: 1px solid rgba(201,183,156,.35); border-radius: 40px; padding: 4px 12px; }
 
-  .starthere-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.3s ease;
-  }
-
-  .starthere-card-tag {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    background: var(--tag-bg);
-    padding: 3px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    width: fit-content;
-    transition: all 0.3s ease;
-  }
-
-  .starthere-card-title {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-  }
-
-  .starthere-card-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  .starthere-card-arrow {
-    font-size: 18px;
-    color: var(--accent);
-    margin-top: 8px;
-    transition: transform 0.3s ease;
-  }
-
-  .starthere-card-featured {
-    grid-column: 1 / -1;
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-    padding: 32px 28px;
-  }
-  .starthere-card-featured::before { background: #c9b79c; }
-  .starthere-card-featured .starthere-card-tag { background: rgba(201,183,156,.22); color: #e6dccb; }
-  .starthere-card-featured .starthere-card-title { color: #fff; font-size: 24px; }
-  .starthere-card-featured .starthere-card-desc { color: rgba(255,255,255,.78); max-width: 560px; }
-  .starthere-card-featured .starthere-card-arrow { color: #c9b79c; font-size: 15px; font-weight: 500; }
-
-  .starthere-path-label {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-    padding-top: 8px;
-  }
-
-  .starthere-path-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .starthere-path-pill {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--accent);
-    background: var(--tag-bg);
-    border: 1px solid var(--border);
-    padding: 8px 18px;
-    border-radius: 40px;
-    text-decoration: none;
-    transition: all 0.25s ease;
-    display: inline-block;
-  }
+  .topic-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .topic-pill { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); background: var(--surface);
+    border: 1px solid var(--border); padding: 6px 16px 6px 6px; border-radius: 40px; transition: all .25s ease; }
+  .topic-pill .g-icon.sm { width: 30px; height: 30px; border-radius: 50%; }
+  .topic-pill .g-icon.sm svg { width: 15px; height: 15px; }
+  .home-end { height: 96px; }
 
   @media (hover: hover) {
-    .starthere-card.starthere-card-featured:hover { border-color: #c9b79c; box-shadow: 0 10px 30px rgba(10,37,64,0.25); }
-    .starthere-card.starthere-card-featured:hover .starthere-card-tag { background: #c9b79c; color: var(--accent); }
-    .starthere-cta-btn:hover { background: #163a5f; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(10,37,64,0.18); }
-    .starthere-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(10,37,64,0.1); }
-    .starthere-card:hover::before { transform: scaleY(1); }
-    .starthere-card:hover .starthere-card-tag { background: var(--accent); color: #fff; }
+    .btn-gold:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.3); }
+    .btn-ghost:hover { border-color: #c9b79c; background: rgba(201,183,156,.1); transform: translateY(-3px); }
+    .starthere-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 30px var(--shadow); }
+    .starthere-card-featured:hover { border-color: #c9b79c; }
     .starthere-card:hover .starthere-card-arrow { transform: translateX(4px); }
-    .starthere-path-pill:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+    .starthere-card:hover .g-icon { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+    .starthere-card-featured:hover .g-icon { background: #c9b79c; color: #0a2540; }
+    .topic-pill:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .sound-btn:hover { border-color: var(--accent); }
   }
 
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: minmax(0,1fr); padding-top: 64px; padding-bottom: 40px; min-height: 0; gap: 10px; }
+    .stage { height: 440px; max-width: 520px; width: 100%; margin: 0 auto; }
+  }
   @media (max-width: 768px) {
-    .starthere-hero, .starthere-options { padding-left: 20px; padding-right: 20px; }
-    .starthere-divider { margin: 0 20px; padding: 0; }
+    .hero-inner, .home-section, .film { padding-left: 20px; padding-right: 20px; }
+    .home-section, .film { padding-top: 64px; }
   }
-
   @media (max-width: 600px) {
-    .starthere-grid { grid-template-columns: 1fr; }
+    .starthere-grid { grid-template-columns: minmax(0,1fr); }
+    .stage { height: 380px; }
+    .deck { transform: rotateX(14deg) rotateY(-14deg) rotateZ(2deg) scale(.78); transform-origin: 50% 40%; }
+    .hc-calc { left: 6%; top: 0; }
+    .hc-guide { display: none; }
+    .hc-disc { right: -8%; bottom: -2%; }
+    .hc-logo { left: -2%; bottom: 2%; }
+    .hero-proof { gap: 16px; }
+    .btn { padding: 13px 22px; }
   }
+  @media (prefers-reduced-motion: reduce) { .hc { animation: none; } }
 </style>
 </head>
 <body class="homepage">
 
 <nav>
   <a class="nav-logo" href="/">Venture<span>Panda</span></a>
-  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="nav-links">
     <li><a href="/" class="nav-start-here" aria-current="page">Start Here</a></li>
     <li><a href="/guides/">Guides</a></li>
@@ -271,84 +208,170 @@
     <li><a href="/about/">About</a></li>
     <li><a href="/contact/">Contact</a></li>
   </ul>
+  <div class="nav-actions">
+    <button class="icon-btn" id="search-open" type="button" aria-label="Search guides and tools" title="Search (press /)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg></button>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg></button>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
-<div class="starthere-hero">
-  <div class="starthere-eyebrow">Welcome to VenturePanda</div>
-  <h1>Not sure where to begin?<br>Start here.</h1>
-  <p>Whether you have an idea or you're already building, this page points you to exactly what you need.</p>
-  <button class="starthere-cta-btn" onclick="revealOptions()">Show me where to go &rarr;</button>
-</div>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Welcome to VenturePanda</div>
+      <h1>Not sure where to begin? <em>Start here.</em></h1>
+      <p class="hero-lead">Practical guides and free tools for young founders, from someone who built a brand from scratch at 15. Whether you have an idea or you're already building, this is where to start.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="#paths">Show me where to go <span aria-hidden="true">&darr;</span></a>
+        <a class="btn btn-ghost" href="/tools/">Try the free tools</a>
+      </div>
+      <div class="hero-proof"><span><b>8</b>practical guides</span><span><b>3</b>free tools</span><span><b>0</b>sign-ups needed</span></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="deck" id="deck">
+        <div class="hc-glow"></div>
+        <div class="hc hc-guide">
+          <div class="hc-k">Pricing guide</div>
+          <div class="hc-t">Margin is not markup</div>
+          <div class="hc-stats"><div><div class="c">Markup</div><div class="n">100%</div></div><div><div class="c">Margin</div><div class="n">50%</div></div></div>
+        </div>
+        <div class="hc hc-calc">
+          <div class="hc-k">Free tool</div>
+          <div class="hc-t">Pricing Calculator</div>
+          <div class="hc-row"><span>Production</span><b>$22.00</b></div>
+          <div class="hc-row"><span>Packaging + shipping</span><b>$6.50</b></div>
+          <div class="hc-row"><span>Platform fees</span><b>3% + $0.30</b></div>
+          <div class="hc-res"><div class="l">Suggested price</div><div class="v">$61.28</div><div class="s">Break-even <b>$29.69</b> &middot; Margin <b>50%</b></div>
+            <div class="hc-bar"><i style="width:47%;background:#9aa5b1"></i><i style="width:3%;background:#c9b79c"></i><i style="width:50%;background:#fff"></i></div></div>
+        </div>
+        <div class="hc hc-disc">
+          <div class="hc-k">Discount Calculator</div>
+          <div class="big">20% off, almost 40% less profit</div>
+          <span class="tag2">PLAN IT FIRST</span>
+        </div>
+        <div class="hc hc-logo"><img src="/apple-touch-icon.png?v=3" alt=""></div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<div class="starthere-divider"></div>
+<section class="film" aria-labelledby="film-title">
+  <div class="film-head rv">
+    <div><div class="section-label">The tour</div><h2 class="section-title" id="film-title">See VenturePanda in 23 seconds</h2></div>
+    <button class="sound-btn" type="button" data-film-sound aria-pressed="false">
+      <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path d="M16 9.5l4 5M20 9.5l-4 5"/></svg>
+      <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg>
+      <span>Play with sound</span>
+    </button>
+  </div>
+  <div class="film-frame rv">
+    <video data-autoplay-visible muted loop playsinline preload="none" poster="/media/brand-film-poster.jpg" aria-label="VenturePanda brand film: a 23-second tour of the website, guides and free tools">
+      <source src="/media/brand-film.mp4" type="video/mp4">
+      <source src="/media/brand-film.webm" type="video/webm">
+    </video>
+  </div>
+</section>
 
-<div class="starthere-options" id="starthere-options">
-  <div class="starthere-options-label">What are you looking for?</div>
+<section class="home-section" id="paths" aria-labelledby="paths-title">
+  <div class="section-label rv">Start here</div>
+  <h2 class="section-title rv" id="paths-title">What are you looking for?</h2>
 
   <div class="starthere-grid">
-
-    <a class="starthere-card starthere-card-featured" href="/tools/">
+    <a class="starthere-card starthere-card-featured rv" href="/tools/">
+      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect class="acc" x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg></span>
       <span class="starthere-card-tag">Free tools</span>
       <div class="starthere-card-title">Run your numbers before you spend money</div>
-      <div class="starthere-card-desc">The Pricing Calculator shows what to charge. The Startup Cost Estimator shows how much you need to launch. Free, any currency, no sign-up.</div>
+      <div class="starthere-card-desc">Find out what to charge, how much you need to launch, and what a discount really costs you. Free, any currency, no sign-up.</div>
+      <div class="tool-chips"><span>Pricing Calculator</span><span>Startup Cost Estimator</span><span>Discount Calculator</span></div>
       <div class="starthere-card-arrow">Open the tools &rarr;</div>
     </a>
-
-    <a class="starthere-card" href="/guides/">
+    <a class="starthere-card rv" href="/guides/">
+      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h9.5L19 9v10.5H5z"/><path class="acc" d="M14.5 4.5V9H19M8.5 13h7M8.5 16h5"/></svg></span>
       <span class="starthere-card-tag">Guides</span>
       <div class="starthere-card-title">Read the guides</div>
       <div class="starthere-card-desc">Step-by-step advice on branding, pricing, marketing, and running a business. All from real experience.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
-
-    <a class="starthere-card" href="/resources/">
+    <a class="starthere-card rv" href="/resources/">
+      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="11" rx="2"/><path d="M9 8V6a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0115 6v2"/><path class="acc" d="M3.5 13h17M10.5 12v2.2h3V12"/></svg></span>
       <span class="starthere-card-tag">Resources</span>
       <div class="starthere-card-title">See what I used</div>
       <div class="starthere-card-desc">The platforms and tools I used to build a real business from scratch, plus free alternatives. No sponsorships.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
-
-    <a class="starthere-card" href="/articles/gettingstarted/">
+    <a class="starthere-card rv" href="/articles/gettingstarted/">
+      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-3-3c1-4 3.5-7.5 9-9 0 0 .5 5.5-6 12z"/><path d="M9 12H5.5L8 8.5h4"/><path d="M12 15v3.5L15.5 16v-4"/><path class="acc" d="M6.5 16.5c-1.2.6-1.8 2.3-1.9 3.4 1.1-.1 2.8-.7 3.4-1.9"/><circle class="acc" cx="15" cy="9" r="1.3"/></svg></span>
       <span class="starthere-card-tag">Getting Started</span>
       <div class="starthere-card-title">Turn your idea into action</div>
-      <div class="starthere-card-desc">You have an idea but don't know what to do next. Start here. This is the first guide everyone should read.</div>
+      <div class="starthere-card-desc">You have an idea but don't know what to do next. This is the first guide everyone should read.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
-
-    <a class="starthere-card" href="/articles/mistakes/">
+    <a class="starthere-card rv" href="/articles/mistakes/">
+      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17h6M10 20h4"/><path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.3 1 2.1V17h5.2v-1.1c0-.8.4-1.6 1-2.1A6 6 0 0012 3z"/><path class="acc" d="M12 7v4l2 1.5"/></svg></span>
       <span class="starthere-card-tag">Lessons</span>
       <div class="starthere-card-title">Learn from my mistakes</div>
       <div class="starthere-card-desc">The guide I wish existed when I started. What went wrong, what I'd do differently, and what I actually learned.</div>
       <div class="starthere-card-arrow">&rarr;</div>
     </a>
-
   </div>
 
-  <div class="starthere-path-label">Jump straight to a topic</div>
-  <div class="starthere-path-row">
-    <a class="starthere-path-pill" href="/articles/branding/">Branding</a>
-    <a class="starthere-path-pill" href="/articles/ecommerce/">E-Commerce</a>
-    <a class="starthere-path-pill" href="/articles/marketing/">Marketing</a>
-    <a class="starthere-path-pill" href="/articles/pricing/">Pricing</a>
-    <a class="starthere-path-pill" href="/articles/socialmedia/">Social Media</a>
-    <a class="starthere-path-pill" href="/articles/operations/">Operations</a>
-    <a class="starthere-path-pill" href="/about/">About Krish</a>
-    <a class="starthere-path-pill" href="/contact/">Get in Touch</a>
+  <div class="section-label rv">Jump straight to a topic</div>
+  <div class="topic-row rv">
+    <a class="topic-pill" href="/articles/gettingstarted/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-3-3c1-4 3.5-7.5 9-9 0 0 .5 5.5-6 12z"/><path d="M9 12H5.5L8 8.5h4"/><path d="M12 15v3.5L15.5 16v-4"/><path class="acc" d="M6.5 16.5c-1.2.6-1.8 2.3-1.9 3.4 1.1-.1 2.8-.7 3.4-1.9"/><circle class="acc" cx="15" cy="9" r="1.3"/></svg></span>Getting Started</a>
+    <a class="topic-pill" href="/articles/pricing/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12.3V4.8c0-.7.6-1.3 1.3-1.3h7.5l8.2 8.2a1.3 1.3 0 010 1.8l-7.4 7.4a1.3 1.3 0 01-1.8 0z"/><circle class="acc" cx="8.2" cy="8.2" r="1.6"/></svg></span>Pricing</a>
+    <a class="topic-pill" href="/articles/branding/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4h11l3.5 5-9 11L3 9z"/><path d="M3 9h18"/><path class="acc" d="M9.5 4L12 9l2.5-5M12 9l0 11"/></svg></span>Branding</a>
+    <a class="topic-pill" href="/articles/ecommerce/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12.5H6z"/><path class="acc" d="M9 10.5V7a3 3 0 016 0v3.5"/></svg></span>E-Commerce</a>
+    <a class="topic-pill" href="/articles/marketing/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 001 1h2l7 4V5L7 9H5a1 1 0 00-1 1z"/><path d="M7 15l1.2 4.2"/><path class="acc" d="M17.5 9a4 4 0 010 6M19.8 6.8a7 7 0 010 10.4"/></svg></span>Marketing</a>
+    <a class="topic-pill" href="/articles/socialmedia/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 01-11.7 7.1L4 20l1-4A8 8 0 1120 12z"/><path class="acc" d="M12 15.2s-3.2-1.9-3.2-4a1.7 1.7 0 013.2-.8 1.7 1.7 0 013.2.8c0 2.1-3.2 4-3.2 4z"/></svg></span>Social Media</a>
+    <a class="topic-pill" href="/articles/operations/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle class="acc" cx="15" cy="6" r="2"/><circle class="acc" cx="9" cy="12" r="2"/><circle class="acc" cx="17" cy="18" r="2"/></svg></span>Operations</a>
+    <a class="topic-pill" href="/articles/mistakes/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17h6M10 20h4"/><path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.3 1 2.1V17h5.2v-1.1c0-.8.4-1.6 1-2.1A6 6 0 0012 3z"/><path class="acc" d="M12 7v4l2 1.5"/></svg></span>Lessons</a>
   </div>
-</div>
+  <div class="home-end"></div>
+</section>
 
 <footer>
-  <div class="footer-brand">VenturePanda</div>
-  <div class="footer-copy">&copy; 2026 VenturePanda. Built by a young entrepreneur.</div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-about">
+        <a class="footer-brand" href="/"><img src="/favicon.png?v=3" alt="" width="40" height="40"><span class="fb-text">Venture<span>Panda</span></span></a>
+        <p class="footer-tagline">Practical guides and free tools for young founders, built from real experience.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/venturepanda" target="_blank" rel="noopener" aria-label="VenturePanda on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.55-3.87-4.55a3.34 3.34 0 00-3.03 1.67V8.5h-3.37V20h3.37v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.83 1.98 3.24V20h3.37z"/></svg></a>
+          <a href="https://www.instagram.com/venturepandaorg/" target="_blank" rel="noopener" aria-label="VenturePanda on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="mailto:contact@venturepanda.org" aria-label="Email VenturePanda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul><li><a href="/">Start Here</a></li><li><a href="/guides/">Guides</a></li><li><a href="/resources/">Resources</a></li><li><a href="/articles/gettingstarted/">Getting Started</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h3>Free Tools</h3>
+        <ul><li><a href="/tools/pricing-calculator/">Pricing Calculator</a></li><li><a href="/tools/startup-cost-estimator/">Startup Cost Estimator</a></li><li><a href="/tools/discount-calculator/">Discount Calculator</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h3>VenturePanda</h3>
+        <ul><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:contact@venturepanda.org">contact@venturepanda.org</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 VenturePanda. Built by a young entrepreneur.</span><span>Free, no sign-up, nothing you type leaves your browser.</span></div>
+  </div>
 </footer>
 
 <script>
-function revealOptions() {
-  const opts = document.getElementById('starthere-options');
-  opts.classList.add('visible');
-  opts.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  document.querySelector('.starthere-cta-btn').style.display = 'none';
-}
+// Hero: the preview stack tilts gently towards the mouse
+(function () {
+  var deck = document.getElementById('deck'), hero = document.querySelector('.hero');
+  if (!deck || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    deck.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
+    deck.style.setProperty('--rx', (-y * 8).toFixed(2) + 'deg');
+  });
+  hero.addEventListener('pointerleave', function () { deck.style.setProperty('--ry', '0deg'); deck.style.setProperty('--rx', '0deg'); });
+})();
 </script>
 <script data-goatcounter="https://venturepanda.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
