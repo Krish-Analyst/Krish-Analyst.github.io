@@ -591,3 +591,16 @@ html.js.reveal-all .rv { opacity: 1; transform: none; }
 .next-card.tool .g-icon svg .acc { color: #fff; }
 .read-progress { background: linear-gradient(90deg, #8FA4FF, #3355FF); }
 @media (max-width: 600px) { .wordmark { height: 26px; } }
+
+/* ---------- Footer: inverted theme (dark in light mode, light in dark mode) ---------- */
+:root[data-theme="light"] footer, :root:not([data-theme]) footer {
+  --bg: #0B0F1A; --surface: #131A2B; --text: #F2F4FA; --heading: #F2F4FA; --body-ink: #C9CEDD;
+  --muted: #A3AAC0; --faint: #6F7891; --accent: #6E8BFF; --accent-hover: #8FA4FF; --on-accent: #0B0F1A;
+  --border: #232C44; color-scheme: dark;
+}
+:root[data-theme="dark"] footer {
+  --bg: #F7F8FC; --surface: #FFFFFF; --text: #0B0F1A; --heading: #0B0F1A; --body-ink: #2A3045;
+  --muted: #5B627A; --faint: #7D849B; --accent: #3355FF; --accent-hover: #2443E6; --on-accent: #FFFFFF;
+  --border: #E3E6EF; color-scheme: light;
+}
+footer { border-top-color: transparent; }
