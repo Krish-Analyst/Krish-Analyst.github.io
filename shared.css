@@ -410,7 +410,8 @@ footer { border-top: 1px solid var(--border); padding: 56px 40px 28px; backgroun
 .footer-brand img { width: 40px; height: 40px; border-radius: 10px; }
 .footer-brand .fb-text span { color: var(--text); }
 .footer-tagline { font-size: 14px; color: var(--muted); margin: 12px 0 18px; max-width: 280px; line-height: 1.6; font-weight: 300; }
-.footer-social { display: flex; gap: 8px; }
+.footer-social { display: flex; gap: 6px; flex-wrap: wrap; max-width: 320px; }
+.footer-social a { width: 38px !important; height: 38px !important; }
 .footer-social a {
   width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border);
   display: inline-flex; align-items: center; justify-content: center; color: var(--muted); transition: all 0.25s ease;
