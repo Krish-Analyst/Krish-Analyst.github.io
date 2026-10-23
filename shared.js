@@ -37,16 +37,6 @@ window.__vpReady = true;
     try { localStorage.setItem('vp-theme', next); } catch (e) {}
     label();
   });
-  // Follow the system setting live, unless the visitor picked one
-  if (window.matchMedia) {
-    var mq = window.matchMedia('(prefers-color-scheme: dark)');
-    var onChange = function (e) {
-      var saved = null;
-      try { saved = localStorage.getItem('vp-theme'); } catch (err) {}
-      if (!saved) { root.setAttribute('data-theme', e.matches ? 'dark' : 'light'); label(); }
-    };
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-  }
 })();
 
 // ---------- Scroll reveal ----------

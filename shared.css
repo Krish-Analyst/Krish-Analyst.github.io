@@ -56,29 +56,6 @@
   color-scheme: dark;
 }
 
-/* No-JS fallback: follow the system setting */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --bg: #0B0F1A;
-    --surface: #131A2B;
-    --text: #F2F4FA;
-    --heading: #F2F4FA;
-    --body-ink: #C9CEDD;
-    --muted: #959CB3;
-    --faint: #687089;
-    --accent: #6E8BFF;
-    --accent-hover: #8FA4FF;
-    --on-accent: #0B0F1A;
-    --navy-card: #18213A;
-    --border: #232C44;
-    --tag-bg: #18213A;
-    --ring: rgba(110,139,255,0.25);
-    --shadow: rgba(0,0,0,0.40);
-    --nav-bg: rgba(11,15,26,0.88);
-    color-scheme: dark;
-  }
-}
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 84px; }
