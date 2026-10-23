@@ -2,7 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('vp-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js');setTimeout(function(){if(!window.__vpReady)d.classList.add('reveal-all')},2500)})()</script>
+<meta name="theme-color" content="#0a2540">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VenturePanda">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>How to Set Up an Online Store | VenturePanda</title>
 <meta name="description" content="How to set up an online store for free or close to it: choosing a platform, print-on-demand with Printful, and a custom domain.">
 <link rel="canonical" href="https://venturepanda.org/articles/ecommerce/">
@@ -19,14 +26,13 @@
 <link rel="icon" type="image/png" href="../../favicon.png?v=3">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=3">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../shared.css">
-<script src="../../shared.js" defer></script>
+<link rel="stylesheet" href="../../shared.css?v=4">
+<script src="../../shared.js?v=4" defer></script>
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="/">Venture<span>Panda</span></a>
-  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="nav-links">
     <li><a href="/" class="nav-start-here">Start Here</a></li>
     <li><a href="/guides/" class="is-active">Guides</a></li>
@@ -35,33 +41,77 @@
     <li><a href="/about/">About</a></li>
     <li><a href="/contact/">Contact</a></li>
   </ul>
+  <div class="nav-actions">
+    <button class="icon-btn" id="search-open" type="button" aria-label="Search guides and tools" title="Search (press /)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg></button>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg></button>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <main class="article-full">
   <a class="back-btn" href="/guides/">&larr; Back to Guides</a>
-  <div class="article-tags"><span class="tag">E-Commerce</span></div>
+  <div class="article-tags"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12.5H6z"/><path class="acc" d="M9 10.5V7a3 3 0 016 0v3.5"/></svg></span><span class="tag">E-Commerce</span></div>
   <h1>How to Set Up an Online Store for Free</h1>
   <p class="article-intro">The tools, platforms, and steps to get your first products online without wasting money.</p>
   <div class="article-meta-full">May 2026 &middot; 2 min read &middot; By Krish Panda</div>
+  <section class="takeaways" aria-label="Key takeaways">
+    <div class="takeaways-label">Key takeaways</div>
+    <ul>
+      <li><strong>Shopify is the most complete;</strong> Big Cartel or WooCommerce let you start for free.</li>
+      <li><strong>Print-on-demand</strong> means no inventory and no stock risk for a first business.</li>
+      <li><strong>Buy a custom domain</strong> (about $12 a year) and launch with three to five products.</li>
+    </ul>
+  </section>
   <div class="body">
-    <p>When I built the Velora Gran Turismo store, I was 15 and had almost no budget. Here's exactly how I did it, and what I'd do differently today.</p>
-    <h2>Choose Your Platform</h2>
-    <p>For a product-based business, Shopify is the most complete option. It handles your store, payments, inventory, and shipping in one place. The basic plan costs money, but it's worth it once you're generating revenue.</p>
-    <p>If you want to start completely free, try Big Cartel for small product ranges or WooCommerce if you already have a WordPress site.</p>
-    <h2>Set Up Print-on-Demand If You're Selling Physical Products</h2>
-    <p>This is what changed everything for me. With Printful, you design the product, list it on your store, and when someone orders, Printful prints and ships it directly to them. You never hold inventory.</p>
-    <p>The margins are lower than buying wholesale, but the risk is zero. For a first business, that matters.</p>
-    <h2>Get a Custom Domain</h2>
-    <p>A custom domain costs around $12 a year on Namecheap. It makes your store look 10x more professional than a free subdomain. This is the one thing worth paying for immediately.</p>
-    <h2>Keep It Simple</h2>
-    <p>Three to five products maximum when you launch. A clean homepage, a product page, and a contact page. That's all you need. You can add complexity later once you understand what your customers actually want.</p>
-    <blockquote>"Your first store doesn't need to be perfect. It needs to exist."</blockquote>
+    <p class="rv">When I built the Velora Gran Turismo store, I was 15 and had almost no budget. Here's exactly how I did it, and what I'd do differently today.</p>
+    <h2 class="rv">Choose Your Platform</h2>
+    <p class="rv">For a product-based business, Shopify is the most complete option. It handles your store, payments, inventory, and shipping in one place. The basic plan costs money, but it's worth it once you're generating revenue.</p>
+    <p class="rv">If you want to start completely free, try Big Cartel for small product ranges or WooCommerce if you already have a WordPress site.</p>
+    <h2 class="rv">Set Up Print-on-Demand If You're Selling Physical Products</h2>
+    <p class="rv">This is what changed everything for me. With Printful, you design the product, list it on your store, and when someone orders, Printful prints and ships it directly to them. You never hold inventory.</p>
+    <p class="rv">The margins are lower than buying wholesale, but the risk is zero. For a first business, that matters.</p>
+    <h2 class="rv">Get a Custom Domain</h2>
+    <p class="rv">A custom domain costs around $12 a year on Namecheap. It makes your store look 10x more professional than a free subdomain. This is the one thing worth paying for immediately.</p>
+    <h2 class="rv">Keep It Simple</h2>
+    <p class="rv">Three to five products maximum when you launch. A clean homepage, a product page, and a contact page. That's all you need. You can add complexity later once you understand what your customers actually want.</p>
+    <blockquote class="rv">"Your first store doesn't need to be perfect. It needs to exist."</blockquote>
   </div>
+  <aside class="whats-next rv" aria-label="What's next">
+    <div class="whats-next-label">What&rsquo;s next</div>
+    <div class="next-grid">
+      <a class="next-card" href="/articles/marketing/"><span class="nk"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 001 1h2l7 4V5L7 9H5a1 1 0 00-1 1z"/><path d="M7 15l1.2 4.2"/><path class="acc" d="M17.5 9a4 4 0 010 6M19.8 6.8a7 7 0 010 10.4"/></svg></span>Next guide &middot; Marketing</span><span class="nt">Getting Your First Customers Without a Budget</span><span class="na">Read the guide &rarr;</span></a>
+      <a class="next-card tool" href="/tools/pricing-calculator/"><span class="nk"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect class="acc" x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg></span>Free tool</span><span class="nt">Pricing Calculator</span><span class="na">Find your true cost and what to charge &rarr;</span></a>
+    </div>
+  </aside>
 </main>
 
 <footer>
-  <div class="footer-brand">VenturePanda</div>
-  <div class="footer-copy">&copy; 2026 VenturePanda. Built by a young entrepreneur.</div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-about">
+        <a class="footer-brand" href="/"><img src="/favicon.png?v=3" alt="" width="40" height="40"><span class="fb-text">Venture<span>Panda</span></span></a>
+        <p class="footer-tagline">Practical guides and free tools for young founders, built from real experience.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/venturepanda" target="_blank" rel="noopener" aria-label="VenturePanda on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.55-3.87-4.55a3.34 3.34 0 00-3.03 1.67V8.5h-3.37V20h3.37v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.83 1.98 3.24V20h3.37z"/></svg></a>
+          <a href="https://www.instagram.com/venturepandaorg/" target="_blank" rel="noopener" aria-label="VenturePanda on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="mailto:contact@venturepanda.org" aria-label="Email VenturePanda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul><li><a href="/">Start Here</a></li><li><a href="/guides/">Guides</a></li><li><a href="/resources/">Resources</a></li><li><a href="/articles/gettingstarted/">Getting Started</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h3>Free Tools</h3>
+        <ul><li><a href="/tools/pricing-calculator/">Pricing Calculator</a></li><li><a href="/tools/startup-cost-estimator/">Startup Cost Estimator</a></li><li><a href="/tools/discount-calculator/">Discount Calculator</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h3>VenturePanda</h3>
+        <ul><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:contact@venturepanda.org">contact@venturepanda.org</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 VenturePanda. Built by a young entrepreneur.</span><span>Free, no sign-up, nothing you type leaves your browser.</span></div>
+  </div>
 </footer>
 
 <script data-goatcounter="https://venturepanda.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
