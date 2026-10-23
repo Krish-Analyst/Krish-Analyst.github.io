@@ -1,7 +1,7 @@
-// VenturePanda offline support.
+// Rexyd offline support.
 // Pages: network first (always fresh when online), cached copy when offline.
 // Styles, scripts and images: served from cache, refreshed in the background.
-const VERSION = 'vp-v1';
+const VERSION = 'rexyd-v1';
 const PRECACHE = [
   "/",
   "/about/",
@@ -20,11 +20,11 @@ const PRECACHE = [
   "/tools/",
   "/tools/pricing-calculator/",
   "/tools/startup-cost-estimator/",
-  "/shared.css?v=4",
-  "/shared.js?v=4",
+  "/shared.css?v=5",
+  "/shared.js?v=5",
   "/search-index.json",
-  "/favicon.png?v=3",
-  "/apple-touch-icon.png?v=3",
+  "/favicon.png?v=4",
+  "/apple-touch-icon.png?v=4",
   "/icons/icon-192.png",
   "/404.html"
 ];

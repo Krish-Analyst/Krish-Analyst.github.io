@@ -1,4 +1,4 @@
-// VenturePanda shared script: menu, theme, search, scroll reveal, guide extras, offline support.
+// Rexyd shared script: menu, theme, search, scroll reveal, guide extras, offline support.
 window.__vpReady = true;
 
 // ---------- Phone menu ----------
@@ -120,7 +120,7 @@ window.__vpReady = true;
   overlay.className = 'search-overlay';
   overlay.setAttribute('role', 'dialog');
   overlay.setAttribute('aria-modal', 'true');
-  overlay.setAttribute('aria-label', 'Search VenturePanda');
+  overlay.setAttribute('aria-label', 'Search Rexyd');
   overlay.innerHTML =
     '<div class="search-box">' +
       '<div class="search-field">' +

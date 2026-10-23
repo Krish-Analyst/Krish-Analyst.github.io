@@ -4,30 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('vp-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js');setTimeout(function(){if(!window.__vpReady)d.classList.add('reveal-all')},2500)})()</script>
-<meta name="theme-color" content="#0a2540">
+<meta name="theme-color" content="#0B0F1A">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="VenturePanda">
+<meta name="apple-mobile-web-app-title" content="Rexyd">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Pricing Calculator | VenturePanda</title>
+<title>Pricing Calculator | Rexyd</title>
 <meta name="description" content="Free pricing calculator for young entrepreneurs. Enter your costs and fees to find your true cost per item, break-even price, and a price with a healthy margin.">
-<link rel="canonical" href="https://venturepanda.org/tools/pricing-calculator/">
+<link rel="canonical" href="https://rexyd.com/tools/pricing-calculator/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="VenturePanda">
-<meta property="og:title" content="Pricing Calculator | VenturePanda">
+<meta property="og:site_name" content="Rexyd">
+<meta property="og:title" content="Pricing Calculator | Rexyd">
 <meta property="og:description" content="Free pricing calculator for young entrepreneurs. Enter your costs and fees to find your true cost per item, break-even price, and a price with a healthy margin.">
-<meta property="og:url" content="https://venturepanda.org/tools/pricing-calculator/">
-<meta property="og:image" content="https://venturepanda.org/og/tools-pricing-calculator.png">
+<meta property="og:url" content="https://rexyd.com/tools/pricing-calculator/">
+<meta property="og:image" content="https://rexyd.com/og/tools-pricing-calculator.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Pricing Calculator | VenturePanda">
+<meta property="og:image:alt" content="Pricing Calculator | Rexyd">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="../../favicon.png?v=3">
-<link rel="apple-touch-icon" href="../../apple-touch-icon.png?v=3">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../shared.css?v=4">
-<script src="../../shared.js?v=4" defer></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
+<link rel="icon" type="image/png" href="/favicon.png?v=4">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared.css?v=5">
+<script src="../../shared.js?v=5" defer></script>
 <style>
   .calc-container { max-width: 880px; margin: 0 auto; padding: 80px 40px; }
   .calc-container .page-subtitle { max-width: 600px; }
@@ -136,8 +137,8 @@
 
   .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin: 20px 0 10px; background: var(--tag-bg); }
   .bar span { display: block; height: 100%; transition: width 0.3s ease; }
-  .bar .b-cost { background: #9aa5b1; }
-  .bar .b-fees { background: #c9b79c; }
+  .bar .b-cost { background: #B7BFD6; }
+  .bar .b-fees { background: #8FA4FF; }
   .bar .b-profit { background: var(--accent); }
   .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
   .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
@@ -162,7 +163,7 @@
 
   /* Explainer */
   .calc-notes { max-width: 640px; margin: 64px auto 0; animation: slideInUp 0.7s ease-out 0.4s backwards; }
-  .calc-notes h2 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--accent); margin: 40px 0 16px; line-height: 1.3; }
+  .calc-notes h2 { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--heading); margin: 40px 0 16px; line-height: 1.3; }
   .calc-notes h2:first-child { margin-top: 0; }
   .calc-notes p { font-size: 17px; line-height: 1.85; color: var(--body-ink); margin-bottom: 20px; font-weight: 300; }
   .calc-notes a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
@@ -221,7 +222,7 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="/">Venture<span>Panda</span></a>
+  <a class="nav-logo" href="/" aria-label="Rexyd home"><svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(12 0) skewX(-12)"><path d="M36 84 V16 H60 a18 18 0 0 1 0 36 H36 M58 52 L82 84" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M6 40 H22 M2 58 H20" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg><span>Rexyd</span></a>
   <ul class="nav-links" id="nav-links">
     <li><a href="/" class="nav-start-here">Start Here</a></li>
     <li><a href="/guides/">Guides</a></li>
@@ -331,7 +332,7 @@
       </ul>
 
       <div class="bar" aria-hidden="true"><span class="b-cost" id="bCost"></span><span class="b-fees" id="bFees"></span><span class="b-profit" id="bProfit"></span></div>
-      <div class="legend" aria-hidden="true"><span><i style="background:#9aa5b1"></i>Costs</span><span><i style="background:#c9b79c"></i>Fees</span><span><i style="background:var(--accent)"></i>Profit</span></div>
+      <div class="legend" aria-hidden="true"><span><i style="background:#B7BFD6"></i>Costs</span><span><i style="background:#8FA4FF"></i>Fees</span><span><i style="background:var(--accent)"></i>Profit</span></div>
 
       <p class="calc-error" id="err" hidden></p>
       <div class="check-result" id="check" hidden></div>
@@ -359,12 +360,12 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-about">
-        <a class="footer-brand" href="/"><img src="/favicon.png?v=3" alt="" width="40" height="40"><span class="fb-text">Venture<span>Panda</span></span></a>
+        <a class="footer-brand" href="/" aria-label="Rexyd home"><span class="fb-icon"><svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(12 0) skewX(-12)"><path d="M36 84 V16 H60 a18 18 0 0 1 0 36 H36 M58 52 L82 84" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M6 40 H22 M2 58 H20" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg></span><span class="fb-text">Rexyd</span></a>
         <p class="footer-tagline">Practical guides and free tools for young founders, built from real experience.</p>
         <div class="footer-social">
-          <a href="https://www.linkedin.com/company/venturepanda" target="_blank" rel="noopener" aria-label="VenturePanda on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.55-3.87-4.55a3.34 3.34 0 00-3.03 1.67V8.5h-3.37V20h3.37v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.83 1.98 3.24V20h3.37z"/></svg></a>
-          <a href="https://www.instagram.com/venturepandaorg/" target="_blank" rel="noopener" aria-label="VenturePanda on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="mailto:contact@venturepanda.org" aria-label="Email VenturePanda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
+          <a href="https://www.linkedin.com/company/venturepanda" target="_blank" rel="noopener" aria-label="Rexyd on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.55-3.87-4.55a3.34 3.34 0 00-3.03 1.67V8.5h-3.37V20h3.37v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.83 1.98 3.24V20h3.37z"/></svg></a>
+          <a href="https://www.instagram.com/rexydhq/" target="_blank" rel="noopener" aria-label="Rexyd on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="mailto:contact@rexyd.com" aria-label="Email Rexyd"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -376,11 +377,11 @@
         <ul><li><a href="/tools/pricing-calculator/">Pricing Calculator</a></li><li><a href="/tools/startup-cost-estimator/">Startup Cost Estimator</a></li><li><a href="/tools/discount-calculator/">Discount Calculator</a></li></ul>
       </div>
       <div class="footer-col">
-        <h3>VenturePanda</h3>
-        <ul><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:contact@venturepanda.org">contact@venturepanda.org</a></li></ul>
+        <h3>Rexyd</h3>
+        <ul><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:contact@rexyd.com">contact@rexyd.com</a></li></ul>
       </div>
     </div>
-    <div class="footer-bottom"><span>&copy; 2026 VenturePanda. Built by a young entrepreneur.</span><span>Free, no sign-up, nothing you type leaves your browser.</span></div>
+    <div class="footer-bottom"><span>&copy; 2026 Rexyd. Built by a young entrepreneur.</span><span>Free, no sign-up, nothing you type leaves your browser.</span></div>
   </div>
 </footer>
 

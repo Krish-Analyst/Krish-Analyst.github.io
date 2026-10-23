@@ -4,30 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('vp-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js');setTimeout(function(){if(!window.__vpReady)d.classList.add('reveal-all')},2500)})()</script>
-<meta name="theme-color" content="#0a2540">
+<meta name="theme-color" content="#0B0F1A">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="VenturePanda">
+<meta name="apple-mobile-web-app-title" content="Rexyd">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>VenturePanda | Actionable Startup Resources for Young Founders</title>
+<title>Rexyd | Actionable Startup Resources for Young Founders</title>
 <meta name="description" content="Start building your business with actionable, real-world advice on branding, pricing, operations, and e-commerce. Tailored specifically for teen entrepreneurs.">
-<link rel="canonical" href="https://venturepanda.org/">
+<link rel="canonical" href="https://rexyd.com/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="VenturePanda">
-<meta property="og:title" content="VenturePanda | Actionable Startup Resources for Young Founders">
+<meta property="og:site_name" content="Rexyd">
+<meta property="og:title" content="Rexyd | Actionable Startup Resources for Young Founders">
 <meta property="og:description" content="Start building your business with actionable, real-world advice on branding, pricing, operations, and e-commerce. Tailored specifically for teen entrepreneurs.">
-<meta property="og:url" content="https://venturepanda.org/">
-<meta property="og:image" content="https://venturepanda.org/og/home.png">
+<meta property="og:url" content="https://rexyd.com/">
+<meta property="og:image" content="https://rexyd.com/og/home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="VenturePanda | Actionable Startup Resources for Young Founders">
+<meta property="og:image:alt" content="Rexyd | Actionable Startup Resources for Young Founders">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="favicon.png?v=3">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=4">
-<script src="shared.js?v=4" defer></script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4">
+<link rel="icon" type="image/png" href="/favicon.png?v=4">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css?v=5">
+<script src="shared.js?v=5" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,8 +37,8 @@
   "jobTitle": "Founder",
   "worksFor": {
     "@type": "Organization",
-    "name": "VenturePanda",
-    "url": "https://venturepanda.org"
+    "name": "Rexyd",
+    "url": "https://rexyd.com"
   },
   "affiliation": {
     "@type": "EducationalOrganization",
@@ -54,13 +55,13 @@
   .hero {
     position: relative; overflow: hidden; color: #fff;
     background:
-      radial-gradient(900px 520px at 78% 38%, rgba(32,78,128,.85) 0%, rgba(10,37,64,0) 70%),
-      radial-gradient(600px 400px at 10% 90%, rgba(201,183,156,.10) 0%, rgba(10,37,64,0) 70%),
-      linear-gradient(180deg, #0a2540 0%, #071a2d 100%);
+      radial-gradient(900px 520px at 78% 38%, rgba(51,85,255,.55) 0%, rgba(11,15,26,0) 70%),
+      radial-gradient(600px 400px at 10% 90%, rgba(110,139,255,.10) 0%, rgba(11,15,26,0) 70%),
+      linear-gradient(180deg, #0B0F1A 0%, #05070D 100%);
   }
   .hero::before {
     content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
-    background-image: linear-gradient(rgba(201,183,156,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,183,156,.06) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(110,139,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(110,139,255,.06) 1px, transparent 1px);
     background-size: 56px 56px;
     -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%); mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%);
   }
@@ -68,15 +69,15 @@
     position: relative; max-width: 1140px; margin: 0 auto; padding: 96px 40px 104px;
     display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: 40px; align-items: center; min-height: min(760px, calc(100vh - 60px));
   }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #c9b79c; margin-bottom: 22px; animation: slideInUp .6s ease-out .1s backwards; }
-  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: #c9b79c; }
-  .hero h1 { font-family: var(--serif); font-size: clamp(38px, 6.2vw, 66px); font-weight: 700; line-height: 1.06; letter-spacing: -1.5px; margin-bottom: 22px; animation: slideInUp .7s ease-out .2s backwards; }
-  .hero h1 em { font-style: italic; color: #c9b79c; font-weight: 600; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #8FA4FF; margin-bottom: 22px; animation: slideInUp .6s ease-out .1s backwards; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: #8FA4FF; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(38px, 6.2vw, 64px); font-weight: 800; line-height: 1.04; letter-spacing: -2px; margin-bottom: 22px; animation: slideInUp .7s ease-out .2s backwards; }
+  .hero h1 em { font-style: normal; color: #6E8BFF; font-weight: 800; }
   .hero-lead { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,.75); font-weight: 300; max-width: 470px; margin-bottom: 34px; animation: slideInUp .7s ease-out .3s backwards; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; animation: slideInUp .7s ease-out .4s backwards; }
   .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 40px; transition: all .3s ease; cursor: pointer; border: 1px solid transparent; }
-  .btn-gold { background: #c9b79c; color: #0a2540; }
-  .btn-ghost { border-color: rgba(201,183,156,.45); color: #fff; }
+  .btn-gold { background: #3355FF; color: #FFFFFF; }
+  .btn-ghost { border-color: rgba(110,139,255,.45); color: #fff; }
   .hero-proof { margin-top: 34px; display: flex; gap: 22px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,.6); animation: slideInUp .7s ease-out .5s backwards; }
   .hero-proof b { color: #fff; font-weight: 500; font-family: var(--serif); font-size: 18px; margin-right: 4px; }
 
@@ -85,47 +86,47 @@
   .deck { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(calc(16deg + var(--rx, 0deg))) rotateY(calc(-20deg + var(--ry, 0deg))) rotateZ(3deg); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
   .hc { position: absolute; border-radius: 18px; transform-style: preserve-3d; animation: float 7s ease-in-out infinite; }
   @keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
-  .hc-calc { left: 2%; top: 21%; width: 320px; background: #fafaf8; color: #0f0f0f; padding: 20px; transform: translateZ(40px);
-    box-shadow: 0 40px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(201,183,156,.35); }
-  .hc-k { font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #8a7a5e; }
-  .hc-t { font-family: var(--serif); font-size: 22px; color: #0a2540; margin: 2px 0 12px; }
+  .hc-calc { left: 2%; top: 21%; width: 320px; background: #FFFFFF; color: #0f0f0f; padding: 20px; transform: translateZ(40px);
+    box-shadow: 0 40px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(110,139,255,.35); }
+  .hc-k { font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #5B6BB5; }
+  .hc-t { font-family: var(--serif); font-size: 22px; color: #0B0F1A; margin: 2px 0 12px; }
   .hc-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed #e5e5e0; color: #555; }
   .hc-row b { color: #0f0f0f; font-weight: 500; font-variant-numeric: tabular-nums; }
-  .hc-res { margin-top: 14px; background: #0a2540; color: #fff; border-radius: 12px; padding: 14px 16px; }
+  .hc-res { margin-top: 14px; background: #0B0F1A; color: #fff; border-radius: 12px; padding: 14px 16px; }
   .hc-res .l { font-size: 11px; color: rgba(255,255,255,.65); }
   .hc-res .v { font-family: var(--serif); font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; }
-  .hc-res .s { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 2px; } .hc-res .s b { color: #c9b79c; font-weight: 500; }
+  .hc-res .s { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 2px; } .hc-res .s b { color: #8FA4FF; font-weight: 500; }
   .hc-bar { display: flex; height: 7px; border-radius: 4px; overflow: hidden; margin-top: 10px; background: rgba(255,255,255,.1); }
   .hc-bar i { display: block; height: 100%; }
-  .hc-guide { right: -2%; top: 0; width: 240px; background: #13304f; padding: 18px; transform: translateZ(-60px); animation-delay: -2s;
-    box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(201,183,156,.25); }
-  .hc-guide .hc-k { color: #c9b79c; }
+  .hc-guide { right: -2%; top: 0; width: 240px; background: #18213A; padding: 18px; transform: translateZ(-60px); animation-delay: -2s;
+    box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(110,139,255,.25); }
+  .hc-guide .hc-k { color: #8FA4FF; }
   .hc-guide .hc-t { color: #fff; font-size: 19px; margin-bottom: 12px; }
   .hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .hc-stats div { border-radius: 10px; padding: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(201,183,156,.3); }
-  .hc-stats div:last-child { background: #c9b79c; color: #0a2540; border-color: #c9b79c; }
+  .hc-stats div { border-radius: 10px; padding: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(110,139,255,.3); }
+  .hc-stats div:last-child { background: #8FA4FF; color: #0B0F1A; border-color: #8FA4FF; }
   .hc-stats .n { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1; }
   .hc-stats .c { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin-bottom: 4px; }
-  .hc-disc { right: 0; bottom: 3%; width: 230px; background: #fafaf8; color: #0a2540; padding: 16px 18px; transform: translateZ(110px); animation-delay: -4s;
-    box-shadow: 0 36px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,183,156,.35); }
+  .hc-disc { right: 0; bottom: 3%; width: 230px; background: #FFFFFF; color: #0B0F1A; padding: 16px 18px; transform: translateZ(110px); animation-delay: -4s;
+    box-shadow: 0 36px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(110,139,255,.35); }
   .hc-disc .big { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.15; margin-top: 4px; }
-  .hc-disc .tag2 { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 700; letter-spacing: .12em; background: #e6dccb; border-radius: 5px; padding: 3px 8px; }
+  .hc-disc .tag2 { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 700; letter-spacing: .12em; background: #DCE3FF; border-radius: 5px; padding: 3px 8px; }
   .hc-logo { left: -3%; bottom: 0; width: 112px; height: 112px; border-radius: 26px; overflow: hidden; transform: translateZ(150px); animation-delay: -1s;
-    box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(201,183,156,.5), 0 0 60px rgba(201,183,156,.25); }
+    box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(110,139,255,.5), 0 0 60px rgba(110,139,255,.25); }
   .hc-logo img { width: 100%; height: 100%; display: block; }
   .hc-glow { position: absolute; left: 30%; top: 30%; width: 300px; height: 300px; border-radius: 50%; transform: translateZ(-160px);
-    background: radial-gradient(circle, rgba(201,183,156,.30), transparent 65%); filter: blur(10px); }
+    background: radial-gradient(circle, rgba(110,139,255,.30), transparent 65%); filter: blur(10px); }
 
   /* ---------- Sections ---------- */
   .home-section { max-width: 760px; margin: 0 auto; padding: 88px 40px 0; }
   .section-label { font-size: 12px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .section-title { font-family: var(--serif); font-size: clamp(28px, 4.5vw, 38px); font-weight: 700; color: var(--accent); letter-spacing: -.8px; line-height: 1.15; margin-bottom: 28px; }
+  .section-title { font-family: var(--serif); font-size: clamp(28px, 4.5vw, 38px); font-weight: 800; color: var(--heading); letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 28px; }
 
   /* Brand film */
   .film { max-width: 1000px; margin: 0 auto; padding: 88px 40px 0; }
   .film-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 22px; }
   .film-head .section-title { margin-bottom: 0; }
-  .film-frame { position: relative; border-radius: 20px; overflow: hidden; background: #071a2d; aspect-ratio: 16 / 9;
+  .film-frame { position: relative; border-radius: 20px; overflow: hidden; background: #05070D; aspect-ratio: 16 / 9;
     box-shadow: 0 40px 90px var(--shadow), 0 0 0 1px var(--border); }
   .film-frame video { width: 100%; height: 100%; display: block; object-fit: cover; }
   .sound-btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--accent);
@@ -146,14 +147,14 @@
   .starthere-card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; font-weight: 300; }
   .starthere-card-arrow { font-size: 14px; font-weight: 500; color: var(--accent); margin-top: auto; padding-top: 8px; transition: transform .3s ease; }
   .starthere-card-featured { grid-column: 1 / -1; background: var(--navy-card); border-color: var(--navy-card); padding: 30px 28px; color: #fff; }
-  .starthere-card-featured::after { content: ''; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(201,183,156,.25), transparent 70%); }
-  .starthere-card-featured .g-icon { background: rgba(255,255,255,.07); border-color: rgba(201,183,156,.35); color: #c9b79c; }
-  .starthere-card-featured .starthere-card-tag { color: #c9b79c; }
+  .starthere-card-featured::after { content: ''; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(110,139,255,.25), transparent 70%); }
+  .starthere-card-featured .g-icon { background: rgba(255,255,255,.07); border-color: rgba(110,139,255,.35); color: #8FA4FF; }
+  .starthere-card-featured .starthere-card-tag { color: #8FA4FF; }
   .starthere-card-featured .starthere-card-title { color: #fff; font-size: 25px; }
   .starthere-card-featured .starthere-card-desc { color: rgba(255,255,255,.78); max-width: 580px; }
-  .starthere-card-featured .starthere-card-arrow { color: #c9b79c; }
+  .starthere-card-featured .starthere-card-arrow { color: #8FA4FF; }
   .tool-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; position: relative; z-index: 1; }
-  .tool-chips span { font-size: 12px; color: #e6dccb; border: 1px solid rgba(201,183,156,.35); border-radius: 40px; padding: 4px 12px; }
+  .tool-chips span { font-size: 12px; color: #DCE3FF; border: 1px solid rgba(110,139,255,.35); border-radius: 40px; padding: 4px 12px; }
 
   .topic-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .topic-pill { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); background: var(--surface);
@@ -163,13 +164,13 @@
   .home-end { height: 96px; }
 
   @media (hover: hover) {
-    .btn-gold:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.3); }
-    .btn-ghost:hover { border-color: #c9b79c; background: rgba(201,183,156,.1); transform: translateY(-3px); }
+    .btn-gold:hover { background: #2443E6; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.3); }
+    .btn-ghost:hover { border-color: #8FA4FF; background: rgba(110,139,255,.1); transform: translateY(-3px); }
     .starthere-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 30px var(--shadow); }
-    .starthere-card-featured:hover { border-color: #c9b79c; }
+    .starthere-card-featured:hover { border-color: #8FA4FF; }
     .starthere-card:hover .starthere-card-arrow { transform: translateX(4px); }
     .starthere-card:hover .g-icon { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
-    .starthere-card-featured:hover .g-icon { background: #c9b79c; color: #0a2540; }
+    .starthere-card-featured:hover .g-icon { background: #8FA4FF; color: #0B0F1A; }
     .topic-pill:hover { border-color: var(--accent); transform: translateY(-2px); }
     .sound-btn:hover { border-color: var(--accent); }
   }
@@ -189,7 +190,7 @@
     .hc-calc { left: 6%; top: 0; }
     .hc-guide { display: none; }
     .hc-disc { right: -8%; bottom: -2%; }
-    .hc-logo { left: -2%; bottom: 2%; }
+    .hc-logo { left: 1%; bottom: 2%; }
     .hero-proof { gap: 16px; }
     .btn { padding: 13px 22px; }
   }
@@ -199,7 +200,7 @@
 <body class="homepage">
 
 <nav>
-  <a class="nav-logo" href="/">Venture<span>Panda</span></a>
+  <a class="nav-logo" href="/" aria-label="Rexyd home"><svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(12 0) skewX(-12)"><path d="M36 84 V16 H60 a18 18 0 0 1 0 36 H36 M58 52 L82 84" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M6 40 H22 M2 58 H20" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg><span>Rexyd</span></a>
   <ul class="nav-links" id="nav-links">
     <li><a href="/" class="nav-start-here" aria-current="page">Start Here</a></li>
     <li><a href="/guides/">Guides</a></li>
@@ -218,7 +219,7 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-copy">
-      <div class="hero-eyebrow">Welcome to VenturePanda</div>
+      <div class="hero-eyebrow">Welcome to Rexyd</div>
       <h1>Not sure where to begin? <em>Start here.</em></h1>
       <p class="hero-lead">Practical guides and free tools for young founders, from someone who built a brand from scratch at 15. Whether you have an idea or you're already building, this is where to start.</p>
       <div class="hero-ctas">
@@ -242,14 +243,14 @@
           <div class="hc-row"><span>Packaging + shipping</span><b>$6.50</b></div>
           <div class="hc-row"><span>Platform fees</span><b>3% + $0.30</b></div>
           <div class="hc-res"><div class="l">Suggested price</div><div class="v">$61.28</div><div class="s">Break-even <b>$29.69</b> &middot; Margin <b>50%</b></div>
-            <div class="hc-bar"><i style="width:47%;background:#9aa5b1"></i><i style="width:3%;background:#c9b79c"></i><i style="width:50%;background:#fff"></i></div></div>
+            <div class="hc-bar"><i style="width:47%;background:#B7BFD6"></i><i style="width:3%;background:#8FA4FF"></i><i style="width:50%;background:#fff"></i></div></div>
         </div>
         <div class="hc hc-disc">
           <div class="hc-k">Discount Calculator</div>
           <div class="big">20% off, almost 40% less profit</div>
           <span class="tag2">PLAN IT FIRST</span>
         </div>
-        <div class="hc hc-logo"><img src="/apple-touch-icon.png?v=3" alt=""></div>
+        <div class="hc hc-logo"><img src="/icons/icon-512.png?v=4" alt=""></div>
       </div>
     </div>
   </div>
@@ -257,7 +258,7 @@
 
 <section class="film" aria-labelledby="film-title">
   <div class="film-head rv">
-    <div><div class="section-label">The tour</div><h2 class="section-title" id="film-title">See VenturePanda in 23 seconds</h2></div>
+    <div><div class="section-label">The tour</div><h2 class="section-title" id="film-title">See Rexyd in 23 seconds</h2></div>
     <button class="sound-btn" type="button" data-film-sound aria-pressed="false">
       <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path d="M16 9.5l4 5M20 9.5l-4 5"/></svg>
       <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg>
@@ -265,7 +266,7 @@
     </button>
   </div>
   <div class="film-frame rv">
-    <video data-autoplay-visible muted loop playsinline preload="none" poster="/media/brand-film-poster.jpg" aria-label="VenturePanda brand film: a 23-second tour of the website, guides and free tools">
+    <video data-autoplay-visible muted loop playsinline preload="none" poster="/media/brand-film-poster.jpg" aria-label="Rexyd brand film: a 23-second tour of the website, guides and free tools">
       <source src="/media/brand-film.mp4?v=2" type="video/mp4">
       <source src="/media/brand-film.webm?v=2" type="video/webm">
     </video>
@@ -333,12 +334,12 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-about">
-        <a class="footer-brand" href="/"><img src="/favicon.png?v=3" alt="" width="40" height="40"><span class="fb-text">Venture<span>Panda</span></span></a>
+        <a class="footer-brand" href="/" aria-label="Rexyd home"><span class="fb-icon"><svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(12 0) skewX(-12)"><path d="M36 84 V16 H60 a18 18 0 0 1 0 36 H36 M58 52 L82 84" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M6 40 H22 M2 58 H20" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg></span><span class="fb-text">Rexyd</span></a>
         <p class="footer-tagline">Practical guides and free tools for young founders, built from real experience.</p>
         <div class="footer-social">
-          <a href="https://www.linkedin.com/company/venturepanda" target="_blank" rel="noopener" aria-label="VenturePanda on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.55-3.87-4.55a3.34 3.34 0 00-3.03 1.67V8.5h-3.37V20h3.37v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.83 1.98 3.24V20h3.37z"/></svg></a>
-          <a href="https://www.instagram.com/venturepandaorg/" target="_blank" rel="noopener" aria-label="VenturePanda on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="mailto:contact@venturepanda.org" aria-label="Email VenturePanda"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
+          <a href="https://www.linkedin.com/company/venturepanda" target="_blank" rel="noopener" aria-label="Rexyd on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.44 13.4c0-3.1-1.66-4.55-3.87-4.55a3.34 3.34 0 00-3.03 1.67V8.5h-3.37V20h3.37v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.83 1.98 3.24V20h3.37z"/></svg></a>
+          <a href="https://www.instagram.com/rexydhq/" target="_blank" rel="noopener" aria-label="Rexyd on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="mailto:contact@rexyd.com" aria-label="Email Rexyd"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -350,11 +351,11 @@
         <ul><li><a href="/tools/pricing-calculator/">Pricing Calculator</a></li><li><a href="/tools/startup-cost-estimator/">Startup Cost Estimator</a></li><li><a href="/tools/discount-calculator/">Discount Calculator</a></li></ul>
       </div>
       <div class="footer-col">
-        <h3>VenturePanda</h3>
-        <ul><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:contact@venturepanda.org">contact@venturepanda.org</a></li></ul>
+        <h3>Rexyd</h3>
+        <ul><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="mailto:contact@rexyd.com">contact@rexyd.com</a></li></ul>
       </div>
     </div>
-    <div class="footer-bottom"><span>&copy; 2026 VenturePanda. Built by a young entrepreneur.</span><span>Free, no sign-up, nothing you type leaves your browser.</span></div>
+    <div class="footer-bottom"><span>&copy; 2026 Rexyd. Built by a young entrepreneur.</span><span>Free, no sign-up, nothing you type leaves your browser.</span></div>
   </div>
 </footer>
 
