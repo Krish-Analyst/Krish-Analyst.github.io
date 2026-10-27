@@ -8,7 +8,7 @@
 
 /* ==========================================================
    VenturePanda shared styles
-   Light theme by default; dark theme via [data-theme="dark"]
+   Dark theme by default (set in each page head); light theme when data-theme="light"
    (set before paint by the small script in each page's <head>).
    ========================================================== */
 
