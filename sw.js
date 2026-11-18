@@ -1,7 +1,7 @@
 // Rexyd offline support.
 // Pages: network first (always fresh when online), cached copy when offline.
 // Styles, scripts and images: served from cache, refreshed in the background.
-const VERSION = 'rexyd-v10';
+const VERSION = 'rexyd-v11';
 const PRECACHE = [
   "/",
   "/about/",
