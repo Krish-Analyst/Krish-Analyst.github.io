@@ -76,289 +76,34 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is Rexyd really free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Every guide and every tool is free, with no sign-up, no ads and no paid version."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to create an account?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. You can read everything and use every calculator straight away. There is nothing to sign up for."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Who writes the guides?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Krish Panda. At 15 he started Velora Gran Turismo, an automotive-inspired clothing brand, and ran it on his own for 7 months. Every guide comes from what he learned building it, not from a textbook."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is anything I type into the tools saved?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. The calculators run entirely in your browser, so your numbers are never sent to us or stored anywhere. The privacy page has the details."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is Rexyd for?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Young founders and first-timers: students with an idea, people about to launch their first product, and anyone who wants straightforward advice without the jargon."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happened to VenturePanda?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "VenturePanda was renamed Rexyd in October 2026. It is the same guides and the same tools under a new name, and old venturepanda.org links still take you to the right page."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this financial or legal advice?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Rexyd shares general information and personal experience to help you think things through. For decisions about tax, law or money in your situation, talk to a qualified professional."
-      }
-    }
-  ]
-}
-</script>
 <style>
-  /* ---------- Hero (always dark navy, in both themes) ---------- */
-  .hero {
-    position: relative; overflow: hidden; color: #fff;
-    background:
-      radial-gradient(900px 520px at 78% 38%, rgba(51,85,255,.55) 0%, rgba(11,15,26,0) 70%),
-      radial-gradient(600px 400px at 10% 90%, rgba(110,139,255,.10) 0%, rgba(11,15,26,0) 70%),
-      linear-gradient(180deg, #0B0F1A 0%, #05070D 100%);
-  }
-  .hero::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
-    background-image: linear-gradient(rgba(110,139,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(110,139,255,.06) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%); mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%);
-  }
-  .hero-inner {
-    position: relative; max-width: 1140px; margin: 0 auto; padding: 96px 40px 104px;
-    display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); gap: 40px; align-items: center; min-height: min(760px, calc(100vh - 60px));
-  }
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #8FA4FF; margin-bottom: 22px; animation: slideInUp .6s ease-out .1s backwards; }
-  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: #8FA4FF; }
-  .hero h1 { font-family: var(--serif); font-size: clamp(38px, 6.2vw, 64px); font-weight: 800; line-height: 1.04; letter-spacing: -2px; margin-bottom: 22px; animation: slideInUp .7s ease-out .2s backwards; }
-  .hero h1 em { font-style: normal; color: #6E8BFF; font-weight: 800; }
-  .hero-lead { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,.75); font-weight: 300; max-width: 470px; margin-bottom: 34px; animation: slideInUp .7s ease-out .3s backwards; }
-  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; animation: slideInUp .7s ease-out .4s backwards; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 40px; transition: all .3s ease; cursor: pointer; border: 1px solid transparent; }
-  .btn-gold { background: #3355FF; color: #FFFFFF; }
-  .btn-ghost { border-color: rgba(110,139,255,.45); color: #fff; }
-  .hero-proof { margin-top: 34px; display: flex; gap: 22px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,.6); animation: slideInUp .7s ease-out .5s backwards; }
-  .hero-proof b { color: #fff; font-weight: 500; font-family: var(--serif); font-size: 18px; margin-right: 4px; }
+  /* Homepage: electric hero, three tool questions, nothing else */
+  .home-hero { background: #3355FF; color: #FFFFFF; padding: 60px 0 0; }
+  .home-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .home-hero .home-wrap { padding-top: 120px; padding-bottom: 128px; }
+  .home-hero h1 { font-size: clamp(48px, 7.5vw, 104px); line-height: 1.02; font-weight: 800; letter-spacing: -0.04em; max-width: 10em; color: #FFFFFF; }
+  .home-cta { display: inline-flex; align-items: center; margin-top: 48px; background: #FFFFFF; color: #0B0F1A; font-size: 17px; font-weight: 700; padding: 17px 30px; border-radius: 40px; transition: transform 0.2s ease; }
+  .home-cta:hover { transform: translateY(-2px); }
+  .home-cta:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 4px; }
 
-  /* 3D preview stack */
-  .stage { position: relative; height: 520px; perspective: 1500px; animation: fadeIn 1s ease-out .3s backwards; }
-  .deck { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(calc(16deg + var(--rx, 0deg))) rotateY(calc(-20deg + var(--ry, 0deg))) rotateZ(3deg); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-  .hc { position: absolute; border-radius: 18px; transform-style: preserve-3d; animation: float 7s ease-in-out infinite; }
-  @keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
-  .hc-calc { left: 2%; top: 5%; width: 320px; background: #FFFFFF; color: #0f0f0f; padding: 20px; transform: translateZ(130px);
-    box-shadow: 0 40px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(110,139,255,.35); }
-  .hc-k { font-size: 10px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #5B6BB5; }
-  .hc-t { font-family: var(--serif); font-size: 22px; color: #0B0F1A; margin: 2px 0 12px; }
-  .hc-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed #e5e5e0; color: #555; }
-  .hc-row b { color: #0f0f0f; font-weight: 500; font-variant-numeric: tabular-nums; }
-  .hc-res { margin-top: 14px; background: #0B0F1A; color: #fff; border-radius: 12px; padding: 14px 16px; }
-  .hc-res .l { font-size: 11px; color: rgba(255,255,255,.65); }
-  .hc-res .v { font-family: var(--serif); font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; }
-  .hc-res .s { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 2px; } .hc-res .s b { color: #8FA4FF; font-weight: 500; }
-  .hc-bar { display: flex; height: 7px; border-radius: 4px; overflow: hidden; margin-top: 10px; background: rgba(255,255,255,.1); }
-  .hc-bar i { display: block; height: 100%; }
-  .hc-guide { right: -6%; top: 14%; width: 240px; background: #18213A; padding: 18px; transform: translateZ(-60px); animation-delay: -2s;
-    box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(110,139,255,.25); }
-  .hc-guide .hc-k { color: #8FA4FF; }
-  .hc-guide .hc-t { color: #fff; font-size: 19px; margin-bottom: 12px; }
-  .hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .hc-stats div { border-radius: 10px; padding: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(110,139,255,.3); }
-  .hc-stats div:last-child { background: #8FA4FF; color: #0B0F1A; border-color: #8FA4FF; }
-  .hc-stats .n { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1; }
-  .hc-stats .c { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin-bottom: 4px; }
-  .hc-disc { right: -4%; bottom: -9%; width: 220px; background: #FFFFFF; color: #0B0F1A; padding: 16px 18px; transform: translateZ(110px); animation-delay: -4s;
-    box-shadow: 0 36px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(110,139,255,.35); }
-  .hc-disc .big { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1.15; margin-top: 4px; }
-  .hc-disc .tag2 { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 700; letter-spacing: .12em; background: #DCE3FF; border-radius: 5px; padding: 3px 8px; }
-  .hc-logo { left: -2%; bottom: -8%; width: 104px; height: 104px; border-radius: 26px; overflow: hidden; transform: translateZ(150px); animation-delay: -1s;
-    box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(110,139,255,.5), 0 0 60px rgba(110,139,255,.25); }
-  .hc-logo img { width: 100%; height: 100%; display: block; }
-  .hc-glow { position: absolute; left: 30%; top: 30%; width: 300px; height: 300px; border-radius: 50%; transform: translateZ(-160px);
-    background: radial-gradient(circle, rgba(110,139,255,.30), transparent 65%); filter: blur(10px); }
+  .home-tools { padding: 88px 0 96px; }
+  .home-tools ul { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
+  .home-tools a { display: block; }
+  .home-tools .q { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; color: var(--heading); transition: color 0.2s ease; }
+  .home-tools .t { margin-top: 10px; font-size: 15px; color: var(--muted); }
+  .home-tools a:hover .q { color: var(--accent); }
+  .home-tools a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 4px; }
 
-  /* ---------- Sections ---------- */
-  .home-section { max-width: 760px; margin: 0 auto; padding: 88px 40px 0; }
-  .section-label { font-size: 12px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .section-title { font-family: var(--serif); font-size: clamp(28px, 4.5vw, 38px); font-weight: 800; color: var(--heading); letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 28px; }
-
-  /* Brand film */
-  .film { max-width: 1000px; margin: 0 auto; padding: 88px 40px 0; }
-  .film-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 22px; }
-  .film-head .section-title { margin-bottom: 0; }
-  .film-frame { position: relative; border-radius: 20px; overflow: hidden; background: #05070D; aspect-ratio: 16 / 9;
-    box-shadow: 0 40px 90px var(--shadow), 0 0 0 1px var(--border); }
-  .film-frame video { width: 100%; height: 100%; display: block; object-fit: cover; }
-  .sound-btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--accent);
-    background: var(--tag-bg); border: 1px solid var(--border); border-radius: 40px; padding: 10px 18px; cursor: pointer; transition: all .25s ease; }
-  .sound-btn svg { width: 17px; height: 17px; }
-  .sound-btn .on { display: none; } .sound-btn.is-on .on { display: block; } .sound-btn.is-on .off { display: none; }
-  .sound-btn.is-on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
-
-  /* Start-here cards */
-  .starthere-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; margin-bottom: 36px; }
-  .starthere-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px 24px;
-    display: flex; flex-direction: column; gap: 8px; position: relative; overflow: hidden; transition: all .3s ease; color: inherit;
-  }
-  .starthere-card .g-icon { margin-bottom: 6px; }
-  .starthere-card-tag { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-  .starthere-card-title { font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--text); line-height: 1.3; }
-  .starthere-card-desc { font-size: 14px; color: var(--muted); line-height: 1.6; font-weight: 300; }
-  .starthere-card-arrow { font-size: 14px; font-weight: 500; color: var(--accent); margin-top: auto; padding-top: 8px; transition: transform .3s ease; }
-  .starthere-card-featured { grid-column: 1 / -1; background: var(--navy-card); border-color: var(--navy-card); padding: 30px 28px; color: #fff; }
-  .starthere-card-featured::after { content: ''; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(110,139,255,.25), transparent 70%); }
-  .starthere-card-featured .g-icon { background: rgba(255,255,255,.07); border-color: rgba(110,139,255,.35); color: #8FA4FF; }
-  .starthere-card-featured .starthere-card-tag { color: #8FA4FF; }
-  .starthere-card-featured .starthere-card-title { color: #fff; font-size: 25px; }
-  .starthere-card-featured .starthere-card-desc { color: rgba(255,255,255,.78); max-width: 580px; }
-  .starthere-card-featured .starthere-card-arrow { color: #8FA4FF; }
-  .tool-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; position: relative; z-index: 1; }
-  .tool-chips span { font-size: 12px; color: #DCE3FF; border: 1px solid rgba(110,139,255,.35); border-radius: 40px; padding: 4px 12px; }
-
-  .topic-row { display: flex; gap: 10px; flex-wrap: wrap; }
-  .topic-pill { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); background: var(--surface);
-    border: 1px solid var(--border); padding: 6px 16px 6px 6px; border-radius: 40px; transition: all .25s ease; }
-  .topic-pill .g-icon.sm { width: 30px; height: 30px; border-radius: 50%; }
-  .topic-pill .g-icon.sm svg { width: 15px; height: 15px; }
-  .home-end { height: 96px; }
-
-  @media (hover: hover) {
-    .btn-gold:hover { background: #2443E6; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.3); }
-    .btn-ghost:hover { border-color: #8FA4FF; background: rgba(110,139,255,.1); transform: translateY(-3px); }
-    .starthere-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 30px var(--shadow); }
-    .starthere-card-featured:hover { border-color: #8FA4FF; }
-    .starthere-card:hover .starthere-card-arrow { transform: translateX(4px); }
-    .starthere-card:hover .g-icon { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
-    .starthere-card-featured:hover .g-icon { background: #8FA4FF; color: #0B0F1A; }
-    .topic-pill:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .sound-btn:hover { border-color: var(--accent); }
-  }
-
-  @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: minmax(0,1fr); padding-top: 64px; padding-bottom: 40px; min-height: 0; gap: 10px; }
-    .stage { height: 440px; max-width: 520px; width: 100%; margin: 0 auto; }
-  }
-  @media (max-width: 768px) {
-    .hero-inner, .home-section, .film { padding-left: 20px; padding-right: 20px; }
-    .home-section, .film { padding-top: 64px; }
+  @media (max-width: 860px) {
+    .home-tools ul { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   }
   @media (max-width: 600px) {
-    .starthere-grid { grid-template-columns: minmax(0,1fr); }
-    .stage { height: 400px; }
-    .deck { transform: rotateX(14deg) rotateY(-14deg) rotateZ(2deg) scale(.78); transform-origin: 50% 40%; }
-    .hc-calc { left: 6%; top: 0; }
-    .hc-guide { display: none; }
-    .hc-disc { display: none; }
-    .hc-logo { display: none; }
-    .hero-proof { gap: 16px; }
-    .btn { padding: 13px 22px; }
+    .home-wrap { padding: 0 20px; }
+    .home-hero .home-wrap { padding-top: 72px; padding-bottom: 80px; }
+    .home-cta { margin-top: 36px; }
+    .home-tools { padding: 56px 0 64px; }
+    .home-tools .q { font-size: 22px; }
   }
-
-  /* ---------- Upgrades: pill, reassurance, live calculator ---------- */
-  .hero-pill { display: inline-flex; align-items: center; gap: 10px; padding: 5px 14px 5px 5px; margin-bottom: 24px; border-radius: 40px;
-    background: rgba(110,139,255,.12); border: 1px solid rgba(110,139,255,.35); color: #DCE3FF; font-size: 13px; font-weight: 500;
-    animation: slideInUp .6s ease-out .1s backwards; transition: border-color .2s ease, background-color .2s ease; }
-  .hp-tag { background: #3355FF; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-radius: 40px; padding: 4px 10px; }
-  .hp-arrow { color: #8FA4FF; transition: transform .2s ease; }
-  .hero-assure { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; font-size: 13px; color: rgba(255,255,255,.7); animation: slideInUp .7s ease-out .45s backwards; }
-  .hero-assure span { display: inline-flex; align-items: center; gap: 7px; }
-  .hero-assure svg { width: 15px; height: 15px; color: #6E8BFF; flex: none; }
-  .hc-in { align-items: center; gap: 10px; cursor: text; }
-  .hc-money { display: inline-flex; align-items: center; gap: 4px; color: #0f0f0f; font-weight: 500; }
-  .hc-money input { width: 82px; font: inherit; font-size: 16px; font-weight: 600; color: #0B0F1A; text-align: right; background: #F2F4FB;
-    border: 1px solid #D5DBF2; border-radius: 8px; padding: 3px 8px; font-variant-numeric: tabular-nums; }
-  .hc-money input:focus { outline: 2px solid #3355FF; outline-offset: 1px; background: #fff; }
-  .hc-range { cursor: pointer; }
-  .hc-rv { display: inline-flex; align-items: center; gap: 8px; }
-  .hc-rv input { width: 104px; accent-color: #3355FF; cursor: pointer; }
-  .hc-rv b { min-width: 34px; text-align: right; }
-  .hc-link { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 600; color: #3355FF; }
-  .hc-calc:hover, .hc-calc:focus-within { animation-play-state: paused; }
-  @media (hover: none) { .hc-calc { animation: none; } }
-  .deck:has(.hc-calc:hover), .stage:focus-within .deck { transform: rotateX(5deg) rotateY(-7deg) rotateZ(1deg); }
-
-  /* ---------- How it works ---------- */
-  .how { max-width: 1000px; margin: 0 auto; padding: 88px 40px 0; }
-  .how-steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: none; }
-  .how-step { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; display: flex; flex-direction: column; gap: 10px; }
-  .how-n { width: 38px; height: 38px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--tag-bg);
-    color: var(--accent); font-weight: 800; font-size: 16px; border: 1px solid var(--border); }
-  .how-step h3 { font-size: 19px; font-weight: 700; color: var(--heading); letter-spacing: -.3px; margin-top: 4px; }
-  .how-step p { font-size: 14.5px; color: var(--muted); line-height: 1.6; font-weight: 300; }
-  .how-step a { margin-top: auto; padding-top: 6px; font-size: 14px; font-weight: 500; color: var(--accent); }
-
-  /* ---------- FAQ ---------- */
-  .faq-list { border-top: 1px solid var(--border); }
-  .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px;
-    padding: 20px 2px; font-size: 17px; font-weight: 600; color: var(--heading); letter-spacing: -.2px; }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-icon { position: relative; width: 14px; height: 14px; flex: none; }
-  .faq-icon::before, .faq-icon::after { content: ''; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; border-radius: 2px; background: var(--accent); transition: transform .25s ease; }
-  .faq-icon::after { transform: rotate(90deg); }
-  .faq-item[open] .faq-icon::after { transform: rotate(0deg); }
-  .faq-a p { font-size: 15.5px; line-height: 1.75; color: var(--body-ink); font-weight: 300; padding: 0 2px 22px; max-width: 640px; }
-  .faq-a a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-
-  /* ---------- Closing call to action ---------- */
-  .cta-band { padding: 96px 40px; }
-  .cta-inner { max-width: 1000px; margin: 0 auto; border-radius: 26px; padding: 56px 48px; text-align: center; color: #fff; position: relative; overflow: hidden;
-    background: radial-gradient(600px 300px at 85% 0%, rgba(255,255,255,.22), transparent 70%), linear-gradient(135deg, #1B2BB8 0%, #3355FF 100%); }
-  .cta-inner h2 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 800; letter-spacing: -1.2px; line-height: 1.1; }
-  .cta-inner p { margin: 14px auto 28px; max-width: 520px; font-size: 16.5px; line-height: 1.65; color: rgba(255,255,255,.85); font-weight: 300; }
-  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .cta-primary { background: #fff; color: #1B2BB8; font-weight: 600; }
-  .cta-ghost { border-color: rgba(255,255,255,.55); color: #fff; }
-
-  @media (hover: hover) {
-    .hero-pill:hover { border-color: #8FA4FF; background: rgba(110,139,255,.2); }
-    .hero-pill:hover .hp-arrow { transform: translateX(3px); }
-    .how-step a:hover, .hc-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-    .faq-item summary:hover { color: var(--accent); }
-    .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.25); }
-    .cta-ghost:hover { background: rgba(255,255,255,.12); transform: translateY(-3px); }
-  }
-  @media (max-width: 860px) { .how-steps { grid-template-columns: minmax(0, 1fr); } }
-  @media (max-width: 768px) {
-    .how { padding: 64px 20px 0; }
-    .cta-band { padding: 72px 20px; }
-    .cta-inner { padding: 44px 24px; border-radius: 22px; }
-  }
-  @media (max-width: 600px) {
-    .stage:focus-within .deck { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(.86); }
-  }
-  @media (prefers-reduced-motion: reduce) { .hc { animation: none; } }
 </style>
 </head>
 <body class="homepage">
@@ -380,148 +125,22 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <h1>Not sure where to begin? <em>Start here.</em></h1>
-      <p class="hero-lead">Practical guides and free tools for young founders.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-gold" href="#paths">Show me where to go <span aria-hidden="true">&darr;</span></a>
-        <a class="btn btn-ghost" href="/tools/">Try the free tools</a>
-      </div>
-    </div>
-    <div class="stage">
-      <div class="deck" id="deck">
-        <div class="hc-glow" aria-hidden="true"></div>
-        <div class="hc hc-guide" aria-hidden="true">
-          <div class="hc-k">Pricing guide</div>
-          <div class="hc-t">Margin is not markup</div>
-          <div class="hc-stats"><div><div class="c">Markup</div><div class="n">100%</div></div><div><div class="c">Margin</div><div class="n">50%</div></div></div>
-        </div>
-        <div class="hc hc-calc" id="minicalc">
-          <div class="hc-k">Free tool &middot; try it</div>
-          <div class="hc-t">Pricing Calculator</div>
-          <label class="hc-row hc-in"><span>Cost per item</span><span class="hc-money">$<input id="mc-cost" type="number" inputmode="decimal" min="0" step="0.5" value="28.50" aria-label="Cost to make and ship one item, in dollars"></span></label>
-          <div class="hc-row"><span>Platform fees</span><b>3% + $0.30</b></div>
-          <label class="hc-row hc-in hc-range"><span>Target margin</span><span class="hc-rv"><input id="mc-margin" type="range" min="10" max="80" step="5" value="50" aria-label="Target profit margin"><b id="mc-mv">50%</b></span></label>
-          <div class="hc-res"><div class="l">Suggested price</div><div class="v" id="mc-price">$61.28</div><div class="s">Break-even <b id="mc-be">$29.69</b> &middot; Margin <b id="mc-m">50%</b></div>
-            <div class="hc-bar"><i id="mc-b1" style="width:47%;background:#B7BFD6"></i><i id="mc-b2" style="width:3%;background:#8FA4FF"></i><i id="mc-b3" style="width:50%;background:#fff"></i></div></div>
-          <a class="hc-link" href="/tools/pricing-calculator/">Open the full calculator &rarr;</a>
-        </div>
-        <div class="hc hc-disc" aria-hidden="true">
-          <div class="hc-k">Discount Calculator</div>
-          <div class="big">20% off, almost 40% less profit</div>
-          <span class="tag2">PLAN IT FIRST</span>
-        </div>
-      </div>
-    </div>
+<header class="home-hero">
+  <div class="home-wrap">
+    <h1>Start your business smarter.</h1>
+    <a class="home-cta" href="/guides/">Find your guide</a>
   </div>
 </header>
 
-<section class="film" aria-labelledby="film-title">
-  <div class="film-head rv">
-    <div><div class="section-label">The tour</div><h2 class="section-title" id="film-title">See Rexyd in 23 seconds</h2></div>
-    <button class="sound-btn" type="button" data-film-sound aria-pressed="false">
-      <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path d="M16 9.5l4 5M20 9.5l-4 5"/></svg>
-      <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg>
-      <span>Play with sound</span>
-    </button>
+<main class="home-tools" aria-label="Free tools">
+  <div class="home-wrap">
+    <ul>
+      <li><a href="/tools/pricing-calculator/"><div class="q">What should I charge?</div><div class="t">Pricing Calculator</div></a></li>
+      <li><a href="/tools/startup-cost-estimator/"><div class="q">How much do I need to launch?</div><div class="t">Startup Cost Estimator</div></a></li>
+      <li><a href="/tools/discount-calculator/"><div class="q">What will this sale cost me?</div><div class="t">Discount Calculator</div></a></li>
+    </ul>
   </div>
-  <div class="film-frame rv">
-    <video data-autoplay-visible muted loop playsinline preload="none" poster="/media/brand-film-poster.jpg?v=3" aria-label="Rexyd brand film: a 23-second tour of the website, guides and free tools">
-      <source src="/media/brand-film.mp4?v=3" type="video/mp4">
-      <source src="/media/brand-film.webm?v=3" type="video/webm">
-    </video>
-  </div>
-</section>
-
-<section class="how" aria-labelledby="how-title">
-  <div class="section-label rv">How it works</div>
-  <h2 class="section-title rv" id="how-title">From idea to launch in three steps</h2>
-  <ol class="how-steps">
-    <li class="how-step rv"><span class="how-n">1</span><h3>Find your starting point</h3><p>Pick what you're looking for below and read the guide that matches where you are right now.</p><a href="#paths">Find your guide &rarr;</a></li>
-    <li class="how-step rv"><span class="how-n">2</span><h3>Run your numbers</h3><p>Use the free calculators to work out your price, your launch budget and what a discount really costs you.</p><a href="/tools/">Open the tools &rarr;</a></li>
-    <li class="how-step rv"><span class="how-n">3</span><h3>Launch with a plan</h3><p>Follow the Getting Started guide step by step, and skip the mistakes I made the first time.</p><a href="/articles/gettingstarted/">Read Getting Started &rarr;</a></li>
-  </ol>
-</section>
-
-<section class="home-section" id="paths" aria-labelledby="paths-title">
-  <div class="section-label rv">Start here</div>
-  <h2 class="section-title rv" id="paths-title">What are you looking for?</h2>
-
-  <div class="starthere-grid">
-    <a class="starthere-card starthere-card-featured rv" href="/tools/">
-      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2.5"/><rect class="acc" x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg></span>
-      <span class="starthere-card-tag">Free tools</span>
-      <div class="starthere-card-title">Run your numbers before you spend money</div>
-      <div class="starthere-card-desc">Find out what to charge, how much you need to launch, and what a discount really costs you. Free, any currency, no sign-up.</div>
-      <div class="tool-chips"><span>Pricing Calculator</span><span>Startup Cost Estimator</span><span>Discount Calculator</span></div>
-      <div class="starthere-card-arrow">Open the tools &rarr;</div>
-    </a>
-    <a class="starthere-card rv" href="/guides/">
-      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h9.5L19 9v10.5H5z"/><path class="acc" d="M14.5 4.5V9H19M8.5 13h7M8.5 16h5"/></svg></span>
-      <span class="starthere-card-tag">Guides</span>
-      <div class="starthere-card-title">Read the guides</div>
-      <div class="starthere-card-desc">Step-by-step advice on branding, pricing, marketing, and running a business. All from real experience.</div>
-      <div class="starthere-card-arrow">&rarr;</div>
-    </a>
-    <a class="starthere-card rv" href="/resources/">
-      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="11" rx="2"/><path d="M9 8V6a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0115 6v2"/><path class="acc" d="M3.5 13h17M10.5 12v2.2h3V12"/></svg></span>
-      <span class="starthere-card-tag">Resources</span>
-      <div class="starthere-card-title">See what I used</div>
-      <div class="starthere-card-desc">The platforms and tools I used to build a real business from scratch, plus free alternatives. No sponsorships.</div>
-      <div class="starthere-card-arrow">&rarr;</div>
-    </a>
-    <a class="starthere-card rv" href="/articles/gettingstarted/">
-      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-3-3c1-4 3.5-7.5 9-9 0 0 .5 5.5-6 12z"/><path d="M9 12H5.5L8 8.5h4"/><path d="M12 15v3.5L15.5 16v-4"/><path class="acc" d="M6.5 16.5c-1.2.6-1.8 2.3-1.9 3.4 1.1-.1 2.8-.7 3.4-1.9"/><circle class="acc" cx="15" cy="9" r="1.3"/></svg></span>
-      <span class="starthere-card-tag">Getting Started</span>
-      <div class="starthere-card-title">Turn your idea into action</div>
-      <div class="starthere-card-desc">You have an idea but don't know what to do next. This is the first guide everyone should read.</div>
-      <div class="starthere-card-arrow">&rarr;</div>
-    </a>
-    <a class="starthere-card rv" href="/articles/mistakes/">
-      <span class="g-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17h6M10 20h4"/><path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.3 1 2.1V17h5.2v-1.1c0-.8.4-1.6 1-2.1A6 6 0 0012 3z"/><path class="acc" d="M12 7v4l2 1.5"/></svg></span>
-      <span class="starthere-card-tag">Lessons</span>
-      <div class="starthere-card-title">Learn from my mistakes</div>
-      <div class="starthere-card-desc">The guide I wish existed when I started. What went wrong, what I'd do differently, and what I actually learned.</div>
-      <div class="starthere-card-arrow">&rarr;</div>
-    </a>
-  </div>
-
-  <div class="section-label rv">Jump straight to a topic</div>
-  <div class="topic-row rv">
-    <a class="topic-pill" href="/articles/gettingstarted/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-3-3c1-4 3.5-7.5 9-9 0 0 .5 5.5-6 12z"/><path d="M9 12H5.5L8 8.5h4"/><path d="M12 15v3.5L15.5 16v-4"/><path class="acc" d="M6.5 16.5c-1.2.6-1.8 2.3-1.9 3.4 1.1-.1 2.8-.7 3.4-1.9"/><circle class="acc" cx="15" cy="9" r="1.3"/></svg></span>Getting Started</a>
-    <a class="topic-pill" href="/articles/pricing/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12.3V4.8c0-.7.6-1.3 1.3-1.3h7.5l8.2 8.2a1.3 1.3 0 010 1.8l-7.4 7.4a1.3 1.3 0 01-1.8 0z"/><circle class="acc" cx="8.2" cy="8.2" r="1.6"/></svg></span>Pricing</a>
-    <a class="topic-pill" href="/articles/branding/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4h11l3.5 5-9 11L3 9z"/><path d="M3 9h18"/><path class="acc" d="M9.5 4L12 9l2.5-5M12 9l0 11"/></svg></span>Branding</a>
-    <a class="topic-pill" href="/articles/ecommerce/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12.5H6z"/><path class="acc" d="M9 10.5V7a3 3 0 016 0v3.5"/></svg></span>E-Commerce</a>
-    <a class="topic-pill" href="/articles/marketing/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 001 1h2l7 4V5L7 9H5a1 1 0 00-1 1z"/><path d="M7 15l1.2 4.2"/><path class="acc" d="M17.5 9a4 4 0 010 6M19.8 6.8a7 7 0 010 10.4"/></svg></span>Marketing</a>
-    <a class="topic-pill" href="/articles/socialmedia/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 01-11.7 7.1L4 20l1-4A8 8 0 1120 12z"/><path class="acc" d="M12 15.2s-3.2-1.9-3.2-4a1.7 1.7 0 013.2-.8 1.7 1.7 0 013.2.8c0 2.1-3.2 4-3.2 4z"/></svg></span>Social Media</a>
-    <a class="topic-pill" href="/articles/operations/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle class="acc" cx="15" cy="6" r="2"/><circle class="acc" cx="9" cy="12" r="2"/><circle class="acc" cx="17" cy="18" r="2"/></svg></span>Operations</a>
-    <a class="topic-pill" href="/articles/mistakes/"><span class="g-icon sm"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17h6M10 20h4"/><path d="M12 3a6 6 0 00-3.6 10.8c.6.5 1 1.3 1 2.1V17h5.2v-1.1c0-.8.4-1.6 1-2.1A6 6 0 0012 3z"/><path class="acc" d="M12 7v4l2 1.5"/></svg></span>Lessons</a>
-  </div>
-</section>
-
-<section class="home-section faq" id="faq" aria-labelledby="faq-title">
-  <div class="section-label rv">FAQ</div>
-  <h2 class="section-title rv" id="faq-title">Questions people ask</h2>
-  <div class="faq-list">
-    <details class="faq-item rv"><summary>Is Rexyd really free?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>Yes. Every guide and every tool is free, with no sign-up, no ads and no paid version.</p></div></details>
-    <details class="faq-item rv"><summary>Do I need to create an account?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>No. You can read everything and use every calculator straight away. There is nothing to sign up for.</p></div></details>
-    <details class="faq-item rv"><summary>Who writes the guides?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>Krish Panda. At 15 he started Velora Gran Turismo, an automotive-inspired clothing brand, and ran it on his own for 7 months. Every guide comes from what he learned building it, not from a textbook.</p></div></details>
-    <details class="faq-item rv"><summary>Is anything I type into the tools saved?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>No. The calculators run entirely in your browser, so your numbers are never sent to us or stored anywhere. The <a href="/privacy/">privacy page</a> has the details.</p></div></details>
-    <details class="faq-item rv"><summary>Who is Rexyd for?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>Young founders and first-timers: students with an idea, people about to launch their first product, and anyone who wants straightforward advice without the jargon.</p></div></details>
-    <details class="faq-item rv"><summary>What happened to VenturePanda?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>VenturePanda was renamed Rexyd in October 2026. It is the same guides and the same tools under a new name, and old venturepanda.org links still take you to the right page.</p></div></details>
-    <details class="faq-item rv"><summary>Is this financial or legal advice?<span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>No. Rexyd shares general information and personal experience to help you think things through. For decisions about tax, law or money in your situation, talk to a qualified professional. See the <a href="/terms/">terms</a> for more.</p></div></details>
-  </div>
-</section>
-
-<section class="cta-band" aria-labelledby="cta-title">
-  <div class="cta-inner rv">
-    <h2 id="cta-title">Not sure where to start?</h2>
-    <p>Pick the guide for where you are, or run your numbers with a free tool. Everything is free, with no sign-up.</p>
-    <div class="cta-actions"><a class="btn cta-primary" href="#paths">Start here</a><a class="btn cta-ghost" href="/tools/">Try a free tool</a></div>
-  </div>
-</section>
+</main>
 
 <footer>
   <div class="footer-inner">
@@ -555,41 +174,5 @@
   </div>
 </footer>
 
-<script>
-// Hero: live mini Pricing Calculator (same maths as the full tool)
-(function () {
-  var cost = document.getElementById('mc-cost'), mar = document.getElementById('mc-margin');
-  if (!cost || !mar) return;
-  var PCT = 0.03, FIX = 0.30;
-  var fmt = function (n) { return '$' + n.toFixed(2); };
-  function update() {
-    var c = Math.max(0, parseFloat(cost.value) || 0), m = (parseInt(mar.value, 10) || 0) / 100;
-    var be = (c + FIX) / (1 - PCT), price = (c + FIX) / (1 - PCT - m);
-    document.getElementById('mc-mv').textContent = Math.round(m * 100) + '%';
-    document.getElementById('mc-m').textContent = Math.round(m * 100) + '%';
-    document.getElementById('mc-price').textContent = fmt(price);
-    document.getElementById('mc-be').textContent = fmt(be);
-    var fees = price * PCT + FIX;
-    document.getElementById('mc-b1').style.width = (c / price * 100).toFixed(1) + '%';
-    document.getElementById('mc-b2').style.width = (fees / price * 100).toFixed(1) + '%';
-    document.getElementById('mc-b3').style.width = (m * 100).toFixed(1) + '%';
-  }
-  cost.addEventListener('input', update); mar.addEventListener('input', update); update();
-})();
-
-// Hero: the preview stack tilts gently towards the mouse
-(function () {
-  var deck = document.getElementById('deck'), hero = document.querySelector('.hero');
-  if (!deck || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  hero.addEventListener('pointermove', function (e) {
-    var r = hero.getBoundingClientRect();
-    var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-    deck.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
-    deck.style.setProperty('--rx', (-y * 8).toFixed(2) + 'deg');
-  });
-  hero.addEventListener('pointerleave', function () { deck.style.setProperty('--ry', '0deg'); deck.style.setProperty('--rx', '0deg'); });
-})();
-</script>
 </body>
 </html>
