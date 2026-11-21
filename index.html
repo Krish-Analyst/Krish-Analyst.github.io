@@ -115,6 +115,12 @@
   .lx-done { margin-top: 40px; max-width: 580px; border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px; background: var(--surface); animation: lx-rise .35s ease; }
   .lx-done strong { display: block; font-size: 18px; color: var(--heading); }
   .lx-done span { display: block; margin-top: 6px; font-size: 15px; color: var(--body-ink); }
+  .lx-done.is-ok { background: #ECFDF3; border-color: #86D9A6; }
+  .lx-done.is-ok strong { color: #05603A; }
+  .lx-done.is-ok span { color: #1F5D3F; }
+  :root[data-theme="dark"] .lx-done.is-ok { background: #0B2A1A; border-color: #1F6B40; }
+  :root[data-theme="dark"] .lx-done.is-ok strong { color: #6EE7A0; }
+  :root[data-theme="dark"] .lx-done.is-ok span { color: #B7E8CB; }
 
   .lx-weeks { list-style: none; margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
   .lx-weeks li { border: 1px solid var(--border); border-radius: 20px; padding: 32px; background: var(--bg); }
@@ -204,7 +210,7 @@
     <label class="lx-consent"><input type="checkbox" name="consent" value="yes" required><span>I'm 13 or older and I'm happy to get emails about the program. You can unsubscribe at any time. <a href="/privacy/">How we use your email</a>.</span></label>
     <p class="lx-msg" id="signup-msg" role="status" aria-live="polite"></p>
   </form>
-  <div class="lx-done" id="signup-done" hidden tabindex="-1">
+  <div class="lx-done is-ok" id="signup-done" hidden tabindex="-1">
     <strong id="done-title">You're in.</strong>
     <span id="done-text">Your spot in the 1 January group is saved. Check your inbox for a confirmation from Krish at Rexyd. If it is not there, look in your spam folder.</span>
   </div>
@@ -346,6 +352,7 @@
     btn.disabled = true; btn.classList.add('is-loading'); btn.textContent = 'Saving…'; form.setAttribute('aria-busy', 'true'); say('Saving your spot…');
     var body = new URLSearchParams({ email: email, consent: 'yes', website: form.website.value, source: location.search.indexOf('source=') > -1 ? location.search.slice(1, 60) : 'rexyd.com' });
     function finish(status) {
+      done.classList.toggle('is-ok', status !== 'waitlist' && status !== 'duplicate');
       if (status === 'waitlist') {
         document.getElementById('done-title').textContent = 'The first group is full.';
         document.getElementById('done-text').textContent = 'You are on the waitlist. We will email you if a spot opens, and when the next group is announced. Check your spam folder for our confirmation.';
