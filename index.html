@@ -192,7 +192,7 @@
 
 <main class="lx-main">
 <section id="join" class="lx lx-hero" aria-labelledby="hero-title">
-  <p class="lx-date"><span class="cap">Next group starts Friday 1 January 2027</span><span class="sep"> · </span><span class="cap">30 spots</span></p>
+  <p class="lx-date"><span class="cap">Next group starts Friday 1 January 2027</span><span class="sep"> · </span><span class="cap">30 spots, first come first served</span></p>
   <h1 id="hero-title">Launch your first product<br><span class="tone">in 30 days.</span></h1>
   <p class="lx-lead">A free program for teenagers. One task a week, a group doing it with you, and your first real sale at the end.</p>
   <form class="lx-form" id="signup" data-endpoint="https://script.google.com/macros/s/AKfycbwOC9qFS947BzxCA8gSPhdFN1H9xi23W8gS2aXC7vYRrw2nkZoh7gujbcB2E2IopTvlAQ/exec" novalidate>
@@ -205,8 +205,8 @@
     <p class="lx-msg" id="signup-msg" role="status" aria-live="polite"></p>
   </form>
   <div class="lx-done" id="signup-done" hidden tabindex="-1">
-    <strong>You're on the list.</strong>
-    <span>We'll email you before 1 January with everything you need for week 1.</span>
+    <strong id="done-title">You're in.</strong>
+    <span id="done-text">Your spot in the 1 January group is saved. We'll email you before 1 January with everything you need for week 1.</span>
   </div>
 </section>
 
@@ -323,8 +323,22 @@
     if (!endpoint) { say('Sign-ups open soon. Please check back in a few days.', true); return; }
     btn.disabled = true; btn.classList.add('is-loading'); btn.textContent = 'Saving…'; form.setAttribute('aria-busy', 'true'); say('Saving your spot…');
     var body = new URLSearchParams({ email: email, consent: 'yes', website: form.website.value, source: location.search.indexOf('source=') > -1 ? location.search.slice(1, 60) : 'rexyd.com' });
-    fetch(endpoint, { method: 'POST', mode: 'no-cors', body: body }).then(function () {
+    function finish(status) {
+      if (status === 'waitlist') {
+        document.getElementById('done-title').textContent = 'The first group is full.';
+        document.getElementById('done-text').textContent = 'You are on the waitlist. We will email you if a spot opens, and when the next group is announced.';
+      } else if (status === 'duplicate') {
+        document.getElementById('done-title').textContent = 'You are already on the list.';
+        document.getElementById('done-text').textContent = 'We have your email. Nothing more to do until we write to you.';
+      }
       form.hidden = true; done.hidden = false; done.focus();
+    }
+    // Read the script's answer (ok, waitlist or duplicate). If the answer cannot be read,
+    // send the sign-up again without reading it; the sheet skips duplicates, so this is safe.
+    fetch(endpoint, { method: 'POST', body: body }).then(function (r) { return r.json(); }).then(function (j) {
+      finish(j && j.status);
+    }).catch(function () {
+      return fetch(endpoint, { method: 'POST', mode: 'no-cors', body: body }).then(function () { finish('ok'); });
     }).catch(function () {
       btn.disabled = false; btn.classList.remove('is-loading'); btn.textContent = label; form.removeAttribute('aria-busy'); say('That didn’t go through. Check your connection and try again, or email contact@rexyd.com.', true);
     });
