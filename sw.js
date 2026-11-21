@@ -1,7 +1,7 @@
 // Rexyd offline support.
 // Pages: network first (always fresh when online), cached copy when offline.
 // Styles, scripts and images: served from cache, refreshed in the background.
-const VERSION = 'rexyd-v12';
+const VERSION = 'rexyd-v13';
 const PRECACHE = [
   "/",
   "/about/",
@@ -22,10 +22,10 @@ const PRECACHE = [
   "/tools/",
   "/tools/pricing-calculator/",
   "/tools/startup-cost-estimator/",
-  "/shared.css?v=13",
+  "/shared.css?v=14",
   "/shared.js?v=9",
   "/search-index.json",
-  "/fonts/plus-jakarta-sans-latin.woff2",
+  "/fonts/schibsted-grotesk.woff",
   "/favicon.png?v=7",
   "/apple-touch-icon.png?v=7",
   "/icons/icon-192.png",
