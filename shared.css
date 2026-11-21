@@ -571,7 +571,7 @@ html.js.reveal-all .rv { opacity: 1; transform: none; }
 .nav-logo { display: inline-flex; align-items: center; line-height: 0; }
 .wordmark { display: block; height: 24px; width: auto; overflow: visible; }
 .wordmark .wm-main { fill: var(--heading); }
-.wordmark .wm-x { fill: var(--accent); }
+.wordmark .wm-x { fill: var(--muted); }
 .footer-brand { display: inline-flex; align-items: center; line-height: 0; }
 .footer-brand .wordmark { height: 28px; }
 .page-title, .article-full h1 { color: var(--heading); font-weight: 800; letter-spacing: -0.035em; }
