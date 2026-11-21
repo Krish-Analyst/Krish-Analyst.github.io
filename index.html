@@ -192,7 +192,7 @@
 
 <main class="lx-main">
 <section id="join" class="lx lx-hero" aria-labelledby="hero-title">
-  <p class="lx-date"><span class="cap">Next group starts Friday 1 January 2027</span><span class="sep"> · </span><span class="cap">30 spots, first come first served</span></p>
+  <p class="lx-date"><span class="cap">Next group starts Friday 1 January 2027</span><span class="sep"> · </span><span class="cap" id="spots">30 spots, first come first served</span></p>
   <h1 id="hero-title">Launch your first product<br><span class="tone">in 30 days.</span></h1>
   <p class="lx-lead">A free program for teenagers. One task a week, a group doing it with you, and your first real sale at the end.</p>
   <form class="lx-form" id="signup" data-endpoint="https://script.google.com/macros/s/AKfycbwOC9qFS947BzxCA8gSPhdFN1H9xi23W8gS2aXC7vYRrw2nkZoh7gujbcB2E2IopTvlAQ/exec" novalidate>
@@ -314,6 +314,28 @@
   function invalid(el, on) { if (on) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
   form.email.addEventListener('input', function () { invalid(form.email, false); });
   form.consent.addEventListener('change', function () { consentBox.classList.remove('invalid'); });
+  // Live spots counter: reads the count from the sign-up script and falls back to the static text.
+  (function () {
+    var el = document.getElementById('spots'), url = form.getAttribute('data-endpoint');
+    if (!el || !url) return;
+    var SHOW_FROM_TAKEN = 5;   // fewer than this many taken: keep the plain "30 spots" text
+    function show(d) {
+      var cap = +d.cap, taken = +d.confirmed;
+      if (!(cap > 0) || !(taken >= 0)) return;
+      var left = Math.max(0, cap - taken);
+      if (left === 0) {
+        el.textContent = 'First group full, waitlist open';
+        label = 'Join the waitlist'; if (!btn.classList.contains('is-loading')) btn.textContent = label;
+      } else if (taken >= SHOW_FROM_TAKEN) {
+        el.textContent = left + ' of ' + cap + ' spots left, first come first served';
+      }
+    }
+    try { var c = JSON.parse(sessionStorage.getItem('rx-spots') || 'null'); if (c && Date.now() - c.t < 60000) { show(c.d); return; } } catch (e) {}
+    fetch(url).then(function (r) { return r.json(); }).then(function (d) {
+      try { sessionStorage.setItem('rx-spots', JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+      show(d);
+    }).catch(function () {});
+  })();
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var email = form.email.value.trim();
