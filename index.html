@@ -206,7 +206,7 @@
   </form>
   <div class="lx-done" id="signup-done" hidden tabindex="-1">
     <strong id="done-title">You're in.</strong>
-    <span id="done-text">Your spot in the 1 January group is saved. We'll email you before 1 January with everything you need for week 1.</span>
+    <span id="done-text">Your spot in the 1 January group is saved. Check your inbox for a confirmation from Krish at Rexyd. If it is not there, look in your spam folder.</span>
   </div>
 </section>
 
@@ -348,7 +348,7 @@
     function finish(status) {
       if (status === 'waitlist') {
         document.getElementById('done-title').textContent = 'The first group is full.';
-        document.getElementById('done-text').textContent = 'You are on the waitlist. We will email you if a spot opens, and when the next group is announced.';
+        document.getElementById('done-text').textContent = 'You are on the waitlist. We will email you if a spot opens, and when the next group is announced. Check your spam folder for our confirmation.';
       } else if (status === 'duplicate') {
         document.getElementById('done-title').textContent = 'You are already on the list.';
         document.getElementById('done-text').textContent = 'We have your email. Nothing more to do until we write to you.';
