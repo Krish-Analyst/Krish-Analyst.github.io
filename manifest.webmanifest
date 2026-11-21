@@ -1,12 +1,12 @@
 {
   "name": "Rexyd",
   "short_name": "Rexyd",
-  "description": "Practical guides and free tools for young founders.",
+  "description": "A free 30-day program to launch your first product, plus free business calculators.",
   "start_url": "/?source=app",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0B0F1A",
-  "theme_color": "#0B0F1A",
+  "background_color": "#111827",
+  "theme_color": "#111827",
   "icons": [
     { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
