@@ -20,6 +20,10 @@
   --accent-hover: #374151;
   --on-accent: #FFFFFF;       /* text on an accent background */
   --navy-card: #111827;       /* always-dark panels (featured cards, hero) */
+  --on-navy: #FFFFFF;         /* text on always-dark panels */
+  --on-navy-soft: #D1D5DB;
+  --on-navy-muted: #9CA3AF;
+  --danger: #B91C1C;          /* errors */
   --gold: #D1D5DB;            /* light electric, used on dark panels */
   --gold-soft: #F3F4F6;
   --border: #E5E7EB;
@@ -33,6 +37,7 @@
 }
 
 :root[data-theme="dark"] {
+  --danger: #FCA5A5;
   --bg: #0F1115;
   --surface: #171A20;
   --text: #F3F4F6;
@@ -578,26 +583,26 @@ html.js.reveal-all .rv { opacity: 1; transform: none; }
 .body h2 { color: var(--heading); font-weight: 700; letter-spacing: -0.02em; }
 .article-title, .next-card .nt, .sr-title { font-weight: 700; letter-spacing: -0.015em; }
 .body blockquote { font-style: normal; font-weight: 600; border-left-color: var(--accent); color: var(--heading); }
-.takeaways { background: linear-gradient(135deg, #1B2BB8 0%, #3355FF 100%); }
+.takeaways { background: var(--navy-card); }
 .takeaways::after { background: radial-gradient(circle, rgba(255,255,255,.22), transparent 70%); }
-.takeaways-label { color: #DCE3FF; }
+.takeaways-label { color: var(--on-navy-muted); }
 .takeaways li::before { border-color: #FFFFFF; }
-.next-card.tool { background: #3355FF; border-color: #3355FF; }
-.next-card.tool .nk, .next-card.tool .na { color: #DCE3FF; }
+.next-card.tool { background: var(--navy-card); border-color: var(--navy-card); }
+.next-card.tool .nk, .next-card.tool .na { color: var(--on-navy-muted); }
 .next-card.tool .g-icon { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); color: #fff; }
 .next-card.tool .g-icon svg .acc { color: #fff; }
-.read-progress { background: linear-gradient(90deg, #8FA4FF, #3355FF); }
+.read-progress { background: var(--accent); }
 @media (max-width: 600px) { .wordmark { height: 22px; } }
 
 /* ---------- Footer: inverted theme (dark in light mode, light in dark mode) ---------- */
 :root[data-theme="light"] footer, :root:not([data-theme]) footer {
   --bg: #0B0F1A; --surface: #131A2B; --text: #F2F4FA; --heading: #F2F4FA; --body-ink: #C9CEDD;
-  --muted: #A3AAC0; --faint: #6F7891; --accent: #6E8BFF; --accent-hover: #8FA4FF; --on-accent: #0B0F1A;
+  --muted: #A3AAC0; --faint: #6F7891; --accent: #F3F4F6; --accent-hover: #FFFFFF; --on-accent: #111827;
   --border: #232C44; color-scheme: dark;
 }
 :root[data-theme="dark"] footer {
   --bg: #F7F8FC; --surface: #FFFFFF; --text: #0B0F1A; --heading: #0B0F1A; --body-ink: #2A3045;
-  --muted: #5B627A; --faint: #7D849B; --accent: #3355FF; --accent-hover: #2443E6; --on-accent: #FFFFFF;
+  --muted: #5B627A; --faint: #7D849B; --accent: #111827; --accent-hover: #374151; --on-accent: #FFFFFF;
   --border: #E3E6EF; color-scheme: light;
 }
 footer { border-top-color: transparent; }
